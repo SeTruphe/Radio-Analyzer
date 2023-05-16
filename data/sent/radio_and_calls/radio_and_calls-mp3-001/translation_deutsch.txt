@@ -1,0 +1,4 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-001###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Sechste, I Erste, Arbeit begonnen, Frage Sechste, I Erste A, I Sechste, Ziel bisher offen, Begleitung Noch nicht begonnen Arbeit, Arbeit Biene, Biene daran Verstanden, I Sechste, Rezeption Unter den Mitteln, unter den Mitteln, Rezeption

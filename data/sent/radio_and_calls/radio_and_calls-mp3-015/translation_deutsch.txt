@@ -1,0 +1,6 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-015###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Berkut, ich bin 23. Scheiße. Hallo. Du fickst. Von mir aus links, so wie wir reingekommen sind, geht es nach rechts. Hallo. Ja, verdammt. Auto fuhr vorbei, sah keine Autos oder Techniker dort, und 24.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Autos oder Maschinen und zwei Männer, die von Zivilisten gestürmt werden Ja, verpiss dich aus dem verdammten Dorf Ich verpiss mich aus dem Dorf Zivilisten Ja, verpiss dich aus dem Dorf

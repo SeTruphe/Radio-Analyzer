@@ -1,0 +1,14 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-005###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Vorotish, Vorotish, bist du ein Naharka-Prinz? Stehend, auf Wiedersehen. Ich bin Radonko 9, hallo. Ich bin Radonko 9, hallo. Radonko 9, ich habe deine Handschellen. Luchs, Kugeln 1120, 1120. Top, prize, shell, pilot, fire. Ich bin Cat. Luchs, ich hab dich, ich hab dich. Luchs, hilf mir bei 1120. Luchs, auf fünf, hallo. Luchs, auf der 5, hallo.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Luchs, Luchs, ich bin eine Katze, hallo! Luchs, Luchs, ich bin eine Katze, hallo!
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+Reich, Reich, Locot, Ende. Munition 1.24, Ende. Munition 1.24, Ende. Locot, Locot, don't spiro, don't spiro, 2.69, over. Kein Spiro, 2,69. Munition 1, Locot, Locot, don't spirodo, don't spirodo, 2.69. Locot, Locot, don't spirodo, 2,69. Munition 1.15.
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+Feuer! Es klappt! 9! Verbrauchen! 9! Rückwärtsgang! 10! Es funktioniert! Ich bin Rada! Hallo! Große Hoffnung! Ich bin Rama 69! Hallo! Große Hoffnung! Ich bin Rama 69! Flow 9! Es funktioniert! 9! Fließen! 9! 9! 9! 9! Umkehren! Es funktioniert!
+######## START OF 000005.MP3 (0:01:52 - 0:02:22s) ########
+😊 😊
+######## START OF 000006.MP3 (0:02:20 - 0:02:50s) ########
+POLIZEI-SIRENE

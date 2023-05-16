@@ -1,0 +1,6 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-023###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Sibirien hat eine Panikattacke, Sibirien verursacht einen Aufruhr. Erschießt ihn, das war's, es gibt kein verdammtes Rehabilitationszentrum, und scheiß auf ihn, er starb einen tapferen Tod. Was zum Teufel machen wir jetzt? Sollen sie ihn doch erschießen, ihn fesseln, ihn verärgern. Ist da draußen irgendjemand normal? Einen verdammten Tritt in die Fresse kriegen, vielleicht noch was anderes machen. Oder denken die, dass nur Späher vorgelassen werden sollten? Lass die anderen zuerst gehen. Fortsetzung folgt...
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Sie

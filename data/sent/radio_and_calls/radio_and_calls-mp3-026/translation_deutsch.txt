@@ -1,0 +1,12 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-026###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Abend Also, die Nacht ist vergangen. Jeden Tag wird es schlimmer, schlimmer, schlimmer, schlimmer. Weniger Menschen, weniger Menschen, weniger Menschen. Weniger Raketen für den BBK, weniger, weniger, weniger. Früher haben wir 10, 20 auf einmal geschossen. Jetzt sind es drei oder vier Raketen. Furz, Furz, Furz. Nerze furzen, furzen, furzen. Oh du t-t-t-t-t-t-t-t-t-t-t, fuck.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta-ta, fuck! Unsere Jungs haben es heute Morgen versaut. Sind die blöd oder was? Irgendein Trottel hat 30 korrigiert, oops, 500 Süd Sie hätten 500 Nord sein sollen Sie haben uns eigentlich Nord-Süd getroffen Sie kennen nicht mal Nord-Süd
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+Ihr wisst schon, sogar die Einsteller. Alle in der alten Position stürmen wieder rein. Haben alle wieder in unsere Schweine gesteckt. Wollten zurückgehen, alles niederlegen. Nun, es scheint. Zweihundert, verdammte dreihundert. Erstickt an den Angriffen. Befahl dem Festungskommandanten, verdammte Schwuchtel, die Stellungen zurückzuschlagen. Weil unsere von hinten feuern werden, wird es sie nicht treffen. Na ja, egal...
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+Was sind das für Idioten? - Ja, ich sage, es gibt nur Fleisch für Fleisch, aber wie nehmen sie die Verwundeten? Sie kriechen selbst heraus, kein Atem, was bin ich? Für niemand zu schießen oder niemand zu schießen? Huh? Niemand zu schießen oder niemand zu schießen? - Warten Sie eine Sekunde, sie schießen aus der Ferne, wenn sie aus einer direkten Linie treffen würden, würden sie nicht schießen, sie schießen irgendwo weit weg und von hinten schießen sie nicht
+######## START OF 000005.MP3 (0:01:52 - 0:02:22s) ########
+Da ist ein verdammtes Zwicken von unter der Insel weit weg. Und die Einsteller sind da draußen und rutschen rein. Entweder wir schlagen das Feld oder wir machen es auf unsere Art. Ich sage, da ist eine Hohly, sie lacht sich 24 Stunden lang den Arsch ab. Die verstecken sich nicht mal.

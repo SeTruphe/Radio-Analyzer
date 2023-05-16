@@ -1,0 +1,6 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-021###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Jetzt nicht in die Stadt gehen, kurz gesagt. Männer. Wie auch immer, es gibt, weißt du, Militärpersonal, kurz, vergewaltigte ein 12-jähriges Mädchen, 10 von ihnen. Und sie können sie nicht finden, also lassen sie niemanden in die Stadt. Wie auch immer, jetzt können wir nirgendwo in der Stadt hingehen. Weshalb? Weshalb denn?
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Weshalb? Es sind die Deserteure, die eine Frau vergewaltigt haben. Vergewaltigt? Nun, entweder, sagen sie, Deserteure, naja, mobilisiert, oder Freiwillige, kurz gesagt, es ist nicht klar. Ah-ah-ah.

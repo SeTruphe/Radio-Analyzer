@@ -1,0 +1,10 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-019###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Ich habe keine Möglichkeit zu leben, es ist alles im Arsch. Wir stehen hier, hier sind wir auf der zweiten... Komm schon, wovon redest du? Von nichts. Da ist ein verdammter Angriff auf der zweiten. Da sind Khokhlys auf unserer Seite, Khokhlys zu unserer Rechten, und Khokhlys zu unserer Rechten. Und sie wollen uns irgendwo hinbringen. Sie sagten uns, wir sollen bis zum letzten Tag bleiben. Scheiß Handys, es ist verdammt voll. Pakete, weißt du, nicht eine Person pro Woche. Siebzehn am Tag. Fortsetzung folgt...
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Das ist beschissen. Genug, genug, wovon redest du? Von nichts. Amüsieren wir uns nicht, oder was? Ich werde auf keinen Fall flach auf dem Boden sitzen. Das ist nicht lustig, ich... Unsere, so haben wir den Laden versaut. Sie haben es nicht richtig gemacht, sie haben es nicht richtig gemacht. Sie haben alles kaputt gemacht. Scheiß auf uns. Es gibt verdammt nochmal nichts, die ganzen angepissten Leute. Keine Klamotten, wie viele andere auch.
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+Es gibt nirgendwo Wasser. Diese Leute bringen überhaupt kein Wasser mit, es gibt überhaupt kein Wasser. Die Offiziere sind verdammt mobilisiert, schau sie dir an. Das verdammte Leben ist kaputt, das war's. Sie glotzen mich an, schauen mich an. Das verdammte Leben, das war verdammt noch mal gestern. Gestern, der Scheiß-Velevator, du musst den Scheiß-Velevator holen. Ich weiß nicht, wie ich es nehmen soll, das verdammte Maschinengewehr. Sie hatten ein Kommando, es zu holen. Siebzehn verdammte Männer wurden auf einmal mobilisiert. Ich komme gerade vom Feld, verdammt noch mal.
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+Wir sind gerade erst vom Feld weggekommen. Als wir wieder auf dem Feld waren, wurde der Ball wieder auf uns geworfen. Ich drehte mich um und er war weg, verdammt noch mal. Er war schon zwei Meter vor uns, verdammt.

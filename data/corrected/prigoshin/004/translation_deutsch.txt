@@ -1,0 +1,20 @@
+###START OF GERMAN TRANSLATION FROM FILE 004###
+
+Model: whisper-large-v2 Task: translate english-german
+
+
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+ Völlig richtig. Wir haben die Flanken an das Verteidigungsministerium übergeben. Einheiten des Verteidigungsministeriums, darunter VDV*, haben heute die rechte und linke Flanken übernommen. Soweit ich weiß, haben sie alles, was sie brauchen, um die Verteidigung zu organisieren und gegebenenfalls offensive Operationen durchzuführen. Heute also Zaleznyanskaya, Sacco und Vanzetti, Nikolaevka und andere Siedlungen, die in den vergangenen...
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+ ...Siedlungen, die in den vergangenen Monaten von "Wagner" PM-Einheiten gestürmt wurden, liegen im Verantwortungsbereich der Luftlandetruppen und anderer Einheiten des Verteidigungsministeriums.
+
+
+
+
+
+
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Bemerkung:
+*VDV = ВДВ = Воздушно-десантные войска = Luftlandetruppen = Russian Airborne Forces

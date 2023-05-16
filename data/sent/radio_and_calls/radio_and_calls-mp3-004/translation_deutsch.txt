@@ -1,0 +1,15 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-004###
+###START OF ORIGINAL TRANSCRIPTION FROM FILE radio_and_calls-mp3-004###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Vorotish, Vorotish, bist du ein Naharka-Prinz? Stehend, auf Wiedersehen. Ich bin Radonko 9, hallo. Ich bin Radonko 9, hallo. Radonko 9, ich habe deine Handschellen. Luchs, Kugeln 1120, 1120. Top, prize, shell, pilot, fire. Ich bin Cat. Luchs, ich hab dich, ich hab dich. Luchs, hilf mir bei 1120. Luchs, auf fünf, hallo. Luchs, auf der 5, hallo.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Untertitel von DimaTorzok
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+Reich, Reich, Locot, Ende. Munition 1.24, Ende. Munition 1.24, Ende. Locot, Locot, Don't spiro, Don't spiro, 2.69, over. Kein Spiro, 2,69. Munition 1, Locot, Locot, don't spirodo, don't spirodo, 2.69. Locot, Locot, don't spirodo, 2,69. Munition 1.15.
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+Stillgestanden! Es klappt! 9! Fließen! 9! Abbrechen! 9! Es funktioniert! Ich arbeite! Hallo! Ihr seid alle Radio-Nerds! Ich bin Rama 69! Hallo! Ihr seid alle Radioheads! Ich bin Rama 69! Patrouillen! 9-20! Flow! 9! Fließen! 9! Patrouillen! Hallo! 9! 9! 9! Hallo!
+######## START OF 000005.MP3 (0:01:52 - 0:02:22s) ########
+Vorbei! Erfreut, vorbei, Nummer 89. Polizei raus, raus gegen mein Outfit, over. Bist du der Befehl des Tages? Rollt rüber, rollt raus. Doprival. Ich sage ihnen, dass ich hier bin. Sie können sich nicht bewegen, ich bin hier. Die Rezeption ist hier. Ich komme, ich komme hierher. Du kannst nicht aufhören.
+######## START OF 000006.MP3 (0:02:20 - 0:02:50s) ########
+Fünf, Dwent, Neun, Neun, Neun. In Gravitation 1134 Ready Elevator On In thrust 1134 Fire Under Fire Ich bin hier

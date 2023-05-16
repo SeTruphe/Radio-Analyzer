@@ -1,0 +1,21 @@
+###START OF ENGLISH TRANSLATION FROM FILE 002###
+
+Model: whisper-large-v2 Task: translate original-english
+
+
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+ The main problem today, which exists especially with the PMCs, is to somehow dilute the PMC "Wagner", so that it is no longer a major force that can play some role in domestic politics, so first of all,
+and secondly, everyone is told that at some point there will be a struggle for power, everyone must have their own private army. Those who have money, they think that it's a great idea....
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+...they think that it's a great idea to collect the PMCs. And they [=PMCs] begin to multiply. "Gazprom"´s PMC "Stream", which we call "The Blue Stream". All sorts of PMCs "Bokarev", PMC "Redoubts", and so on. A pair of each creature.
+
+
+
+
+
+
+
+
+
+
+

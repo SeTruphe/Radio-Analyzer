@@ -1,0 +1,8 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-002###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Ich will den Platz, mach es nochmal. Fortgesetzt. Ein. Arbeit. Kosten. Arbeit. Fortgesetzt. Arbeit. Arbeit. Arbeit. Fortgesetzt.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+...die Risse waren in Kryshechkova, richtig? Vor zwei Minuten wurden... ...gingen Mörser los, die Explosionen waren in Kryshechkove, richtig? Verstehst du, ich bin jetzt kein Sportler, aber die Wuschka ist nicht an. Du hast sie abgestellt! Sag das noch mal! Du bist taub, ich sage es dir! Vor zwei Minuten...
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+...zurück, arbeitete nicht an Ort und Stelle, sondern mitten in der Schule, richtig? Ja, das ist richtig.

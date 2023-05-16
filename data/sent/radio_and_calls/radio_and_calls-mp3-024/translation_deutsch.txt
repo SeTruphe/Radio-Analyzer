@@ -1,0 +1,6 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-024###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Haben wir denn keine verdammte Artillerie? Keine Artillerie, keine Ausrüstung, überhaupt keine. Wir haben nicht mal eine Batterie in unserer Kompanie. Oh bitte, motorisierte Gewehrschützen, Motom, Holzfäller oder Roller, verdammt noch mal? Wer kann das schon, richtig? Ja, ja, ja, ja. Und che, und nichts, keine Versprechungen, keine die.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Keine Versprechungen, keine Vorhersagen, dass es irgendeine Ausrüstung geben wird, kein Scheiß, richtig? Nein, wir haben einen Panzer, der noch da steht, aber der, weißt du, der kann nicht schießen. Hier. Und hier ist noch einer irgendwo auf einem anderen Gelände, der kann nicht fahren. Hier sind zwei Panzer. Und wo ist der dritte? Nicht hier.

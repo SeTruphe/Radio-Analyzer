@@ -1,0 +1,18 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-010###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+81., ich bin 85., alle Luftunterstützung, alle Luftunterstützung! 85, ich bin 81, die Luft ist weg, die Luft ist weg in deine Richtung, Ende! Er ist längst weg, er verarscht uns, folgt uns, wir müssen den Bojarok hier abschießen! 85, ich bin der 81., ihr bleibt an mir dran, bewegt euch, over! 81., ich bin 85.!
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+81. Ich bin 85. Komm an deinen Platz, Dienst gegen Schläge Empfangen, erhalten Sie 82. mit Ihnen Empfangen 82. und 83., beide getroffen 85., 81. Empfangen Sie, erhalten 85. Ich bin 81. Empfangen Sie, erhalten
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+Ja, 81. Wenn möglich, sollten Sie die 82. und 83. im Schlepptau haben. 85, 81, Fragezeichen. 82te, 83te. Haben sie Bewegung, haben sie Bewegung oder nicht? Keiner von beiden bewegt sich. Ich wiederhole, 82 und 83 haben keine Bewegung. Ich wiederhole, 82 und 83 bewegen sich nicht.
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+Roger, roger, follow one, ich bin 81 und empfange. Roger, folge Zickzack zu dir. 85, ich bin 85, der Startpartner folgt uns immer noch. Wiederhole, immer noch hinter uns. Verstanden, ich bin 81, verstanden. Wo beobachtest du unsere Luft? Sag mir, wo du beobachtest...
+######## START OF 000005.MP3 (0:01:52 - 0:02:22s) ########
+Sag mir, wo beobachtest du unsere Luft? 85, 81, rüber. Rüber zu 85. 85, ich bin 81. Wenn möglich, nehmt ihr 82 und 83 ins Schlepptau. Ich bin 81, Ende. Du hast gesagt, ich soll zu dir kommen, ich bin um 25 Große herumgegangen! 25 große! Fortsetzung folgt...
+######## START OF 000006.MP3 (0:02:20 - 0:02:50s) ########
+25 Große! Maximal weich! Wein, ich bin eine 85. Über mir ist es eine Sechs, es ist ein Kronleuchter. Wie geht's mir? Darunter, du musst es nehmen! Ich bin die Menge! Drei Raketen gingen rein, da ging das Licht in mir auf! Wein, ich bin 85. 81., 81.! Sie haben eine vierte Rakete auf uns abgefeuert! Wo ist die Luft? Wo ist die Luft?
+######## START OF 000007.MP3 (0:02:48 - 0:03:18s) ########
+Where's the air? Wo ist die Luft? Vierte Rakete! 81. Ich bin die 85. Sie haben eine vierte Rakete auf uns abgefeuert. Wo ist die Luft? Wo ist die Luft? 85, hier ist 81. Formation empfangen. Immer hier, in Kontakt. An alle Vorgesetzten. Berichten Sie ihnen alles, was Sie mir übermitteln. Fortsetzung folgt...
+######## START OF 000008.MP3 (0:03:16 - 0:03:46s) ########
+Sie

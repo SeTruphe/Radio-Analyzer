@@ -1,0 +1,36 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-008###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Untertitel von DimaTorzok
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+📢 Teilen Sie dieses Video mit Ihren Freunden in den sozialen Medien. 📢 Klicken Sie auf das Video oben.
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+Abflugmodus. GURAN 30, GURAN 30, tschüss. Abflugmodus. Abflugmodus.
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+Buran 30, Buran 30, ich bin für dich Basis 28, Ende. Buran 30, Buran 30, ich zu dir Basis 28, over. Buran 30, Buran 30, ich für dich Basis 28, over.
+######## START OF 000005.MP3 (0:01:52 - 0:02:22s) ########
+Untertitel von DimaTorzok
+######## START OF 000006.MP3 (0:02:20 - 0:02:50s) ########
+GURAS 30, GURAS 30, LAPAS 28, Ende. GURAZ 30, GURAZ 30, LAPAS 28, Ende.
+######## START OF 000007.MP3 (0:02:48 - 0:03:18s) ########
+Assembled A3, Assembled A3, hier ist ein Pass 28 für dich, over. Team A3, hier ist ein 28er für euch, over. Wir machen weiter. Team A3, hier ist eure 28, over.
+######## START OF 000008.MP3 (0:03:16 - 0:03:46s) ########
+Buran-30, Buran-30, ich bin Buran-28 für dich, over. Buran-28, ich bin Buran-3, Ende. Buran-30, wo ist der Senior? Ich bin PAZ-28 für Sie, Ende. Weg, weg, sie kommen. Komm schon, komm schon, beeil dich, beeil dich, aber wir haben keine Zeit. Mist. Fortsetzung folgt.
+######## START OF 000009.MP3 (0:03:44 - 0:04:14s) ########
+Ich hab's, ich hab's. Fortsetzung folgt.
+######## START OF 000010.MP3 (0:04:12 - 0:04:42s) ########
+Ich bin Buran, Ende. Buran, Buran, ich gebe dir den Count Sascha. Ich bin Buran, ich gebe dir die Zählung Sashenka.
+######## START OF 000011.MP3 (0:04:40 - 0:05:10s) ########
+Uranus-30, Uranus-30, ich bin Tactical 89, over. Over, wiederhole. Ich bin Tactical 89, Tactical 89. Fortsetzung folgt...
+######## START OF 000012.MP3 (0:05:08 - 0:05:38s) ########
+Untertitel Editor A.Semkin Korrigiert von A.Egorova
+######## START OF 000013.MP3 (0:05:36 - 0:06:06s) ########
+Ich bin ZAGS-89, Ende. Ich verstehe es nicht, ich verstehe es nicht. Wo? Wo sollen wir uns treffen? No. Subtitles by DimaTorzok
+######## START OF 000014.MP3 (0:06:04 - 0:06:34s) ########
+Buran-89! Buran-89! Buran-30! Buran-30! Ich bin tac 89! Buran-89! Buran-89! Buran-30! Buran-30! Ich bin Tactical 89!
+######## START OF 000015.MP3 (0:06:32 - 0:07:02s) ########
+San 30, ich bin Tactical 89, richten Sie Ihre 200er und 300er auf den Bereich Tiger 1, 22, Straße 5, haben Sie mich verstanden? Ich habe dich nicht verstanden, langsamer! Leiten Sie Ihre 200er und 300er sofort in den Bereich Tiger 1.
+######## START OF 000016.MP3 (0:07:00 - 0:07:30s) ########
+Tiger 1, 22, auf Snail 5, wie ist mein Status? Roger, schicke sofort, Tiger 1, 22, auf Snail 5, ich bin Buran, Ende. Ja, verstanden.
+######## START OF 000017.MP3 (0:07:28 - 0:07:58s) ########
+Süden, Süden, Sirene, ich bin Buran, Ende.

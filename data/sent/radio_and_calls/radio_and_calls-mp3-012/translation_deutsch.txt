@@ -1,0 +1,12 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-012###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Kommentare schreiben Registrieren Sie sich für unseren Kanal
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Das erste, was ich tun werde. Ich werde gehen. Ich werde zum Friedhof deiner Großmutter gehen, weil das mein Schutzengel ist. Danach werde ich in die Kirche gehen, ins Stopov-Kloster. Ich werde alle Kirchen besuchen. Ich weiß, dass der Herr, der Herrgott mich beschützt. Du wirst kommen, du wirst mir alles erzählen. Für das Leben, für das Leben. Ich bin krank, lebenslang krank. Ich weiß, wie viele Leichen ich gesehen habe, die Art, die du in deinem Leben gesehen hast.
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+Ich habe so viele von ihm gesehen, wie ich in meinem Leben noch nie gesehen habe. Nur kein Kopf, keine Beine, kein Torso, kein was auch immer. Meistens nur die, die in den Panzern kommen, fuck, die werfen sie einfach weg, nur Teile, fuck, irgendein Stück Winter, alles, wegwerfen, fuck. Und das ist alles, fuck, nur, es ist einfach ein totales Scheißchaos. Und ich werde es nie überwinden. Es gibt Fleisch, es gibt Muschis. Wir haben sechs Dreihunderter.
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+6 dreihundert. Gestern waren es noch 4.300. Wie auch immer, ich bin fertig. Weißt du, ich kann mir ehrlich gesagt nicht vorstellen, dass es eine Welt gibt, in der man Geld bezahlen muss. Wo Autos fahren, wo Menschen fahren. Ist es so wie hier? Wir haben keine Autos. Es gibt kaputte Straßen, kaputte Überwachungsanlagen, kaputte Verkehrsposten. Panzer werden in die Luft gejagt.
+######## START OF 000005.MP3 (0:01:52 - 0:02:22s) ########
+Panzer in die Luft gesprengt, alles in die Luft gesprengt, es sind keine Menschen hier, es herrscht Chaos. Ihr habt keine Ahnung, ihr habt keine Ahnung, was hier vor sich geht. Ich sage dir, du musst dich sofort in Behandlung begeben, es ist alles im Arsch hier. Ich habe keine Ahnung, wie das alles passieren kann. Ich weiß nicht, wie ich jemals wieder ein normales Leben führen kann.

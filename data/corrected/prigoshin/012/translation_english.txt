@@ -1,0 +1,19 @@
+###START OF ENGLISH TRANSLATION FROM FILE 012###
+
+Model: whisper-large-v2 Task: translate original-english
+
+
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+A request from "Daily Storm" has been received. Taking this opportunity, I answer in order to show respect to all journalists, in principle. The first questions are about what the fighters of PMC "Wagner" shout when they go into battle. Apparently they have seen too many films or cartoons. Shnurov's song says: "Fuck you all. I listen to Bach!", and the fighters of PMC "Wagner" say: "Fuck you all..."
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+...of PMC "Wagner" say: "Fuck you all, I listen to Wagner!". This is the answer to the first question. The answer to the second question. Yaitsky, about whom it is said that he did not fight in the PMC "Wagner". A little later we will meet with a person who fought with him and knows his story well. He will say a few words to you. What I know from commanders' reports is that he was seriously wounded, fought excellently. He was lying...
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+He was lying in hospital after being wounded. On 31 December he went home after receiving a reprieve.  But in order to fight, you don't need to be a superman, you need to have, in addition to a good form of training, you need to have eggs. And Yaitsky apparently had them. Now in a nutshell to the sofa critics.
+Strelkovs, Sobolevs, Slutskis over there. When you sit on the sofas, the world...
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+ When you sit on the sofas, the world looks completely different. All your stories that you once served in the army, that you once wore the epaulettes of a general, are all from the distant past. Live in the present. War is unlike anything that has happened in the previous century or in this century, except the Patriotic War. This is not me saying this, but those experienced fighters who go into this war with weapons in their hands.
+######## START OF 000005.MP3 (0:01:52 - 0:02:22s) ########
+...into this war with weapons in their hands.
+
+
+ 

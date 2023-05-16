@@ -1,0 +1,10 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-020###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Die mobilisierten Menschen kommen bereits in Scharen nach Hause. Nicht die, die nach Hause kommen sollten. Wie meinen Sie das? Nun, in Cinque. Wir haben hier in Mukursibiri schon eine ganze Menge. Es wird fast jeden Tag geschrieben. Ja? Und sie schreiben, das ist das Beste daran. Aber wir haben noch etwas.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Hier ist etwas, das wir immer noch nicht herausfinden können. Und es ist ja nicht so, als gäbe es irgendwo da draußen eine Übung oder einen Kampf. Schlafen Sie ein und wachen Sie nicht mehr auf. Vor kurzem gab es einen Zwischenfall. Er war da oben an der Frontlinie. Er schlief ein und wachte nicht mehr auf. Ich weiß nicht, vielleicht, um die Statistik nicht zu versauen. Ich will damit sagen: Scheiß drauf, irgendwo da draußen wird jeder sterben.
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+verdammt nochmal sterben, und niemand geht mehr. Ich meine, die sind immer noch da draußen und sammeln für Dezember. Nun, das weiß ich auch, ja. Ja. Sag mir, dass sie tot sind und das war's. Wir waren im verdammten Nowosibirsk. Einige von uns haben dort in Zelten geschlafen. Na ja. Einer hat sich die Pulsadern aufgeschnitten, ein anderer wurde erstochen, und der dritte ist am Suff gestorben. Der vierte. Drei. Fünf. Vierter. Drei.
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+Das fünfte Trio wurde in den Arsch gefickt. Ich weiß das, Dmitri hat es mir erzählt. Es ist beschissen, Mann. Es ist abgefuckt. Ich meine, es hat schon vier Leute gefickt, mindestens, verdammt, nicht mal bis zum Krieg.

@@ -68,11 +68,11 @@ def transcriber(path):
     text_deutsch_helsinki = []
 
     text_original.append("Model: whisper-large-v2 Task: transcribe\n".encode('utf-8'))
-    text_original.append(("###START OF ORIGINAL TRANSCRIPTION FROM FILE " + str(filename) + "###\n").encode('utf-8'))
+    text_original.append(("###START OF ORIGINAL TRANSCRIPTION FROM FILE " + str(filename) + "###").encode('utf-8'))
     text_english.append("Model: whisper-large-v2 Task: translate original-english\n")
-    text_english.append("###START OF ENGLISH TRANSLATION FROM FILE " + str(filename) + "###\n")
+    text_english.append("###START OF ENGLISH TRANSLATION FROM FILE " + str(filename) + "###")
     text_deutsch_helsinki.append("Model: Helsinki-nlp Task: translate english-german\n")
-    text_deutsch_helsinki.append("###START OF GERMAN TRANSLATION FROM FILE " + str(filename) + "###\n")
+    text_deutsch_helsinki.append("###START OF GERMAN TRANSLATION FROM FILE " + str(filename) + "###")
 
     model = whisper.load_model(whisper_model)
 
@@ -90,12 +90,12 @@ def transcriber(path):
         text_original.append(("\n######## START OF " + str(os.path.basename(file)).upper()
                               + " (" + str(datetime.timedelta(seconds=time_start)) + " - "
                               + str(datetime.timedelta(seconds=time_end)) + "s) " + "########\n").encode('utf-8'))
-        text_original.append(transcript)
+        text_original.append(transcript.strip())
 
         text_english.append("\n######## START OF " + str(os.path.basename(file)).upper()
                             + " (" + str(datetime.timedelta(seconds=time_start))
                             + " - " + str(datetime.timedelta(seconds=time_end)) + "s) " + "########\n")
-        text_english.append(translate)
+        text_english.append(translate.strip())
 
         # Helsinki
 

@@ -1,0 +1,21 @@
+###START OF ENGLISH TRANSLATION FROM FILE 005###
+
+Model: whisper-large-v2 Task: translate original-english
+
+
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+ April 2, 23.00 exactly. Behind me is the building of the city administration. This is a Russian flag. On this flag is written a good remembrance to Vladlen Tatarsky. Legally, we conquered Bakhmut. 
+And the commanders of the units, that conquered the administration and the whole central quarter, will carry and put up these flags.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+ ...these flags. The Flag of PMC "Wagner". These are the guys who conquered Bakhmut. Legally it is ours. The enemy remained in the western quarters. April 2, 23.00. Let's go, guys.
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+###START OF ENGLISH TRANSLATION FROM FILE 001###
+
+Model: whisper-large-v2 Task: translate original-english
+
+
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+ I appeal to the President of Ukraine, Vladimir Aleksandrovich Zelensky. Dear Vladimir Aleksandrovich, the PMC units of "Wagner" have almost surrounded Bakhmut. There is only one road left. The pincers are shrinking. If the Ukrainian professional army fought with us before,...
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+ If the Ukrainian professional army fought with us before, today we see more and more old men and children. They fight, but their life near Bakhmut is short. One or two days. Give them the opportunity to leave the city. The city is actually surrounded.
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+ Vladimir Aleksandrovich, I appeal to you as the President of our country. Please give me the opportunity to return home.   [xxxxxxxxxxxxxx]
+
+
+
+
+

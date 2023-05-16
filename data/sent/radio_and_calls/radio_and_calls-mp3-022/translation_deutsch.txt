@@ -1,0 +1,6 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-022###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Unser Hohlo-Phosphor lebte in Saus und Braus. Das Feuerwerk, kurz gesagt, war nachts. Da geht eine verdammte Rakete hoch und explodiert mitten in der Luft. In mehrere Teile, wie bei einem Benzinfeuer. Ich hab's kapiert. А? Ich hab's kapiert. Es ist scheiße, wenn es die Haut trifft, den Körper. Das brennt einem die Knochen weg.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Scheiß-Knochen. Und es ist einfach so abgefuckt. So ist es gut. Nun, sie sind diejenigen, die dieses verdammte Ding nicht haben. Nur unsere Kinder haben es.

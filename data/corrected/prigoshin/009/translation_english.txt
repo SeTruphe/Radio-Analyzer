@@ -1,0 +1,20 @@
+###START OF ENGLISH TRANSLATION FROM FILE 009###
+
+Model: whisper-large-v2 Task: translate original-english
+
+
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+ We are at one of the cemeteries of the PMC "Wagner". This is a cemetery near Yekaterinburg. Those who were born in Yekaterinburg or left here for the front are buried here. We are used to the monument...
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+ We are used to the monuments of the Great Patriotic War and the mass graves of the soldiers. Now we must understand that our country has received new heroes and a new branch of our history. And so this monument is for those who fell in the new war, in the new war...
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+...in the new war of a new turn of our great history. Remember them!  The mass graves, I think, will also appear.  Each of these guys died a hero and died bravely. The one who dies is always a hero at war.
+One goes under the bullet face to face. And the other does not flee under enemy...
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+And the other does not flee under enemy artillery and does not leave his trench. So thank you and eternal memory! 
+
+
+
+
+
+

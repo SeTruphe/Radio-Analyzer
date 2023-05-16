@@ -1,0 +1,10 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-016###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Untertitel jetzt von DimaTorzok
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+ich will scheiße ich kann es nicht verdammt kinder scheiße niemand hier hasst uns schlampe unsere soldaten auf die stärke dieser frauen scheiße unsere zurückgebliebenen auf die stärke dieser frauen yeah hier verdammte schwanzlutscher alle jetzt kann ich es nicht ertragen jetzt werde ich versuchen scheiße nach hause verdammter heiliger pak geht von mir yeah verdammt lass ihn gehen verdammt sag
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+Lasst sie verdammt nochmal gehen, sagten sie, entweder ein verdammtes Erschießungskommando oder in den Krieg ziehen. Verdammte Fotzen. Scheiß Demokratie. Warum liefern sie keine Waffen? Das können sie nicht, wir haben überall Khokhlys. Sie können nicht durchkommen. Ah-ah-ah. Sie sind überall, verdammt. Es gibt jeden Tag viele Tote, was? Ja, verdammt, ja. Wir haben alle erwischt, wir haben das ganze verdammte Bataillon erwischt. Wir haben den verdammten Colonel, der das Kommando hat...
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+Der verdammte Oberst, der verdammte Bataillonskommandeur, wurde verdammt noch mal getötet und die Ukrainer haben auch verdammt viele Leute, was? Wie viele Ukrainer gibt es? Verdammte Scheiße

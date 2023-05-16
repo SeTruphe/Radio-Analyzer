@@ -1,0 +1,8 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-003###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Was soll das heißen? Wen hat es erwischt? Der Brigadekommandeur. Sieh an, sieh an, sieh an. Direkt in die Eingeweide. Sie steckten ihm die Muschi wieder in den Bauch, schickten ihn in einen Hubschrauber, er verabschiedete sich schon von allen. Wir schleppten ihn zum Hubschrauber, brachten ihn nach Russland, aber sein Herz hat es nicht ausgehalten. Heilige Scheiße, ich verstehe. Fotze im Allgemeinen, Boss, bosa.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Yeah, what the fuck are you talking about, for fuck's sake Fucking hell, man, your neighbours, fuck I already fucked up for them I looked it up today, you told me that there, what the fuck but already more than a thousand than in Chechnya Fucking hell Official, like, official
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+Offiziell, sozusagen, offiziell. Nun, es ist offiziell, ich sag's euch, 25.900 Tote. Das sind zwei verdammte Monate.

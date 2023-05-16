@@ -1,0 +1,8 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-025###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Euer Ausschuss ist Mist. Wir haben keins in der Ukraine. Wir sind in der Ausbildung. Das wissen wir. Wir haben schon an alle Instanzen geschrieben. Das kümmert niemanden. Sie haben auch nicht auf die Leichen gewartet. Ich glaube nicht, dass sie in nächster Zeit kommen werden. Was wird nicht kommen?
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Was werden sie nicht schicken? Tote, Tote, aber es gibt genug von ihnen aus Lebedjansk und Lipezk! Igorek rief an und sagte, dass es dort nichts zu essen gibt, ich stimme zu, es gibt überhaupt nichts zu essen Wer kein Geld hat, isst den verdammten Weizen vom Feld, er sprießt und wir haben Sträflinge aus dem Gefängnis geholt
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+Sie werden irgendwo hin und her geführt. Und wir sitzen da wie eine verdammte Straßensperre. Wenn jemand zurückrennt, werden wir ihn töten. Es ist ein Albtraum. Und so sind wir eingeteilt. Wir sitzen also in der zweiten Reihe und bewachen die erste. Hinter uns gibt es noch eine Reihe, da kann man auch nicht zurückgehen. Es ist also unmöglich zu entkommen, sie werden uns erschießen.

@@ -1,0 +1,9 @@
+###START OF ENGLISH TRANSLATION FROM FILE 006###
+
+Model: whisper-large-v2 Task: translate original-english
+
+
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+ We are sending one more party of the AFU-fighters to their homes. They fought bravely and died. Therefore, another vehicle is taking them to their homeland.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Put your feet up!

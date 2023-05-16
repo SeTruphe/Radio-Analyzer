@@ -1,0 +1,36 @@
+###START OF GERMAN TRANSLATION FROM FILE 010###
+
+Model: whisper-large-v2 Task: translate english-german
+
+
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+ Ich weiß nicht, ob das euch glücklich macht oder es euch amüsiert, also. Die normale Rückfallquote in unserem Land... An euren Gesichtern kann man erkennen, dass ihr nicht zum ersten Mal hier seid, wie man sagt, also. Die Rückfallquote innerhalb eines Monats war immer 4,5%. Jetzt ist sie auf 0,38% gesunken.
+Jeder, der rauskommt, denkt, ich werde ein normales Leben führen, also, wissen Sie. Von 700 Menschen...
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+ Von den ersten 700 Leuten kam einer zurück, ging in den Juwelierladen und raubte ihn sofort aus.
+2 Millionen hatte er fast in der Tasche, zusammen mit der Entschädigung für seine Verletzungen.
+*Er wurde sofort verhaftet."
+Und der zweite wettete mit einem Ex-Militär darüber, wer besser kämpfen könne, PMC oder das Verteidigungsministerium. Nun, am Ende hatte der Ex-Militär keine Augen, also **er hat den Kasten gemietet**. Ihr habt es schon gehört, ja?  Mit Covid, übrigens.
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+ - ...Wir haben uns Iwanowskoje genähert. Borja Sommel hat eine Auszeichnung als "Held Russlands" erhalten. Troika [=Drei=Dreiergruppe], die für die Unterbringung zuständig ist.  Lasst uns über die Probleme reden. 
+-- Ich weiß nicht, warum [sagen] Sie so? Ich bin nicht gegen "Einiges Russland", aber die Tatsache ist da.
+- Aber ich bin dagegen.
+--- Ja?
+-- Sitzt man, verdammt.
+--- Und so im Allgemeinen herzlichen Dank für alles!
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+---...herzlichen Dank für alles!
+-- Auf keinen Fall! [Ohne Scheiß!] Beschwere dich, los, verdammt.
+---- Was wirst du mir antun? 5 Sterne, genau wie im Film. Ich kann nicht zur Vernunft kommen!
+--  Danke, danke. Für Silvester und für altes Silverster [=das altes Neujahr], und man kann nicht alles aufessen. Die gesamte Waffe wurde zurückgegeben, wissen Sie. Vielen Dank. Ja, man bekommt neue Kleidung.
+Wenn man nach einer Verwundung kommt, gibt man alles. Darüber kann ich nichts Schlechtes sagen.
+Wenn es Winterkleidung ist, dann ist es Winterkleidung.
+--- Für so eine Einstellung würde ich wirklich mein Leben geben. Einfach aus dem Herzen heraus...
+######## START OF 000005.MP3 (0:01:52 - 0:02:22s) ########
+ --- Einfach aus dem Herzen heraus, ganz ohne Worte.
+-- Nur ein menschliches Dankeschön.
+--- Wir sind dankbar.
+-- Vielen Dank.
+- Nun, komm schon!
+
+

@@ -1,0 +1,6 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-017###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+Wir sind jetzt schon seit einem Monat in diesem verdammten Dorf. Können die verdammte Offensive nicht richtig vorantreiben. Die Ukrainer machen alles kaputt, machen unsere Einheiten kaputt. Sie lassen uns nicht vorrücken, verdammt noch mal. Ihre Hochburgen sind gut ausgerüstet. Das war's, ein Panzer ist auf unsere Leute zugerollt, hat sie fertig gemacht und ist weggerollt. Sie gehen einfach, Maschinengewehre geöffnet, Feuer auf unsere fuck, unterdrückt, alle, unsere wieder zu den gleichen gehen. Das war's, nur unsere bewegten sich, rollten die Ausrüstung aus, unsere ließen sich nieder, auf unsere wirkten, auf unsere Infanterie, und das war's.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+Es hat funktioniert, weil die Infanterie immer noch im Arsch ist, unsere sind alle in Panik, scheiß drauf, keiner will in die Offensive gehen. Die Ausrüstung ist im Arsch, die Mörser sind im Arsch, alles ist im Arsch, wir stehen ohne irgendwas da. Das war's, wir sind am Arsch. Das ist die Offensive. Und das ist die verdammte Woche. Ist doch klar. Noch keine Perspektive, hm? Auf keinen Fall, auf keinen Fall, auf gar keinen Fall. So kämpfen wir nun mal.

@@ -1,0 +1,98 @@
+###START OF ENGLISH TRANSLATION FROM FILE 008###
+
+Model: whisper-large-v2 Task: translate original-english
+
+
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+ Good day, Evgeny Viktorovich! 
+- What, are you from the Belgorod and Kursk regions?
+-- That's right!
+- All right. Sit down! Otherwise I cannot see anyone. Everything flies to the Belgorod region and the Kursk region, yes?
+-- There is such a thing.
+- What will you do? What are your thoughts? The best thoughts always come from below.
+-- There must be a status.
+- Absolutely right. There must be a status.
+-- This is the most important thing because...
+- And there must be a machine gun in hands.
+- Yes, because...
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+ -...a machine gun in hands.
+-- Yes, because even as members of the Territorial Defence Forces, here we got training rifle, all are sawed through, they are issued under 10 signatures
+- Yes,
+-- And one observes, God forbid, you go somewhere with something so you do not leave the field of vision.
+- Well. It is clear that the training rifle are the same as the woman for training.
+-- Well, that's about it. The problem is that even now they are not allowed to be transported to the training ground in own transport, so that they are brought there
+- Well, it is clear, you as an entrepreneur, if you...
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+ -...as an entrepreneur, if you had a conditional strong point for four people, you would go there yourself every day at your leisure, right?
+-- Absolutely correct.
+- You would organise everything and spend all your free time with them.
+-- Absolutely correct.
+- You would have a healthy, well-fed family, right?
+-- Yes.
+- And the territory would be protected.
+--- The man walked away from his family, from his children.
+-- Therefore, without the basic documents to rely on, without the basic documents, you can do absolutely nothing.
+- So, sure. And for the witnesses, it is just more bureaucracy just to tick a box... 
+-- Absolutely right. Of course.
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+ ...- just to tick a box that marks the departure.
+-- There are many men in Belgorod, who are willing to organise themselves, but we are really prevented from doing so. If you can, please help. We have prepared everything.
+- That is why I came with you, from you to receive. 
+-- The border areas have already been shelled several times, so just shelled several times. People are shaking, children are worried, wives are worried.
+--- We have a lot of bureaucracy, a lot, a lot.
+-- We must do it safely..
+-  Of course, and after the Khokhlys go, the DRG will come closer.
+######## START OF 000005.MP3 (0:01:52 - 0:02:22s) ########
+-... DRGs will come closer to the depths, then it is unclear what is going to happen there, right?
+-- That is the thing. Just the other day...
+- The wife went to the shop, met a DRG or...
+-- She was killed, and everything. And the child.
+---- Grandpa took it very much to heart.
+--- We have now received a certificate, Assistant of the DND, that is, it was developed in our happy Soviet years, and now they are issuing it. And what powers? There are no powers!
+-- No, it is there written that one should wear the uniform.
+--- Yes, wear uniform, and that is all, and that is all. These are the basic things to start with.
+######## START OF 000006.MP3 (0:02:20 - 0:02:50s) ########
+---...These are the basic things to start with. We have people who want, but everything still stands, just because.
+-- Time is running out.
+--- The trust of the people must be there.
+-- In general, everything should come from below.
+- Of course. I say the authorities should have trust in the people. 
+--- Yes. Yes. Yes.
+-- No, we even raised the issue, we are ready to pass the commission. As if, guys, you don't trust, but we are not idiots.
+- Well, that is clear. You must sign all the rules.
+-- Yes, yes. As if there were no questions.
+--- And one question: The administration is not solving the problems with the employers at all. The guys... 
+######## START OF 000007.MP3 (0:02:48 - 0:03:18s) ########
+--- not solving the problems with the employers at all. The guys come here at their own risk.
+- It's clear.
+-- It's just the weekend, and that's all.
+--- Some get fired, some get fired after a trip here, when he comes to learn something,
+to protect his home.
+- But the most important thing is, what tactics do they, the Ukrainians, have now? All think there in Moscow, in the Kremlin, there on Rublyovka, everything is fine there, therefore... How are they [=in Moscow] thinking there? That they [=Ukrainians] will not come. How can they [=Ukrainians] not come?
+-- They are coming in. They are already coming in.
+- Firstly. And secondly, we did go. How are they different from us? 
+--They are already... 
+######## START OF 000008.MP3 (0:03:16 - 0:03:46s) ########
+- How are they different from us? 
+-- They are already entering. Here is Shebekino, which is shelled endlessly. And there regularly...At my locksmith, here are the borders, this exact thing, Ukrainian trenches, and they are 200-300 meters away from their house. They are already entering and leaving here. 
+--- Thank you very much that such a company "Wagner" gives us, simple men, the opportunity to receive training.
+-- Yes, thank you very much.
+######## START OF 000009.MP3 (0:03:44 - 0:04:14s) ########
+ - When you get a normal machine gun, not with a slot.
+-- The guys are good, the instructors are with us, they pull at our nostrils.
+- Well, that's right.
+--- That's right.
+-- So that's it.
+--- With joint efforts.  
+-- Zhenya is happy.
+- All right, guys, take care. 
+-- Good bye. Thanks. Good bye.
+
+
+
+
+
+
+
+
