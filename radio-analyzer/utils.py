@@ -50,8 +50,7 @@ def split_audio(path, safe_path):
         splitter(recording, section_start, section_finish, section_counter, folder_path, file_format)
 
 
-def transcriber(path):
-
+def transcribe_to_txt(path):
     # Helsinki-nlp
     tokenizer_helsinki = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-de")
     model_helsinki = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-en-de")
@@ -126,3 +125,52 @@ def transcriber(path):
             f.write(entry)
     f.close()
 
+
+def transcribe(chunk_path):
+
+    # Helsinki-nlp
+    tokenizer_helsinki = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-de")
+    model_helsinki = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-en-de")
+
+    # Whisper
+
+    whisper_model = "large"
+
+    filename = chunk_path.rsplit("\\", 1)[1]
+    print("File: " + filename)
+
+    text_original = []
+    text_english = []
+    text_deutsch_helsinki = []
+
+    model = whisper.load_model(whisper_model)
+
+    time_start = 0
+    time_end = 30
+
+    for file in os.listdir(chunk_path):
+        print("Working on part: " + file)
+
+        # Transcription + English
+
+        transcript = model.transcribe(os.path.join(chunk_path, file), task="transcribe")["text"].encode('utf-8')
+        translate = model.transcribe(os.path.join(chunk_path, file), task="translate")["text"]
+
+        text_original.append(transcript.strip())
+
+        text_english.append(translate.strip())
+
+        # Helsinki
+
+        input_ids_helsinki = tokenizer_helsinki.encode(translate, return_tensors="pt")
+        outputs_helsinki = model_helsinki.generate(input_ids_helsinki)
+        decoded_helsinki = tokenizer_helsinki.decode(outputs_helsinki[0], skip_special_tokens=True)
+        text_deutsch_helsinki.append(decoded_helsinki)
+
+        time_start = time_end - 2
+        time_end = time_start + 30
+
+    eng_out = [x.encode('utf-8') for x in text_english]
+    deu_out_helsinki = [x.encode('utf-8') for x in text_deutsch_helsinki]
+
+    return text_original, eng_out, deu_out_helsinki
