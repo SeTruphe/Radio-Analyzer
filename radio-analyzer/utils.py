@@ -48,6 +48,7 @@ def split_audio(path, safe_path):
             section_counter += 1
         section_finish = full_length
         splitter(recording, section_start, section_finish, section_counter, folder_path, file_format)
+    return folder_path
 
 
 def transcribe_to_txt(path):
@@ -136,8 +137,8 @@ def transcribe(chunk_path):
 
     whisper_model = "large"
 
-    filename = chunk_path.rsplit("\\", 1)[1]
-    print("File: " + filename)
+    folder_name = chunk_path.rsplit("\\", 1)[1]
+    print("Folder: " + folder_name)
 
     text_original = []
     text_english = []
@@ -174,3 +175,4 @@ def transcribe(chunk_path):
     deu_out_helsinki = [x.encode('utf-8') for x in text_deutsch_helsinki]
 
     return text_original, eng_out, deu_out_helsinki
+    return text_original, text_english, text_deutsch_helsinki
