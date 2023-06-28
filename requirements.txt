@@ -1,0 +1,7 @@
+whisper
+pydub
+scipy.io
+transformers
+torch
+ffmpeg
+evaluate
