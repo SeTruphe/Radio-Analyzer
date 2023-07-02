@@ -21,15 +21,28 @@ def splitter(recording: AudioSegment, section_start, section_finish, section_cou
     working_part.export(os.path.join(folder_path, "{:06d}".format(section_counter) + ".mp3"), format=file_format)
 
 
-def split_audio(path, safe_path):
+def split_audio(path, safe_path, opt_folder_name=None):
+    """
+    :param path: path to the audiofile you want to split into chunks
+    :param safe_path: path to a folder you want the chunks saved into
+    :param opt_folder_name: optional to alter the first part of the name of the Save folder. If not specified,
+                the first part will be the folder name from the audiofile, the second part will allways
+                be the name of the file.
+    :return: returns the complete folder path to the audio chunks
+    """
+
+
     file_format = path.split('.', 1)[1]
     recording = AudioSegment.from_file(path, format=path.split('.', 1)[1])
 
     # Create Folder for Output
-    file_number = ntpath.basename(path).split(".", 1)[0]
-    tmp = path.split("\\")
-    filename = tmp[len(tmp) - 3] + "-" + tmp[len(tmp) - 2]
-    folder_path = os.path.join(safe_path, filename + "-" + file_number)
+    name_arg_2 = ntpath.basename(path).split(".", 1)[0]
+    if opt_folder_name:
+        name_arg_1 = opt_folder_name
+    else:
+        tmp = path.split("\\")
+        name_arg_1 = tmp[len(tmp) - 3] + "-" + tmp[len(tmp) - 2]
+    folder_path = os.path.join(safe_path, name_arg_1 + "-" + name_arg_2)
 
     # Remove preexisting old files
     if os.path.exists(folder_path):
@@ -55,11 +68,11 @@ def split_audio(path, safe_path):
 def transcribe_to_txt(chunk_path, whisper_model="large", german_translation_model="helsinki"):
 
     """
-        chunk_path: path to the audio chunks. Chunks cannot be longer than 30 seconds
-        model: Size of the whisper model you want to use.
+        :param chunk_path: path to the audio chunks. Chunks cannot be longer than 30 seconds
+        :param whisper_model: Size of the whisper model you want to use.
                 Available sizes are: tiny, base, small, medium, and large.
                 For references, visit: https://github.com/openai/whisper
-        german_translation_model: model for the translation english-german
+        :param german_translation_model: model for the translation english-german
                 Available options: helsinki, nllb
     """
 
@@ -157,11 +170,11 @@ def transcribe_to_txt(chunk_path, whisper_model="large", german_translation_mode
 
 def transcribe(chunk_path, whisper_model="large", german_translation_model="helsinki"):
     """
-        chunk_path: path to the audio chunks. Chunks cannot be longer than 30 seconds
-        model: Size of the whisper model you want to use.
+        :param chunk_path: path to the audio chunks. Chunks cannot be longer than 30 seconds
+        :param whisper_model: Size of the whisper model you want to use.
                 Available sizes are: tiny, base, small, medium, and large.
                 For references, visit: https://github.com/openai/whisper
-        german_translation_model: model for the translation english-german
+        :param german_translation_model: model for the translation english-german
                 Available options: helsinki, nllb
     """
 
