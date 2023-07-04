@@ -1,0 +1,23 @@
+###START OF GERMAN TRANSLATION FROM FILE 006###
+
+Model: whisper-large-v2 Task: translate english-german
+
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+ Wir schicken eine weitere Gruppe von VSU*-Kämpfern [=AFU-Kämpfern] nach Hause. Sie haben tapfer gekämpft und sind gestorben. Also bringt ein weiteres Fahrzeug sie in die Heimat. 
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+ Hebt eure Füße hoch!
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+
+
+
+
+
+
+ Schritte und Explosionen sind zu hören. 
+
+
+*Bemerkung:
+VSU = ВСУ = Вооружённые Силы Украины = Streitkräfte der Ukraine = Armed Forces of Ukraine = AFU

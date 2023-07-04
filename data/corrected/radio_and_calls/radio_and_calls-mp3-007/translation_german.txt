@@ -1,0 +1,22 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-007###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+- "Buran", Ende.
+-- "Buran", ich bin "Almas". Ende.
+- "Almas", ich bin "Buran". Erka* ist noch nicht bereit. Die Spannung ist nicht ausreichend. Ich bin "Buran". Ende.
+-- Fick euch, ihr verfickten Schafe! Ihr steht, verdammt, seit drei Tagen dort, verdammt. Ende.
+- Ich bin "Buran-30", ja.
+-- Scheiß drauf, fick deine Mutter! Wann wird er fertig sein? Verdammt! Scheißdreck. Verfickt in den Mund, verdammt.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+-- ...Scheißdreck. Verfickt in den Mund, verdammt.
+- Ich bin "Buran". Ich ergreife Maßnahmen.
+-- Wie geht es dem Gerät? Wie geht es dem Gerät? Ende.
+- Ich bin "Buran-30". Verstanden.
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Bemerkung:
+*Erka = RK (= РК = Ракетный комплекс = Raketensystem) oder ЗРК (= Зенитный ракетный комплекс =
+Flugabwehrraketensystem)
+Dies ist eine vermutliche Erklärung!
+

@@ -1,0 +1,24 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-024###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+- Haben wir denn keine verdammte Artillerie, verfickt? Keine Artillerie, gepanzerte Fahrzeuge?
+-- Keine schwere Artillerie, keine Technik, überhaupt keine. Wir haben sogar keine APCs* in der Kompanie. 
+- Oh, bitte, motorisierte Gewehrkompanie, motorisiert, verdammt! Mit Fahrrädern oder Rollern, verfickt?
+Wer kann was, ja?
+-- Ja, ja, ja, ja.
+- Und was, und nichts? Keine Versprechungen?
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+- Keine Versprechungen? Keine Vorhersagen, dass es irgendeine Art von Technik geben wird? Scheiße, gar nichts, ja?
+-- Nein, bei uns steht dort noch ein Panzer. Aber er, weißt du, er kann nicht schießen. So. Und irgendwo hier steht einer an einem anderen Ort. Er kann nicht fahren. So ist das eben.
+- O!
+-- Hier sind zwei Panzer.
+--- Es gibt noch einen.
+- Wo ist der dritte?
+-- Es gibt keinen!
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Bemerkungen:
+
+*APC = armoured personnel carrier = MTW (Mannschaftstransportwagen) oder TPz (Transportpanzer) = БТР (бронетранспортёр = бронированный транспортёр)

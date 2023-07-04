@@ -1,0 +1,24 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-009###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+- Wir gehen langsam hinter ihm.
+-- Das ist Buk*.
+--- Also, fick ihn!
+- Sage "Pisdio", dass man ihn dort gekriegt hat.
+-- 40! 40! (=Vierzig! Vierzig!)
+--- Ein Aufklärer geht durch ein bewohntes Gebiet!
+- Fick deine Mutter!
+-- Werden die Absperrungen nicht gehen?
+---Sie gehen langsam!
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+- Sie gehen langsam, gehen langsam.
+-- Dort von hier aus, was ich dir gesagt habe, wieviel auf der rechten Flanke, und es ist dir scheißegal.
+- Ja, Ende.
+--- Fünf, fünf.
+-- Fünf [xxxxxx] mir [xxxxx] Fick alle.
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Bemerkung:
+Buk* = ("Buche") = БУК = зенитный ракетный комплекс = Flugabwehrraketensystem (=ein mobiles Mittelstrecken-Boden-Luft-Lenkwaffensystem)

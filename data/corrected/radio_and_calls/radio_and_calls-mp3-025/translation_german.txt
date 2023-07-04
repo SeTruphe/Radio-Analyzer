@@ -1,0 +1,29 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-025###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+- Nun was, kurz gesagt, die Jungs haben dieses eures hoffnungsloses Komitee angerufen. Wir sind, sagt er, in dieser... Wir sind nicht in der Ukraine. Kannst du dir das vorstellen? Wir sind in der Ausbildung.
+-- Naja, verdammt. Wir wissen. Wir haben schon an alle Behörden geschrieben. Das interessiert überhaupt niemanden. 
+- Ihr habt auch nicht auf die Leichen gewartet. Und es ist unwahrscheinlich, dass man sie in nächster Zeit schicken wird.
+-- Was wird nicht geschickt?
+- Die Toten...
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+-- Was wird nicht geschickt?
+- Die Toten, die Toten. Und davon gibt es viele: aus Lebedjan* und Lipezk**.
+-- Wahnsinn! Igorjok*** rief an und sagte, es gäbe dort bei euch nichts zu essen.
+- Nichts, da stimme ich zu. Überhaupt kein Essen. Wer kein Geld hat, isst den gekeimten Weizen vom Feld, verdammt. Und bei uns haben sie Häftlinge aus dem Gefängnis hergebracht.
+-- Und was nun?
+- Sie wurden irgendwo...
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+- Sie wurden irgendwo ganz nach vorne geführt. Und wir sitzen wie eine Sperreinheit****. Wenn jemand zurückrennt, werden wir ihn umbringen. 
+-- Es ist ein Albtraum.
+- Und genau so ist es bei uns eingerichtet. Das heißt, wir sitzen als Zweite und bewachen die Erste. Hinter uns gibt es noch eine Reihe. Dorthin kann man auch nicht zurückgehen. Es gibt also keine Möglichkeit wegzulaufen. Eigene Leute werden uns erschießen.
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Bemerkungen:
+
+*Lebedjan ist eine Stadt in der Oblast Lipezk (Russland).
+**Lipezk ist eine Stadt im europäischen Teil Russlands. 
+***Igorjok ist ein männlicher Vorname. Es ist eine Verkleinerungsform von "Igor". 
+****Sperreinheiten, auch Sperrabteilungen genannt, sind im Landkrieg hinter der Frontlinie stationierte bewaffnete Einheiten, die ein unerlaubtes Zurückweichen oder eine Desertation der eigenen Kampftruppen verhindern sollen. (aus Wikipedia)
+

@@ -1,0 +1,22 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-022###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+- Unsere Leute verbrannten die Khokhlys* wieder mit Phosphor, verfickt. Die Feuerwerke, kurz gesagt, waren in der Nacht. Dort ist völlig abgefuckt! Eine Rakete fliegt und zerplatzt in der Luft in mehrere Teile, so wie ein bengalisches Feuer, weißt du.
+-- Ich habe verstanden.
+- А?
+-- Ich habe verstanden.
+- Wenn dieses Scheißding auf die Haut oder den Körper gelangt, verbrennt es, kurz gesagt, bis auf die Knochen, verfickt. 
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+-...bis auf die Knochen, verfickt. Und so ein starker Feuerschein! Es war eine Fotze.
+-- Ein Alptraum!
+- Nun, sie haben dieses Scheißding nicht. Das haben nur unsere Leute.
+
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Bemerkungen:
+
+*Khokhlys (abwertend) = Ukrainer
+
+

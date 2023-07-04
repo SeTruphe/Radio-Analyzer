@@ -1,0 +1,29 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-012###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+- Dein Häschen! Hier ist es!
+-- Ich will so sehr nach Hause! Ich will so sehr nach Hause! Ich habe es so beschissen satt! Fick!
+- Halte durch!
+-- Krieg, fick! Ich habe es alles so beschissen satt! Ich will zu meiner leiblichen Mutter! Ich liebe euch!
+- Du kommst bald zurück. Alles wird gut sein.
+-- Ich werde nach Hause zurückkehren. Ich weiß, dass ich nach Hause zurückkehren werde. Ich bin sicher, dass ich lebendig und gesund nach Hause zurückkehren werde. Erstens, was ich... 
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+-- Erstens, was ich tun werde. Ich werde fahren. Ich werde zum Friedhof zu deiner Großmutter fahren, weil sie mein Schutzengel ist. Dann fahre ich in die Kirche, ins Topowskij-Kloster. Ich werde alle Kirchen bereisen. Ich weiß, dass Herr, Herrgott mich beschützt.
+- Du wirst kommen, du wirst alles erzählen.
+-- Für das ganze Leben, für das ganze Leben. Ich bin krank für das ganze Leben, verfickt. Weißt du, wie viele Leichen ich hier gesehen habe, die du noch nie in deinem Leben gesehen hast?
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+--...die du noch nie in deinem Leben gesehen hast? Einfach kein Kopf, keine Beine, kein Rumpf, kein gar nichts, Fick. Im Allgemeinen einfach die, die in Zinksärgen kommen, Fick, werden dorthin gesammelt, werden einfach weggeworfen. Einfach Körperteile, Fick. In irgendeinen Stück Boden wird alles weggeworfen, Fick. Und das war's, Fick. Es ist einfach, einfach ein totales Desaster. Und ich werde es nie überwinden. Hier ist Fleisch. Hier ist Fotze. Heute sind unsere sechs Dreihundertsten*. Gestern...
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+--...sechs Dreihundertsten. Gestern vier "300"* (Dreihundert). Nun, kurz gesagt, ich bin, ich bin fertig. Weißt du, ich kann mir ehrlich gesagt diese Welt nicht vorstellen, in der man Geld bezahlen muss. Wo Autos fahren, wo Menschen fahren. Wie ist es denn hier bei uns? Autos fahren nicht. Hier gibt es kaputte Straßen und kaputte Überwachungskameras. Hier gibt es kaputte DPS** [=Straßenverkehrsposten].
+Hier, in der Nähe der Posten von DPS**, wurden die Panzer in die Luft gesprengt.
+######## START OF 000005.MP3 (0:01:52 - 0:02:22s) ########
+-- ...wurden die Panzer in die Luft gesprengt. Hier wurde alles in die Luft gesprengt. Hier gibt es einfach keine, hier gibt es keine, hier, hier, es gibt keine Menschen hier.
+- Dort ist einfach ein Horror!
+-- Hier ist einfach nur Chaos. Du... du stellst dir einfach nicht vor, was... was... Ihr stellt euch einfach nicht vor, was hier vor sich geht. Ich sage dir, ich muss sofort behandelt werden. Hier ist Fotze. Ich kann mir nicht vorstellen, wie das überhaupt ist. Ich habe keine Ahnung, wie ich überhaupt zu einem normalen Leben zurückkehren kann.
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Bemerkung:
+*Dreihundertste = 300"* = Das sind die Verwundeten.
+DPS** = Straßenverkehrsposten = Der Straßenpatrouillendienst oder Straßenwächterdienst (DPS) ist eine strukturelle Unterabteilung der Hauptdirektion für Verkehrssicherheit des Innenministeriums Russlands. (aus Wikipedia)

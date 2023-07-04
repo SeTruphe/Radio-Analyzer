@@ -1,0 +1,12 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-011###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+- Also, vergewaltige ruhig die ukrainischen Frauen dort, ja, und sag nichts, klar? Ich war heute 
+bei [XXX].
+-- Aha. Frauen vergewaltigen und dir nichts sagen?
+- Ja, damit ich nichts weiß. Und was?
+-- Darf ich das, ja?
+- Ja, ich erlaube es. Benutze einfach einen Schutz. 
+-- Gut.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+LEER !!!

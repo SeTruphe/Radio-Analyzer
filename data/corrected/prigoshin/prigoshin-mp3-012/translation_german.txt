@@ -1,0 +1,15 @@
+###START OF GERMAN TRANSLATION FROM FILE 012###
+
+Model: whisper-large-v2 Task: translate english-german
+
+
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+ Es ist eine Anfrage vom "Daily Storm" eingegangen. Ich nutze diese Gelegenheit, um zu antworten, um allen Journalisten im Prinzip Respekt zu zollen. Die ersten Fragen beziehen sich darauf, was die Kämpfer von PMC "Wagner" schreien, wenn sie in die Schlacht ziehen. Offenbar haben sie zu viele Filme oder Zeichentrickfilme gesehen. In Shnurovs Lied heißt es: "Fickt euch alle. Ich höre Bach!", und die Kämpfer von PMC "Wagner" sagen: "Fickt euch alle..."
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+ ...von PMC "Wagner" sagen: "Fickt euch alle. Ich höre Wagner!". Das ist die erste Antwort auf die erste Frage. Die Antwort auf die zweite Frage. Yaitskij, dem nachgesagt wird, nicht in PMC "Wagner" gekämpft zu haben. Etwas später werden wir uns mit einem Mann treffen, der mit ihm gekämpft hat und seine Geschichte gut kennt. Er wird ein paar Worte zu Ihnen sagen. Was ich aus den Berichten der Kommandeure weiß, er wurde schwer verletzt, er hat ausgezeichnet gekämpft. Er lag...
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+ Er lag nach einer Verwundung im Hospital. Nach seiner Begnadigung reiste er am 31. Dezember nach Hause. Aber man muss nicht Supermann sein, um zu kämpfen, man muss neben einer guten Ausbildung auch Eier haben. Und Yaitskij hatte sie offenbar. Nun zu den Sofakritikern in aller Kürze. Strelkovs, Sobolevs, Slutskis dort drüben. Wenn ihr auf euren Sofas sitzt, sieht die Welt...
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+Wenn ihr auf euren Sofas sitzt, sieht die Welt ganz anders aus. All eure Geschichten darüber, wie ihr einmal in der Armee wart, wie ihr einmal die Schulterklappen eines Generals getragen habt, das ist alles aus der fernen Vergangenheit. Leben Sie in der Gegenwart. Der Krieg ist anders als alles, was im letzten oder in diesem Jahrhundert passiert ist, mit Ausnahme des Vaterländischen Krieges. Das sage nicht ich, sondern die erfahrenen Kämpfer, die mit der Waffe in der Hand in diesen Krieg ziehen. 
+######## START OF 000005.MP3 (0:01:52 - 0:02:22s) ########
+ ...mit der Waffe in der Hand in diesen Krieg ziehen. 

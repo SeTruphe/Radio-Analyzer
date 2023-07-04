@@ -1,0 +1,58 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-008###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+- "Buran-30", "Buran-30", ich bin "Lampas-28". Ende.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+- "Lampas-30", "Lampas-30", ich bin "Buran-30", "Buran-30". "Lampas" muss hier sein.
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+- "Buran-30", "Buran-30", ich bin "Lampas-28". Ende.
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+- "Buran-30", "Buran-30", ich bin "Lampas-28". Ende. "Buran-30", "Buran-30", ich bin "Lampas-28". Ende.
+######## START OF 000005.MP3 (0:01:52 - 0:02:22s) ########
+- "Buran-30", "Buran-30", ich bin "Lampas-28". Ende. "Buran-30", "Buran-..."
+######## START OF 000006.MP3 (0:02:20 - 0:02:50s) ########
+- "Buran-30", "Buran-30", ich bin "Lampas-28". Ende. "Buran-30", "Buran-30"... 
+######## START OF 000007.MP3 (0:02:48 - 0:03:18s) ########
+- "Buran-30", "Buran-30", ich bin "Lampas-28". Ende. "Buran-30"...
+######## START OF 000008.MP3 (0:03:16 - 0:03:46s) ########
+- "Buran-30", "Buran-30", ich bin "Lampas-28". Ende.
+-- "Lampas-28", ich bin "Buran-30". Ende.
+- "Buran-30", wo ist der Start? Ich bin "Lampas-28". Ende.
+-- Sie sind weggegangen, weggegangen. Sie werden gleich kommen.
+- Los, los schneller. Treibt an, treibt an! Es gibt keine Zeit. Verdammt.
+######## START OF 000009.MP3 (0:03:44 - 0:04:14s) ########
+-- Empfangen, empfangen!
+######## START OF 000010.MP3 (0:04:12 - 0:04:42s) ########
+-- Ich bin "Buran". Ende.
+- "Buran", "Buran", ich bin "Lampas-28". Ich gebe den Start weiter.
+######## START OF 000011.MP3 (0:04:40 - 0:05:10s) ########
+- "Buran-30", "Buran-30", ich bin "Taktik-89". Ende.
+-- Ich habe verstanden. Wirderhole.
+- Ich bin "Taktik-89", "Taktik-89".
+######## START OF 000012.MP3 (0:05:08 - 0:05:38s) ########
+- "Buran-30", "Buran-30", ich bin "Taktik-89".
+######## START OF 000013.MP3 (0:05:36 - 0:06:06s) ########
+- Ich bin "Taktik-89". Ende.
+-- Nicht verstanden, nicht verstanden!
+- "Buran", "Buran-30", ich...
+######## START OF 000014.MP3 (0:06:04 - 0:06:34s) ########
+- "Buran-89", "Buran-89". "Buran-30", "Buran-30", ich bin "Taktik-89".
+######## START OF 000015.MP3 (0:06:32 - 0:07:02s) ########
+- "Buran-30", ich bin "Taktik-89". Schickt eure 200er* und 300er** in das Gebiet Tiger 1-22, in einer "Schnecke"*** 5. Wie hast du mich verstanden?
+-- Nicht verstanden. Wiederhole.
+- Schickt dringend eure 200er* und 300er** in das Gebiet Tiger 1...
+######## START OF 000016.MP3 (0:07:00 - 0:07:30s) ########
+- ...Tiger 1-22, in einer "Schnecke"*** 5. Wie hast du mich verstanden?
+-- Verstanden. Dringend zu schicken .Tiger 1-22, in einer "Schnecke"*** 5. Ich bin "Buran". Ende.
+- Ja, verstanden.
+######## START OF 000017.MP3 (0:07:28 - 0:07:58s) ########
+-- "Süden", "Süden", Sirene! Ich bin "Buran". Ende.
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Bemerkungen:
+
+200er* - Dies sind die Getöteten. (=Toten)
+300er** - Dies sind die Verwundeten.
+in einer "Schnecke"*** = in einer Spirale. "Die Schnecke" (in der Kartographie) ist eine Methode zur Markierung von Feldkarten, bei der ein Quadrat in neun Teile geteilt und diese spiralförmig nummeriert werden.

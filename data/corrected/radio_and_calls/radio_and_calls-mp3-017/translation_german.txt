@@ -1,0 +1,16 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-017###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+- Wir sitzen jetzt schon seit einem Monat in diesem Dorf, Fick. Wir können unsere verdammte Offensive nicht richtig vorantreiben. Die Ukrainer machen ganze Zeit, verfickt, unsere Einheit kaputt, machen kaputt. Sie lassen uns nicht vorrücken, verdammt noch mal. Ihre Hochburgen sind gut ausgerüstet. Das ist alles. Ein Panzer rollte heraus, feuerte auf unseren [Soldaten] und rollte davon. Als sie noch kommen, eröffnen die Maschinengewehre das Feuer, verfickt, unsere [Soldaten] werden niedergeschossen. Alles. Unsere [Soldaten] gehen wieder ohne einen. Sie haben alles. Als unsere [Truppen] vorrückten, rollten sie dort die Technik aus, haben unsere [Soldaten] erschossen. Sie haben unsere Infanterie niedergeschossen, unsere Infanterie. Und das war's.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+-...Sie haben unsere Infanterie niedergeschossen, unsere Infanterie. Und das war's. Ficken! Unsere [Leute] sind alle in Panik, alle, scheiß drauf. Niemand will in die Offensive gehen. Sie haben die Technik kaputt gemacht, sie haben die Granatwerfer kaputt gemacht. Es ist alles im Arsch. Wir sind ohne
+nichts geblieben, Scheißdreck. Alles, alles, alles ist im Arsch! Was für eine Offensive! Und so die ganze verfickte Woche.
+-- Offensichtlich.
+- Ja.
+-- Da gibt es doch gar keine Perspektive, oder?
+- Auf gar keinen beschissenen Fall. Einfach auf gar keinen beschissenen Fall. Überhaupt nicht. So kämpfen wir.
+
+
+
+
+

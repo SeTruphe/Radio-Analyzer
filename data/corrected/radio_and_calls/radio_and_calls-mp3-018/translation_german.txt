@@ -1,0 +1,15 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-018###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+- Gibt es dort auch Mädchen? 
+-- Ja, wenn auch nur beim Leshy* irgendwo. Wenn ja, dann ist es nur irgendeine Baba Jaga** dort. Wer weiß, ich habe nie gesehen, verfickt. Es gibt alte Omas, verdammt. Sie sitzen im Keller in den Dörfern dort. Ich habe niemanden sonst gesehen, verdammt. Das ist es also, scheiß drauf. Sie wurden alle gefickt und getötet, verdammt. Als wir Liman verlassen haben, wurden sie alle abgeschlachtet, Fick. Khokhlys*** gefickte.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+-- Khokhlys gefickte. Sie vergewaltigen sie, schneiden sie auf, erschießen sie, schlachten sie ab, verdammt. In Liman*****, in Torske*****, wurden einfach alle erschossen, Fick. Alle Männer ,verdammt, die jünger waren, wurden dorthin mitgenommen. Und diese, kurz gesagt, die Weiber, diese jungen alle, die wurden gefickt und abgeschlachtet, die wurden erschossen. Fick.
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+* Leshy = der Hauptgeist des Waldes in der Mythologie der Ostslawen. (aus Wikipedia)
+** Baba Jaga = eine bekannte Figur aus der slawischen Mythologie. Sie ist wie eine Hexe, die im Wald lebt.
+***Khokhlys (abwertend) = Ukrainer
+**** Lyman = Лиман (ukrainisch Лиман; russisch Лиман (Liman)) ist die nördlichste Stadt in der Oblast Donezk (Rajon Kramatorsk) im Osten der Ukraine.
+*****Torske = Торское (ukrainisch Торське; russisch Торское (Torskoje)) ist ein Dorf im Norden der ukrainischen Oblast Donezk 

@@ -1,0 +1,39 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-014###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+- Also, erzähl mal, was gib es dort Neues, wie geht's? 
+-- Unsere Jungs werden in der vordersten Linie der Verteidigung verrückt. Sie bereiten sich auf das Schlimmste vor.
+- Warum? 
+-- Nun, sie werden jeden Tag bombardiert, Fick. Jeden Tag, einfach ficken. Kurz gesagt, ich bin 
+zu den Jungs dorthin, an die vorderste Linie der Verteidigung, angekommen, verdammt. Und jetzt sind sie alle dort, erstens, verdammt, schon alle Großväter* geworden, Fick. Zweitens, verfickt, sie sind wie Hasen in ihren Höhlen, kapiert? Wenn irgendwo etwas gepfiffen wurde, war's das, fuk, fuk, ficken. Sie sind schon [XXX]. Die Hasen werden sie beneiden, ficken.
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+-- Die Hasen werden sie beneiden, ficken.
+- Die Jungs sind alt geworden, ja?
+-- Ich meine, bei ihnen dort fährt die Kuckuck** (==sie sind dort völlig verrückt), damit du es verstehst. Sie sind dort schon, verdammt, alles dort... Nun, der Kuckuck, meine ich, fährt.*** 
+Stell dir nur eine Sekunde lang vor, ficken, 24 auf 7, ficken, du bist, verdammt, einfach ausgebombt, verfickt noch mal. Dort, wo sie sich befinden, Fick, dort, verdammt, finden erbitterte Kämpfe statt, ja.
+Na also, verdammt, wer sind sie, was machen sie dort, verstehst du? Vielleicht kämpfen sie nachts, Fick, mit uns, verdammt. Tagsüber, verdammt, sind sie wie friedliche Menschen, die ein Auto fahren. Hier kann man im Moment überhaupt niemandem vertrauen. Überhaupt nicht. Eine Oma kann gehen, Fick...
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+-- Überhaupt nicht. Eine Oma kann, Fick, mit den Pasteten gehen, Fick, verdammt. Verstehst du, was ich, [sage]? Fick.
+- Nun, ja, ja.
+-- Und nachts, Fick, ist es ein Oberst, verfickt, ein Aufklärer bei der Artillerie, verdammt.
+- Ja, aber ich meine, das heißt, es gibt keine offensiven Operationen von unserer Seite, nun, von der Seite Russlands.
+-- Und der Sinn? Sie sind begraben. Wenn du ankommst, wirst du aus einem Schützgraben gefickt. 
+- Was meinst du mit "vergraben"? Sitzen sie unter der Erde? 
+-- Ja, diese Menschen, Fick, haben 8 Jahre lang gekämpft, verdammt, und sich auf diesen Krieg vorbereitet, verfickt noch mal. Sie haben dort solche Positionen, du wirst gefickt, Fick. Hitler...
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+-- Sie haben dort solche Positionen, du wirst gefickt, Fick. Hitler wäre neidisch gewesen.
+- Das heißt, man muss so machen, dass sie dort unter der Erde bleiben.
+-- Ruf Wolodja**** an, sag [es ihm].
+- Ha-ha-ha. Ein starker Wunsch wäre es [ххx].
+- Nur damit du es verstehst, verdammt: Bei uns Piloten haben Angst zu fliegen, Fick. Entweder schießen ihre eigenen Leute sie ab, Fick, oder fremde Leute, verdammt.
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Bemerkung:
+
+*"Großväter". Das Wort "Großväter" bedeutet hier "alte Männer".
+Die Phrase "...sind sie dort, erstens, schon alle Großväter* geworden." kann man übersetzen als "Erstens, sie sind dort sehr alt geworden" oder "Erstens, sehen sie dort sehr alt aus."
+**bei ihnen dort fährt die Kuckuck** == sie sind dort völlig verrückt
+***"Nun, der Kuckuck, meine ich, fährt." = Nun, sie sind völlig verrückt, meine ich.
+****Wolodjka (familiär oder abwertend) = männlicher Vorname von "Wolodja" = Das ist die Abkürzung für "Wladimir".

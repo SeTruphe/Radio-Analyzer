@@ -1,0 +1,14 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE radio_and_calls-mp3-021###
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+- Weißt du, warum der Veto-Kurs? Niemand darf jetzt in die Stadt gehen, kurz gesagt, Männer. Kurz gesagt, diese Armeeangehörige, kurz gesagt, haben ein 12-jähriges Mädchen vergewaltigt, 10 Menschen.
+Und man kann sie nicht finden. Aus diesem Grund wird niemand in die Stadt gelassen.
+-- Verfickte Scheiße!
+--- Nun, kurz gesagt, wir fahren erst einmal nicht in die Stadt oder sonst wohin. 
+---- Weshalb?
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+---- Weshalb?
+- Und dort haben die Deserteure, kurz gesagt, eine Frau vergewaltig
+---- Verfickt!
+- Nun, kurz gesagt, entweder, sagt man, Deserteure, nun, Mobilisierte, oder Freiwillige, kurzum, es ist nicht klar.
+---- Ahhh.
