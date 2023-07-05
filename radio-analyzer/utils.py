@@ -21,9 +21,9 @@ def splitter(recording: AudioSegment, section_start, section_finish, section_cou
     working_part.export(os.path.join(folder_path, "{:06d}".format(section_counter) + ".mp3"), format=file_format)
 
 
-def split_audio(path, safe_path, opt_folder_name=None):
+def split_audio(audio_path, safe_path, opt_folder_name=None):
     """
-    :param path: path to the audiofile you want to split into chunks
+    :param audio_path: path to the audiofile you want to split into chunks
     :param safe_path: path to a folder you want the chunks saved into
     :param opt_folder_name: optional to alter the first part of the name of the Save folder. If not specified,
                 the first part will be the folder name from the audiofile, the second part will allways
@@ -31,15 +31,15 @@ def split_audio(path, safe_path, opt_folder_name=None):
     :return: returns the complete folder path to the audio chunks
     """
 
-    file_format = path.split('.', 1)[1]
-    recording = AudioSegment.from_file(path, format=path.split('.', 1)[1])
+    file_format = audio_path.split('.', 1)[1]
+    recording = AudioSegment.from_file(audio_path, format=audio_path.split('.', 1)[1])
 
     # Create Folder for Output
-    name_arg_2 = ntpath.basename(path).split(".", 1)[0]
+    name_arg_2 = ntpath.basename(audio_path).split(".", 1)[0]
     if opt_folder_name:
         name_arg_1 = opt_folder_name
     else:
-        tmp = path.split("\\")
+        tmp = audio_path.split("\\")
         name_arg_1 = tmp[len(tmp) - 3] + "-" + tmp[len(tmp) - 2]
     folder_path = os.path.join(safe_path, name_arg_1 + "-" + name_arg_2)
 
