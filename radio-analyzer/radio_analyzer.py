@@ -1,5 +1,7 @@
 import datetime
 import os.path
+import shutil
+
 import utils
 from transformers import AutoTokenizer, AutoModelForTokenClassification
 from transformers import pipeline
@@ -13,7 +15,8 @@ def radio_analyzer(audio_path, custom_name=None):
         path = os.path.expanduser(os.path.join("~", "radio_analyzer", custom_name))
     else:
         ct = datetime.datetime.now()
-        path = os.path.expanduser(os.path.join("~", "radio_analyzer", str(ct)))
+        path = os.path.expanduser(os.path.join("~", "radio_analyzer", str(ct).replace(":", "-").replace(" ", "-")
+                                               .replace(".", "-")))
 
     os.makedirs(path)
 
