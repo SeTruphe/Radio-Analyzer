@@ -7,7 +7,6 @@ import noisereduce as nr
 from scipy.io import wavfile
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import datetime
-import torch
 
 
 def reduce_noise(path, file):
@@ -64,14 +63,12 @@ def split_audio(audio_path, safe_path, opt_folder_name=None):
     return folder_path
 
 
-def transcribe(chunk_path, whisper_model="large", german_translation_model="helsinki", internal_mode=False, to_txt=False):
+def transcribe(chunk_path, whisper_model="large", internal_mode=False, to_txt=False):
     """
         :param chunk_path: path to the audio chunks. Chunks cannot be longer than 30 seconds
         :param whisper_model: Size of the whisper model you want to use.
                 Available sizes are: tiny, base, small, medium, and large.
                 For references, visit: https://github.com/openai/whisper
-        :param german_translation_model: model for the translation english-german
-                Available options: helsinki, nllb
         :param internal_mode: if true, explanatory and delimiting strings are not addet to the transcript/translation
                 lists for further internal usage
         :param to_txt: if true, the transcript and translations will be saved into txt files in the chunk folder
@@ -80,13 +77,9 @@ def transcribe(chunk_path, whisper_model="large", german_translation_model="hels
 
     # german-english-model
 
-    if german_translation_model == "helsinki":
-        tokenizer_helsinki = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-de")
-        model_helsinki = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-en-de")
-    elif german_translation_model == "nllb":
-        en2de = torch.hub.load('pytorch/fairseq', 'transformer.wmt19.en-de', tokenizer='moses', bpe='subword_nmt')
-        en2de.eval()
-        en2de.cuda()
+    tokenizer_helsinki = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-de")
+    model_helsinki = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-en-de")
+
 
     # Whisper
 
@@ -119,7 +112,7 @@ def transcribe(chunk_path, whisper_model="large", german_translation_model="hels
 
         original_transcript = model.transcribe(os.path.join(chunk_path, file), task="transcribe")["text"].encode(
             'utf-8')
-        text_english = model.transcribe(os.path.join(chunk_path, file), task="translate")["text"]
+        translation_english = model.transcribe(os.path.join(chunk_path, file), task="translate")["text"]
 
         if not internal_mode:
             text_original.append(("\n######## START OF " + str(os.path.basename(file)).upper()
@@ -133,17 +126,12 @@ def transcribe(chunk_path, whisper_model="large", german_translation_model="hels
                                + str(datetime.timedelta(seconds=time_end)) + "s) " + "########\n")
 
         text_original.append(original_transcript.strip())
-        text_english.append(text_english.strip())
+        text_english.append(translation_english.strip())
 
-        if german_translation_model == "helsinki":
-            input_ids_helsinki = tokenizer_helsinki.encode(text_english, return_tensors="pt")
-            outputs_helsinki = model_helsinki.generate(input_ids_helsinki)
-            decoded_helsinki = tokenizer_helsinki.decode(outputs_helsinki[0], skip_special_tokens=True)
-
-            text_german.append(decoded_helsinki)
-
-        elif german_translation_model == "nllb":
-            text_german.append(en2de.translate(text_english))
+        input_ids_helsinki = tokenizer_helsinki.encode(text_english, return_tensors="pt")
+        outputs_helsinki = model_helsinki.generate(input_ids_helsinki)
+        decoded_helsinki = tokenizer_helsinki.decode(outputs_helsinki[0], skip_special_tokens=True)
+        text_german.append(decoded_helsinki)
 
         time_start = time_end - 2
         time_end = time_start + 30
