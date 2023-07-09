@@ -128,7 +128,7 @@ def transcribe(chunk_path, whisper_model="large", internal_mode=False, to_txt=Fa
         text_original.append(original_transcript.strip())
         text_english.append(translation_english.strip())
 
-        input_ids_helsinki = tokenizer_helsinki.encode(text_english, return_tensors="pt")
+        input_ids_helsinki = tokenizer_helsinki.encode(translation_english, return_tensors="pt")
         outputs_helsinki = model_helsinki.generate(input_ids_helsinki)
         decoded_helsinki = tokenizer_helsinki.decode(outputs_helsinki[0], skip_special_tokens=True)
         text_german.append(decoded_helsinki)
