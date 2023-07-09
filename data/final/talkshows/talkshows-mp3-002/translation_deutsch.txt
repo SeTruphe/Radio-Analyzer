@@ -1,0 +1,285 @@
+Model: Helsinki-nlp Task: translate english-german
+###START OF GERMAN TRANSLATION FROM FILE talkshows-mp3-002###
+
+######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
+- Das ist die Sendung " Die eigene Wahrheit ", guten Abend. Wir beginnen mit der Erklärung, die unser Außenminister in der Türkei abgegeben hat. Hören wir es uns an. 
+-- Die destruktive Linie des kollektiven Westens, angeführt von Washington, bleibt unverändert. Es lässt sich nicht verbergen, dass China das nächste Ziel sein wird, wenn Russland besiegt ist, wie sie es ausdrücken. Und auch jedes andere Land, das...
+######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########
+--...auch jedes andere Land, das es wagt, unabhängig zu handeln. 
+- Wie können wir diese amerikanischen Pläne verhindern? Inzwischen hat Zelenski in Warschau erklärt, dass es sehr bald keine Grenzen mehr zwischen der Ukraine und Polen geben wird. Was verbirgt sich hinter dieser Erklärung? Und Vladlen Tatarsky ist ermordet worden. Welche Ziele verfolgten diejenigen, die diesen Terrorakt angeordnet und organisiert haben? Darüber werden wir heute im Detail sprechen. Lassen Sie uns...
+######## START OF 000003.MP3 (0:00:56 - 0:01:26s) ########
+- Lassen Sie uns eine weitere Erklärung unseres Präsidenten zu unseren Verbündeten hören. Nun, zunächst einmal zu Belarus. Lassen Sie uns Putin zuhören.
+--- Russland und Weißrussland verstärken ihre Zusammenarbeit in den Bereichen Verteidigung und Sicherheit und werden dies, wie heute festgestellt wurde, auch weiterhin tun. Sie erweitern ihre Zusammenarbeit im militärisch-technischen Bereich. Und dies ist sicherlich im grundlegenden Interesse unserer Länder und Völker,...
+######## START OF 000004.MP3 (0:01:24 - 0:01:54s) ########
+---...im grundlegenden Interesse unserer Länder und Völker, das ist angesichts der schwierigen internationalen Situation sehr wichtig. Genau das ist heute der Fall. 
+- Wladimir Wladimirowitsch, Sie erinnern sich, dass wir seit vielen Jahren von verschiedenen Experten gehört haben, dass der Unionsstaat, nun ja, unklar ist, was für ein Gebilde, was für einen Sinn er hat, er steckt fest und so weiter und so fort. Hier ist die Erklärung des russischen Präsidenten. Militärische Zusammenarbeit und unsere taktischen Atomwaffen in Belarus. [Glauben Sie, dass] die Menschen im Westen wirklich verstehen, was hier passiert? 
+######## START OF 000005.MP3 (0:01:52 - 0:02:22s) ########
+- Glauben Sie, dass die Menschen im Westen wirklich verstehen, was hier passiert? 
+-- Nun, sie debattieren über dieses Thema. Nicht nur das, sie sagen immer wieder, dass Putin blufft, Russland blufft, mit einem Wort. 
+- In welchem Sinne blufft er?
+--  Er blufft in dem Sinne, dass es in Belarus Atomwaffen geben wird.
+- Und, [sie denken] dass es keine geben wird? Denken sie, dass es keine Waffen geben wird? Ja, ja.
+-- Nun, in diesem Sinne, dass es zu viel ist, eine Übertreibung ist und so weiter. Aber Sie haben ja auch gehört, was Macron in China gesagt hat, oder? Nun, es ist nicht richtig, man kann keine Atomwaffen außerhalb des einen oder anderen Staates haben, richtig? 
+- Auf keinen Fall!
+######## START OF 000006.MP3 (0:02:20 - 0:02:50s) ########
+--...des einen oder anderen Staates haben, richtig? 
+- Auf keinen Fall. Kein Land hat das Recht...
+-- Lassen Sie uns keine Meinungsverschiedenheit darüber haben, was Macron gesagt hat. Ich habe Macron, der diese Aussage gemacht hat. Lassen Sie uns dem französischen Präsidenten zuhören.
+--- Frankreich teilt den Wunsch, dass Nuklearwaffen im Ukraine-Konflikt völlig ausgeschlossen werden, dass alle internationalen Verträge zu diesem Thema eingehalten werden...
+######## START OF 000007.MP3 (0:02:48 - 0:03:18s) ########
+---...dass alle internationalen Verträge zu diesem Thema eingehalten werden und dass unter keinen Umständen Nuklearwaffen außerhalb der Territorien der Kernwaffenstaaten, insbesondere in Europa, disloziert werden dürfen. In diesem Zusammenhang sollten alle an ihre Verantwortung erinnert werden, insbesondere Russland, das vor einigen Tagen angekündigt hat, solche Waffen in Belarus stationieren zu wollen, was nicht dem Völkerrecht und den Verpflichtungen entspricht, die es gegenüber Ihnen und uns übernommen hat.
+- Was für ein grober Angriff auf die USA!
+######## START OF 000008.MP3 (0:03:16 - 0:03:46s) ########
+-...Angriff auf die USA!
+-- Ich denke manchmal, es kann sein, dass ich mich irre,...
+--- Und [Angriff] auf Russland ein bisschen!
+--...vielleicht irre ich mich, aber manchmal scheint mir, dass sie einfach nicht auf dem Laufenden sind. Vielleicht sind sie wirklich nicht auf dem Laufenden. 
+--- Nein, also, verstehen Sie, ich denke, dass sogar nachdem ihm über Amerika erklärt wurde, Lukaschenko im Besonderen, über Amerika erklärt hat, ja, er selbst danach [gesagt hat], also Amerika ist etwas ganz anderes, wovon reden Sie eigentlich. Amerika darf alles machen. Nein, andere Länder dürfen dies unter keinen Umständen tun. In diesem Sinne ist es natürlich sehr aufschlussreich....
+######## START OF 000009.MP3 (0:03:44 - 0:04:14s) ########
+---...Sinne ist es natürlich sehr aufschlussreich, wie Selenskyj nach Polen fuhr, ja, um seine Union, seinen Unionsstaat auszuhandeln. 
+- Es ist auch eine sehr interessante Geschichte,... 
+-- Sehr.
+-...wir werden darüber im Detail sprechen, wie ich schon sagte, ja. 
+-- Ich greife mir selbst vor, nicht wahr? Entschuldigung.
+- Ja, greifen Sie ein wenig zu weit vor, aber lassen Sie uns die Intrige beibehalten, ja. Nun, sie... Hier... Was ich fragen wollte, Wladimir Wladimirowitsch. Sie verstehen, dass ihre Maßnahmen... in der Wirklichkeit vielleicht...
+######## START OF 000010.MP3 (0:04:12 - 0:04:42s) ########
+-...dass ihre Maßnahmen vom Standpunkt einiger Experten für die Bildung des Unionsstaates aus gesehen in der Wirklichkeit vielleicht nicht sehr effektiv sein könnten, ich weiß es nicht. Sie haben im wahrsten Sinne des Wortes eine Menge Sinn gemacht. 
+-- Wissen Sie, sie verstehen es meistens nicht.
+- Sie verstehen es nicht.
+-- Es gibt also tatsächlich Stimmen einiger nüchterner, einzelner Experten, die sagen, ja, wir haben Russland durch unser Handeln in eine Umarmung mit China getrieben. 
+- Vollkommen richtig!
+-- Über Weißrussland wird weniger...
+######## START OF 000011.MP3 (0:04:40 - 0:05:10s) ########
+--...mit China [getrieben]. Über Weißrussland wird weniger gesprochen, aber es wird auch erwähnt. Aber, ich sage es noch einmal, das ist eher eine Ausnahme von der Regel. Sie stellen überwiegend keinen solchen direkten Zusammenhang her. Die große Mehrheit von ihnen stellt einen solchen direkten Zusammenhang nicht her. Sie sind der Meinung, dass Russland a priori eine aggressive Macht ist und auf diese Weise bestraft werden sollte, wie sie schreiben. Eindämmen. 
+- Das ist eine sehr merkwürdige Geschichte, denn selbst wenn man sich ansieht, was geschieht, ist es offensichtlich, dass es ohne diese Maßnahmen...
+######## START OF 000012.MP3 (0:05:08 - 0:05:38s) ########
+-...dass es ohne diese Maßnahmen von ihrer Seite diese Schritte von unserer Seite nicht geben würde. Dies ist eine direkte Verbindung. Und sowohl der russische Präsident als auch der belarussische Präsident sprechen offen darüber. Sie hören zu und machen weiter. 
+-- Roman, Sie verstehen, dass alles, was wir tun, eine Eskalation ist. Alles, was sie tun, ist eine normale Entwicklung der Ereignisse. Wir haben nicht einmal bemerkt, wie Macron, okay, auf die USA losging. Er ging dabei auf Frankreich los, als er erklärte, dass...
+- Macron [ging] auf Frankreich [los]?
+-- Macron [ging] auf Frankreich [los]. Ja, nun, als sie... 
+######## START OF 000013.MP3 (0:05:36 - 0:06:06s) ########
+-- Macron [ging] auf Frankreich [los]. Ja, nun, als sie eine gemeinsame Erklärung mit Xi abgaben, dass wir gegen jede Aktion eines beliebigen Staates sind, die zu einer Eskalation des Konflikts in der Ukraine führt. Entschuldigung, aber das aus dem Munde des französischen Präsidenten, der all diese Cäsaren, seine Waffen an die Ukraine liefert, klingt einfach, nun ja, entschuldigen Sie, hinterlistig und doppelzüngig. Das heißt...
+- Nun, deshalb sage ich, Wladimir Wladimirowitsch, vielleicht sind sie nicht auf dem Laufenden. 
+-- Nun, Macron weiß,...
+######## START OF 000014.MP3 (0:06:04 - 0:06:34s) ########
+-...sind sie nicht auf dem Laufenden. 
+-- Nun, Macron weiß, dass er "Caesars" beliefert. Das weiß er ganz sicher. 
+- Na gut, also. Lass uns einfach... Nur eine Sekunde. Hören wir uns Alexander Lukaschenko noch etwas an. Ja, lasst uns Lukaschenko zuhören. 
+--- Es wurde ein wirksames Verteidigungs- und Sicherheitssystem für den Unionsstaat geschaffen, in dem eine regionale Gruppierung von Streitkräften und ein einheitliches regionales Luftverteidigungssystem erfolgreich funktionieren. Die Maßnahmen zur Stärkung der Grenzsicherheit haben...
+######## START OF 000015.MP3 (0:06:32 - 0:07:02s) ########
+---...haben den Schutz des Unionsstaates vor internationalem Terrorismus, unkontrollierten Migrationsströmen, Schmuggel, Waffen-, Munitions- und Drogenhandel sowie illegalen wirtschaftlichen Aktivitäten erheblich verbessert. 
+- Und Russlands taktische Atomwaffen werden auf dem Territorium von Belarus auftauchen. 
+-- Das könnte der Fall sein, ja.
+- Und warum könnte es das, Mike? 
+-- Nun, bisher werden nur die Flugzeuge vorbereitet.
+- Nein. Stopp. Vorerst... sind wir vorerst fertig. Der Präsident hat Ihnen einen vollständigen Zeitplan... 
+######## START OF 000016.MP3 (0:07:00 - 0:07:30s) ########
+- ...vorerst fertig. Der Präsident hat Ihnen einen vollständigen Zeitplan für unsere Schritte gegeben.
+Dies wird zu dieser und jener Zeit sein, dies wird zu dieser und jener Zeit sein. Die Aufbewahrungsorte werden zu diesem und jenem Zeitpunkt fertig sein. Und es wird dort erscheinen. Aber ich habe den Eindruck, dass es Sie nicht sonderlich beunruhigt. Und Sie denken nicht einmal darüber nach, dass es ohne Ihr Handeln keine unserer Waffen in Belarus gäbe. 
+-- Ja, es stört uns nicht sehr, weil wir... Im Westen fragt man sich, was das Russland bringen wird? Das heißt, unabhängig davon, ob die Zeit vergeht... 
+######## START OF 000017.MP3 (0:07:28 - 0:07:58s) ########
+-- Das heißt, unabhängig davon, ob die Zeit vergeht oder ob sie um 10 Sekunden verkürzt wird, gibt es immer noch dieselben Möglichkeiten, die sich in Russland selbst bieten, Milliardenmöglichkeiten.
+- Darf ich Ihnen eine Frage stellen, Michael? 
+-- Darf ich kurz zum Punkt kommen?
+- Ich habe nur eine Frage an Sie, bitte. Sagen Sie mir, was geben Ihnen Ihre Bomben? 
+-- Gute Frage.
+- Ja, ich stelle keine schlechten Fragen.
+-- Ich wollte diese Frage beantworten. 
+- Was gibt Ihnen Ihre Anwesenheit, Ihre Bomben? Was haben Sie davon, wenn sie sich in Italien, in den Niederlanden, in Belgien, in Deutschland befinden? Und in der Türkei.  Wozu denn?
+--- Oh, sie sind eine andere Sache!
+######## START OF 000018.MP3 (0:07:56 - 0:08:26s) ########
+--- Oh, sie sind eine andere Sache!  Das stimmt, es ist alles, es ist immer alles anders. 
+-- Ich werde alles erklären. Ich möchte zunächst den wichtigsten Standpunkt der USA erläutern. 
+- Entweder haben sie eine gemeinsame Nutzung.
+-- Es ist ihre Interpretation, dass die Platzierung... Es wäre ein Verstoß gegen das Übereinkommen über die Nichtstationierung von Nuklearwaffen, wenn die USA diesen Staaten die Waffen unter ihrer Kontrolle übergeben würden, dann wäre es... Es wäre ein Verstoß. Das ist der Standpunkt der USA. 
+- Gut.
+######## START OF 000019.MP3 (0:08:24 - 0:08:54s) ########
+- Gut.
+-- Und die Niederlande, Deutschland, die Türkei, Italien und Belgien stimmen mit den USA überein. 
+- Gut.
+-- [Sie] sind mit dieser Auslegung nicht einverstanden, da es sich um eine Frage der Interpretation handelt. Frankreich ist offensichtlich nicht einverstanden. Frankreich ist der Ansicht, dass es keine Rolle spielt, ob unter amerikanischer Kontrolle oder nicht, solange sich amerikanische Atomwaffen auf dem Territorium anderer [Länder] befinden...
+- Wie kommen Sie darauf, dass Frankreich so denkt? Soweit ich es verstehe...
+-- Er hat gerade gesagt, dass es...
+- Nein, Macron hat das ganz anders gesagt.
+--- Wir haben uns darüber lustig gemacht.
+- Er sagte. Nun, wollen Sie [Macron] noch einmal... 
+######## START OF 000020.MP3 (0:08:52 - 0:09:22s) ########
+- Er sagte. Nun, wollen Sie Macron noch einmal zuhören? 
+-- Er sagte, dass Atomwaffen nicht außerhalb der nationalen Grenzen eingesetzt werden könnten. Deshalb hat er...
+- Ja. Hat er etwas über Ihre Waffe gesagt? 
+-- Nein. 
+- Oh, nein, oder?
+-- Die Interpretation von Frankreich und Russland ist also die gleiche. Nun ...
+--- Ich würde das gerne glauben.
+- Wissen Sie, Michael, wenn es nur so wäre, oder? Aber ich verspreche Ihnen, dass Sie reden werden, Michael. Sie reden immer mehr als alle anderen. 
+--- Ja, natürlich, ja. 
+- Ja.
+######## START OF 000021.MP3 (0:09:20 - 0:09:50s) ########
+--- ...natürlich, ja.
+- Ja. Und wenn Macron sagen würde, dass man auf keinen Fall Atomwaffen einiger Staaten auf dem Territorium anderer Staaten haben darf, und vor allem nicht in Europa, und ich bin sehr besorgt über die russischen Pläne, sie in Weißrussland zu stationieren, und ich fordere einfach, dass auch amerikanische Waffen aus Europa abgezogen werden, dann ja. Aber das sagt er überhaupt nicht.
+-- Soweit ich verstanden habe... So hat Wladimir Wladimirowitsch verstanden, dass er Amerika [indirekt] beschimpft hat.
+######## START OF 000022.MP3 (0:09:48 - 0:10:18s) ########
+--...dass er Amerika indirekt beschimpft hat.
+- Wir machen nur einen Scherz, wir verstehen alles. Wladimir Wladimirowitsch, hat Macron Amerika beschimpft? 
+--- Nein, nun indirekt, indirekt. Das hat er nicht gewusst, ich sage es noch mal. Aber trotzdem, ja. Es ist eine tatsächliche Hilfe.
+- Jetzt, einen Moment, ja.
+-- Ich möchte Ihre Frage beantworten. Was die amerikanischen Atomwaffen auf dem Territorium der fünf europäischen Staaten betrifft, so glaube ich auch, dass diese Bomben, die keine Raketen sind, diese Bomben ihren Nutzen verloren haben. Das machte Sinn in den 50er Jahren, in den 60er Jahren, als sie...
+######## START OF 000023.MP3 (0:10:16 - 0:10:46s) ########
+--...in den 60er Jahren, als sie zum ersten Mal... sie aufgestellt wurden.
+- Ja.
+-- Im Moment sehe ich nicht viel Sinn darin. Genauso wenig sehe ich einen Sinn darin, russische Atomwaffen auf dem Territorium von Belarus zu stationieren. Das ist genau das, worüber wir gesprochen haben. Sergej Borissowitsch hat das letzte Mal darüber gesprochen. Dies würde sowohl die amerikanische als auch die russische Seite in die Lage versetzen, nach der Stationierung von Atomwaffen auf dem Territorium von Belarus auf die Stationierung von Atomwaffen auf dem europäischen Kontinent zu verzichten.
+######## START OF 000024.MP3 (0:10:44 - 0:11:14s) ########
+--...auf dem europäischen Kontinent [zu verzichten].
+- Wirklich? Öffnet sich jetzt unser Fenster der Möglichkeit? 
+-- Nun, theoretisch schon. Denn wenn wir glauben, dass es sich nicht um eine Verletzung der Konvention handelt, dann spricht die Logik dafür, dass Russland dann das gleiche Recht hat. 
+- Was hat das mit Amerika und Logik zu tun? 
+--- Gut, es gibt nur noch eine Kleinigkeit, Sergej Borissowitsch. Es bleibt abzuwarten, bis die Vereinigten Staaten erklären, dass wir als Geste des guten Willens beschlossen haben,...
+######## START OF 000025.MP3 (0:11:12 - 0:11:42s) ########
+---...diese Bomben zu entsorgen, weil wir der Meinung sind, dass diese Bomben von gestern sind und es keinen Sinn hat, sie irgendwo zu platzieren. Aber, Michael, es ist einfach so, dass Ihre Leute selbst dann, wenn sie den Vertrag über strategische Offensivwaffen unterzeichnen, bei denen es sich nicht mehr um Bomben, sondern um Raketen handelt, ja, sie versuchen, auch hier zu betrügen. 
+--  Und wer hat diesen Vertrag ausgesetzt?
+- Nein, auch hier wird versucht zu betrügen. Sie haben die Raketen, die nach dem Vertrag über strategische Offensive Waffen hätten verschrottet werden müssen, aus irgendeinem Grund nicht entsorgt,...
+######## START OF 000026.MP3 (0:11:40 - 0:12:10s) ########
+-... aus irgendeinem Grund nicht entsorgt, sondern eingelagert und behauptet, wir hätten sie außer Dienst gestellt. Sie liegen bei uns nur im Lager. Wir benutzen sie nicht mehr. Betrachten Sie sie als vernichtet. 
+-- Ist das ein Verstoß gegen den Vertrag? 
+- Denken Sie, es ist kein Verstoß? 
+-- Es ist wieder eine Frage der Interpretation.
+- Das ist richtig, Sergej Borissowitsch, sowohl mit biologischen als auch mit chemischen Waffen. 
+--- Ich werde Michael teilweise nicht zustimmen, aber einige Dinge werde ich in jeder Hinsicht unterstützen. 
+- Gut.
+--- Diese Bomben sind also im Prinzip veraltet, so wie sie es bisher waren.
+######## START OF 000027.MP3 (0:12:08 - 0:12:38s) ########
+---...so wie sie es bisher waren. Das sind die 130 Bomben in fünf Ländern. Aber...
+- Ja, das sind sie, ja.
+--- Aber leider erfolgt eine Modernisierung dieser Bomben. Sie werden immer intelligenter, kompakter und leistungsfähiger. Das gilt für die amerikanische Seite. 
+- Ja. Und wo befinden sie sich jetzt?
+---Und außerdem wird ihnen das Fliegen beigebracht.
+- Natürlich.
+--- Sie werden zum Fliegen und zur Lasersteuerung ausgebildet. Sie bekommen also eine neue, rein militärische Bedeutung. Und mehr noch, selbst bei diesen Übungen, die regelmäßig durchgeführt werden. Dort wird...
+######## START OF 000028.MP3 (0:12:36 - 0:13:06s) ########
+---...die regelmäßig durchgeführt werden. Dort wird das Bombenabwerfen von Flugzeugen geübt. Zum Glück sind dort noch keine Bomben montiert. Sofern Russland dies also tut, bin ich persönlich nicht glücklich über diesen Umstand. Wie man es auch dreht und wendet, die Spannung steigt unweigerlich an. 
+- Das ist absolut richtig.
+--- Zudem hat Russland nicht angegeben, ob es Bomben oder eine Art von Sprengköpfen für einige Raketen, zum Beispiel "Iskander"-Raketen, sein werden. Letztlich könnte es alles sein. Und es könnte schnell genug sein,...
+######## START OF 000029.MP3 (0:13:04 - 0:13:34s) ########
+--- Und es könnte schnell genug sein, weil dort Lagerbasen waren. Sie sind immer noch verfügbar. Man muss sie nicht von Null an aufbauen.
+- Natürlich.
+--- Sie sollten einfach, ja, einfach aufgefrischt werden, grob gesagt. 
+- Natürlich ist das so.
+--- Das heißt, es kann ziemlich schnell gehen. Aber es hat mir gefallen, und wir sollten nicht schweigen und die Initiative, über die der Präsident von Belarus gesprochen hat, nicht ignorieren. Er... Wenn Russland nämlich von Zeit zu Zeit anbot, wir sollten unsere taktischen Waffen abziehen, würde Amerika sein Arsenal dieser Bomben [aus fünf Ländern] abziehen,... 
+######## START OF 000030.MP3 (0:13:32 - 0:14:02s) ########
+---...würde Amerika sein Arsenal dieser Bomben aus fünf Ländern abziehen, und Russland war bereit, seine taktischen Waffen sogar über den Ural hinaus zu bringen. Es gab eine solche Idee, und der russische Präsident hat sie Anfang der Nullerjahre geäußert. Lukaschenko ging noch weiter. Er schlägt vor, dass wir jetzt alle amerikanischen [Waffen]... 
+- Wir werden alles zusammenkriegen.
+---...ja, wir werden alles einsammeln und entsorgen. 
+- Und entsorgen. 
+--- Wir entsorgen es. Wir bringen es nicht einfach raus. 
+- Was für eine gute Idee, nicht wahr, Michael? 
+--- So, aber wie funktioniert das gegen den Strich, ja? 
+- Ich unterstütze diesen Vorschlag in jeder erdenklichen Weise. 
+- Es ist ein guter Vorschlag, ja?
+--- Das ist ein ausgezeichneter Vorschlag.
+######## START OF 000031.MP3 (0:14:00 - 0:14:30s) ########
+- Es ist ein guter Vorschlag, ja?
+--- Das ist ein ausgezeichneter Vorschlag. Wir sollten ihn nicht vergessen und ihn unbedingt in eine Art offizielle diplomatische Initiative umwandeln und in Bewegung setzen.
+- Und ganz allgemein, Sergej Borissowitsch, wäre es doch toll, wenn es überhaupt keine Atomwaffen gäbe, oder? Wenn Russland keine Atomwaffen hätte, können Sie sich vorstellen, wie schick das Leben wäre? 
+--- Nein, nein, nein, das ist zu früh, um davon zu träumen, 
+- Eine Sekunde, eine Sekunde. Eine Sekunde, eine Sekunde.
+--- Es ist zu früh, um überhaupt davon zu träumen. 
+- Nein, warten Sie, lassen Sie mich ausreden. 
+--- Ja, ja.
+- Wenn Russland keine Atomwaffen hätte, wäre das doch großartig, nicht wahr, Felix? Und wenn Amerika...
+######## START OF 000032.MP3 (0:14:28 - 0:14:58s) ########
+-...nicht wahr, Felix? Und wenn Amerika keine nuklearen Kapazitäten hätte, die Franzosen, die Briten. Niemand in der Welt hätte diese Atomraketen und -bomben, das wäre doch wunderbar, oder? 
+-- Ja.
+- Das nennt man einen rosigen Traum, denn die kombinierte Macht des NATO-Blocks ist, wenn man das Atomwaffenarsenal nicht berücksichtigt, um ein Vielfaches größer als die Russlands. Und noch vor sehr langer Zeit hätten sie sich an uns gekrallt wie ein Rudel. Nun, Sie haben schon verstanden, ...
+######## START OF 000033.MP3 (0:14:56 - 0:15:26s) ########
+- Nun, Sie haben schon verstanden, wessen Rudel. Und was würden Sie mit uns machen? Gott bewahre, heißt es. Gott bewahre, denn ihr habt keine Glaubwürdigkeit. Nun, kein Vertrauen. 
+-- Warum... Warum Deutschland nicht über eigene Atomwaffen verfügt, muss wohl niemanden in Russland erklären, denke ich. Und warum am Ende des Kalten Krieges irgendeine Anzahl dieser Waffen wie exterritorial gelagert wird,...
+######## START OF 000034.MP3 (0:15:24 - 0:15:54s) ########
+--...wie exterritorial gelagert wird, braucht Amerika wohl auch nicht zu erklären, scheint es mir.
+- Das braucht man.
+--- Ich glaube, Sie haben das Recht, sie platzieren, auch wenn uns das nicht gefällt, oder? Wozu brauchen Sie Weißrussland, wenn Sie unser ehemaliges Königsberg haben, ja? 
+- Oh, warten Sie noch!
+--- Das Kaliningrader Gebiet, das viel näher ist als Weißrussland. 
+- Oh, warten Sie, nicht alles auf einmal. 
+-- Ich... Ich verstehe es einfach nicht. Ist es nicht. 
+- Danke für den Tipp. 
+--- Ich werde das erklären. Aber ich glaube, dass die Leute, die die Entscheidungen treffen, 
+######## START OF 000035.MP3 (0:15:52 - 0:16:22s) ########
+---...die Leute, die die Entscheidungen treffen, tatsächlich genau so argumentieren, wie Sie es tun. Lassen Sie uns eine Pause einlegen und in ein paar Minuten in dieses Studio zurückkehren, um das Gespräch mit unseren Gästen fortzusetzen. 
+MUSIK, WERBESPOTS:
+"Bei den Champions. Champions App. Um auf die Spiele der Champions zu wetten."
+--- Dies ist die Sendung " Die eigene Wahrheit ". Wir fahren fort, mit unseren Gästen über die Situation in der Ukraine zu sprechen. Wladimir Nikolajewitsch, sehen Sie, Naryschkin hat sich wieder mit Lukaschenko getroffen. Und Naryschkin erzählte ihm ausführlich...
+######## START OF 000036.MP3 (0:16:20 - 0:16:50s) ########
+---...erzählte ihm ausführlich über die allgemeine Lage im postsowjetischen Raum und sprach sehr ausführlich über Georgien. Soweit ich verstanden habe, nach den Worten von Naryschkin, drängen sie die Amerikaner jetzt nach Georgien, damit es [=Georgien] eine zweite Front eröffnet. Glauben Sie grundsätzlich, dass dies der Moment ist, auf den die Ukraine jetzt wartet, und dass die Amerikaner in ihrem Interesse handeln, oder rechnen sie eher nicht damit? 
+- Lassen Sie uns zwei Punkte zum vorherigen Thema ansprechen, nur zwei Punkte in Kurzform. Hier...
+######## START OF 000037.MP3 (0:16:48 - 0:17:18s) ########
+-...nur zwei Punkte in Kurzform. Hier ist Macrons Aussage. Wissen Sie, hier gibt es zwei Varianten: Entweder hat er einen Gedächtnisfehler, oder er hat die Geschichte nicht gut gelernt, obwohl seine Frau Lehrerin ist. Ja? Das ist die erste Variante.
+-- Nein, er ist ein ausgezeichneter Schüler, denke ich. 
+- Nun, dann die zweite Variante. Wissen Sie, wahrscheinlich betrachtet er die europäischen Länder de facto doch als Amerikas Territorium. De facto. Nicht de jure, sondern de facto. 
+-- Na ja.
+- Und versuchen Sie es jetzt. Zumindest die Regierung eines der fünf Länder hat ja die Frage aufgeworfen: Leute, aber dieses alte Zeug,...
+######## START OF 000038.MP3 (0:17:16 - 0:17:46s) ########
+-...ja, die Frage aufgeworfen: Leute, aber dieses alte Zeug, wie Michael sagt, kann das nicht rausgeschmissen werden? Sie werden wegfegen. Einfach werden Sie wegfegen. Und die Regierung und alles andere. Erdogan leistet eine Art Widerstand. Eigenständigkeit in nationalen Interessen. Und er überlegt schon, wie er es [das alte Zeug] wegfegen kann. Erdogan sagte, die Tür des US-Botschafters sei geschlossen. Aber es gibt eine interessante Angelegenheit. 
+-- Aber wissen Sie, Wladimir Nikolajewitsch, man muss teilen. 
+- Aber es gibt doch eine... [Angelegenheit]. 
+--- Es ist... Es sind all diese... diese östlichen Spiele. 
+- Ich weiß, dass es alles Politik ist. Aber wenn er offiziell...
+######## START OF 000039.MP3 (0:17:44 - 0:18:14s) ########
+- Aber wenn er offiziell, öffentlich, nachdem der Internationale Strafgerichtshof - dieses Gespött, das den Haftbefehl gegen Wladimir Putin ausgestellt hat - sagt, und ich lade Putin zum 27. April ein, ja, und ich sage Ihnen, als jemand, der mehr als einmal an Wahlen beteiligt war, und Sie haben an Wahlen teilgenommen, sind Sie im Vorfeld von Wahlen sehr vorsichtig, wenn es darum geht, diejenigen einzuladen, die von außen kommen. Und was bedeutet das? Er ist sich sicher, dass dieser Besuch eine zusätzliche Attraktivität für ihn haben wird.
+######## START OF 000040.MP3 (0:18:12 - 0:18:42s) ########
+-...dieser Besuch eine zusätzliche Attraktivität für ihn haben wird. Ja. Und deshalb...
+-- Kann sein, kann sein. Aber, Wladimir Nikolajewitsch, verzeihen Sie mir, um Gottes willen, ich unterbreche noch einmal. Aber ich würde mit dieser Einladung von Erdogan vorsichtig sein, weil...
+- Ich weiß. Ihre Einstellung ist, wie die meine, ziemlich kritisch. In Bezug auf...  
+-- Das ist, okay, meine Einstellung. Ich [weiß] nur... Ich weiß nur, dass sie in der Geschichte sehr oft, sehr oft auf diese Weise Gäste eingeladen haben. Nun, nicht nur sie. Und die Perser haben das auch gemacht.
+--- Und Gribojedow ist der Beweis dafür.
+--...und die Byzantiner taten dasselbe. Wissen Sie, das ist so eine gewöhnliche orientalische Geschichte.
+- Die Aussage selbst... Die Aussage selbst...
+######## START OF 000041.MP3 (0:18:40 - 0:19:10s) ########
+--...so eine gewöhnliche orientalische Geschichte.
+- Die Aussage selbst... 
+-- Zu Besuch, und dann - einmal, und sie lösten alle Probleme.
+- Seine Aussage... Eine solche Aussage... Und die Aussage selbst trägt entweder zur Unterstützung bei oder verringert sie.
+-- Das stimmt.
+- In der Türkei werden die Russen und Wladimir Putin ganz gut behandelt. Dieser Besuch...
+-- Unser Botschafter wurde dort erschossen.
+--- Ich würde natürlich widersprechen. Ja. Aber gut.
+- Lassen Sie uns weitergehen [...], aber zu Ihrer Frage. Die Frage bezieht sich nicht nur auf Georgien. Die Ukraine ist seit langem bereit, Feuer zu legen und sich an dieser Frage bezüglich Moldawien zu beteiligen. Und darüber...
+######## START OF 000042.MP3 (0:19:08 - 0:19:38s) ########
+-...bezüglich Moldawien [seit langem].
+-- Ja.
+- Und darüber sprechen sozusagen die Moldauer selbst, die die Regierung wechseln, die bereit sind und so weiter, mit Hilfe der Rumänen, der Amerikaner. Biden hat Andu nicht zufällig getroffen, er hat sie gesegnet. Vorwärts. Das heißt, um...
+--- Dort wurden jetzt einige bemerkenswerte Ergebnisse einer Umfrage veröffentlicht. Die Moldawier haben das größte Vertrauen in die beiden Präsidenten: den rumänischen und den russischen. 
+- Ja, ja, ja. Dort ist eine kleine Kluft. Ja. Und alle anderen sind da unten. Ja, das ist wahr. Deshalb verwenden sie in diesem Fall...
+######## START OF 000043.MP3 (0:19:36 - 0:20:06s) ########
+-...[in diesem] Fall die gesamte Taktik auf genau dieselbe Weise. Es geht darum, kleine Feuer um Russland herum zu legen, damit sie es zerlegen. Genau die gleiche Taktik wird auch gegen China angewandt. Wir werden rundherum dort Konflikte sehen, und dann beginnt erst der Konflikt mit China selbst. Nun zum großen Projekt. Ich... Wir haben dieses Thema bereits anlässlich der Reise von Selenskyj nach Polen besprochen. Was steckt dahinter...
+-- Was war das? Und wozu braucht Kiew das überhaupt? Es wird keine Grenzen geben. Nun, es wird keine Grenzen geben...
+- Ich werde darlegen... Ich werde meinen Standpunkt darlegen...
+######## START OF 000044.MP3 (0:20:04 - 0:20:34s) ########
+- Ich werde meinen Standpunkt darlegen und den Standpunkt der Experten, die in der Ukraine im Detail untersucht haben, was es war. 
+- Ja.
+- Erstens ist es eine öffentliche Fahrt, in der Öffentlichkeit mit allen. So öffentlich war er noch nie gereist. Frau, dort, Treffen und so weiter, angekündigt. Das deutet darauf hin, dass es weitere öffentliche Aktionen in diesem Bereich geben wird. Welche? Alle sprechen davon, dass sie alle zu einer Konföderation, einer Rzeczpospolita (= Polen-Litauen = Polish–Lithuanian Commonwealth), einem Staatenbund (=Unia) tendieren. Und dann gibt es noch ein drittes Land. Es ist Litauen.
+######## START OF 000045.MP3 (0:20:32 - 0:21:02s) ########
+-...ein drittes Land. Es ist Litauen. Und irgendwie so überraschend, dass es Elemente gibt, die diese Richtung bestätigen. Die Ukraine und Litauen sagten unisono: Leute, warum sollen wir Russisch lernen? Wir werden doch in der Schule Polnisch lernen, ja? Wie zufällig,... 
+- Gut.
+-...obwohl Lettland die russische Sprache ganz verboten hat. Verboten und das war's, und das ist Polnisch. Der zweite. Selenskyj trifft sich mit Bürgermeistern von Grenzstädten. 
+- Ja.
+-- Da gibt es kein Problem. Warum? Weil auch die Flüchtlinge Ukrainer sind.
+######## START OF 000046.MP3 (0:21:00 - 0:21:30s) ########
+-...Weil auch die Flüchtlinge Ukrainer sind. Es gibt sie überall in Polen, vor allem im Zentrum. Und es gibt keine Probleme. Aber diese Probleme werden in der Zukunft auftauchen, wenn sie beginnen, die Konföderation zu vereinigen. Ja? 
+-- Wer wird die Leitung übernehmen? Wer? Wer? Wer?
+- Natürlich, laut dem Staatenbund...  
+--- Selenskyj?
+- Nein. Laut dem Staatenbund (=Unia) sind es die Polen. Die Polen, ja. 
+-- Nein, Zelenski meint, dass er es ist. 
+- Nein.
+--- Das ist...
+-- Deshalb will ich... Deshalb will ich verstehen, wozu Selenskyj es braucht, wenn es allen klar zu sein scheint,
+- Die Sache ist die, dass dieser...
+--...dass bei der Umsetzung dieses...
+
+
+
+
+
+
+
+
