@@ -6,15 +6,15 @@ import numpy as np
 import tokenizers
 from transformers import BertTokenizer, DataCollatorForTokenClassification, AutoModelForTokenClassification
 from transformers import pipeline, AutoTokenizer, BertForTokenClassification
-
+from collections import Counter
 import utils
 import torch
 from torch.utils.data import TensorDataset, DataLoader
 from transformers import AdamW
 
 
-
 def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.path.join("~", ".radio_analyzer")):
+
     """
     :param audio_path: path to the audiofile you want to analyse
     :param custom_name: The app creates a folder for the audio chunks as well as transcription and translation text files.
@@ -27,6 +27,7 @@ def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.pat
     """
 
     # Generate folder for current file
+
     if custom_name:
         path = os.path.expanduser(os.path.join(base_path, custom_name))
     else:
@@ -41,7 +42,7 @@ def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.pat
     chunk_path = utils.split_audio(audio_path, path, custom_name)
     org, eng, ger = utils.transcribe(chunk_path, internal_mode=True, to_txt=True)
 
-    # Analyse
+    # NER-Analysis
 
     ner_model = 'dslim/bert-base-NER'
     tokenizer = BertTokenizer.from_pretrained(ner_model)
@@ -53,26 +54,32 @@ def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.pat
         ner_results.append(nlp(str(string)))
     print("NER: ", ner_results)
 
-    # # Extractive Question Answering
-    #
-    # question = "what weapons"
-    #
-    # eqa_model = pipeline("question-answering", model="bert-large-uncased-whole-word-masking-finetuned-squad")
-    #
-    # for string in eng:
-    #
-    #     result = eqa_model(question=question, context=str(string))
-    #
-    #     answer = result['answer']
-    #     start_pos = result['start']
-    #     end_pos = result['end']
-    #
-    #
-    #     print("Question: ", question)
-    #     print("Answer:", answer)
-    #     print("Starting pos:", start_pos)
-    #     print("End pos:", end_pos)
+    # Sentiment Analysis
 
+    # Load model and Chunk text into parts of model max length
+
+    sentiment_analyzer = pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
+    max_seq_length = sentiment_analyzer.tokenizer.model_max_length
+
+    eng_single = ""
+    for sting in eng:
+        eng_single = eng_single + " " + str(sting)
+    segments = [eng_single[i:i + max_seq_length] for i in range(0, len(eng_single), max_seq_length)]
+
+    # Analyse Chunks
+
+    aggregate_result = {"label": [], "score": []}
+    for segment in segments:
+        result = sentiment_analyzer(segment)
+        for res_dict in result:
+            aggregate_result["label"].append(res_dict["label"])
+            aggregate_result["score"].append(res_dict["score"])
+
+    # Majority Voting for Sentiment
+
+    majority_label = Counter(aggregate_result["label"]).most_common(1)[0][0]
+
+    print(majority_label)
 
     if cleanup:
         shutil.rmtree(path)
