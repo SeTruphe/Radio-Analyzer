@@ -85,7 +85,7 @@ def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.pat
         shutil.rmtree(path)
 
 
-def finetune_bert(path_text, path_labels, save_path):
+def finetune_bert(path_data, save_path):
 
     # Labels : labels = ["O", "B-NAME", "I-NAME", "B-ORT", "I-ORT", "B-DIENSTGRAD", "I-DIENSTGRAD", "B-FAHRZEUG",
     # "I-FAHRZEUG", "B-WAFFE", "I-WAFFE", "B-TOTER", "I-TOTER", "B-CODENAME", "I-CODENAME"]
@@ -95,12 +95,17 @@ def finetune_bert(path_text, path_labels, save_path):
     tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-
-    # TODO: Load texts in List of Strings
-    # TODO: Load labels in List of Strings
-
     texts = []
     labels = []
+
+    for root, dirs, files in os.walk(path_data):
+        for dir in dirs:
+            data = open(os.path.join(root, dir, "translation_german"), encoding="utf-8")
+            labels.append(open(os.path.join(root, dir, "labels")))
+            tmp = ""
+            for string in data:
+                tmp = tmp + " " + str(string)
+            texts.append(tmp)
 
     tokenized_texts = [tokenizer.tokenize(text) for text in texts]
     input_ids = [tokenizer.convert_tokens_to_ids(tokens) for tokens in tokenized_texts]
