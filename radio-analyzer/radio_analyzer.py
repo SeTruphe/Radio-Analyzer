@@ -11,6 +11,7 @@ import utils
 import torch
 from torch.utils.data import TensorDataset, DataLoader
 from transformers import AdamW
+import json
 
 
 def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.path.join("~", ".radio_analyzer")):
@@ -27,13 +28,13 @@ def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.pat
     """
 
     # Generate folder for current file
-
     if custom_name:
-        path = os.path.expanduser(os.path.join(base_path, custom_name))
+        file_name = custom_name
     else:
         ct = datetime.datetime.now()
-        path = os.path.expanduser(os.path.join(base_path, str(ct).replace(":", "-").replace(" ", "-")
-                                               .replace(".", "-")))
+        file_name = str(ct).replace(":", "-").replace(" ", "-").replace(".", "-")
+
+    path = os.path.expanduser(os.path.join(base_path, file_name))
 
     os.makedirs(path)
 
@@ -84,6 +85,16 @@ def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.pat
     if cleanup:
         shutil.rmtree(path)
 
+    # save to path
+    save_path = os.path.join(base_path, "analysis_data")
+    if not os.path.exists(save_path):
+        os.makedirs(save_path)
+
+    data = {"sentiment": majority_label,
+            "ner": ner_results}
+
+    with open(os.path.join(save_path, file_name + ".json"), 'w') as jfile:
+        json.dump(data, jfile)
 
 def finetune_bert(path_data, save_path):
 
