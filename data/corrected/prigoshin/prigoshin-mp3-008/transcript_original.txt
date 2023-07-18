@@ -1,8 +1,5 @@
 Model: whisper-large-v2 Task: transcribe
-
 ###START OF ORIGINAL TRANSCRIPTION FROM FILE 008###
-
-
 ######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
 Здравия желаем, Евгений Викторович! 
 - Что, Белгородские и Курские? 

@@ -1,8 +1,5 @@
 ###START OF GERMAN TRANSLATION FROM FILE 012###
-
 Model: whisper-large-v2 Task: translate english-german
-
-
 ######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
  Es ist eine Anfrage vom "Daily Storm" eingegangen. Ich nutze diese Gelegenheit, um zu antworten, um allen Journalisten im Prinzip Respekt zu zollen. Die ersten Fragen beziehen sich darauf, was die Kämpfer von PMC "Wagner" schreien, wenn sie in die Schlacht ziehen. Offenbar haben sie zu viele Filme oder Zeichentrickfilme gesehen. In Shnurovs Lied heißt es: "Fickt euch alle. Ich höre Bach!", und die Kämpfer von PMC "Wagner" sagen: "Fickt euch alle..."
 ######## START OF 000002.MP3 (0:00:28 - 0:00:58s) ########

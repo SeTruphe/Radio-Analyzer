@@ -1,8 +1,5 @@
 ###START OF GERMAN TRANSLATION FROM FILE 003###
-
 Model: whisper-large-v2 Task: translate english-german
-
-
 ######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
  Die Leute zeigten ein Buch darüber, dass Menschen kein Gehirn hatten und es deshalb Probleme gibt. 
 Deshalb empfehle ich, es zu lesen. Ich habe es für mich hier mit Lesezeichen versehen. Das Buch ist sehr gut.

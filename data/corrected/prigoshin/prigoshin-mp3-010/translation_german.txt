@@ -1,8 +1,5 @@
 ###START OF GERMAN TRANSLATION FROM FILE 010###
-
 Model: whisper-large-v2 Task: translate english-german
-
-
 ######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
  Ich weiß nicht, ob das euch glücklich macht oder es euch amüsiert, also. Die normale Rückfallquote in unserem Land... An euren Gesichtern kann man erkennen, dass ihr nicht zum ersten Mal hier seid, wie man sagt, also. Die Rückfallquote innerhalb eines Monats war immer 4,5%. Jetzt ist sie auf 0,38% gesunken.
 Jeder, der rauskommt, denkt, ich werde ein normales Leben führen, also, wissen Sie. Von 700 Menschen...

@@ -1,8 +1,5 @@
 ###START OF GERMAN TRANSLATION FROM FILE 008###
-
 Model: whisper-large-v2 Task: translate english-german
-
-
 ######## START OF 000001.MP3 (0:00:00 - 0:00:30s) ########
  Guten Tag, Jewgeni Viktorowitsch!
  - Was, kommt ihr aus den Regionen Belgorod und Kursk?
