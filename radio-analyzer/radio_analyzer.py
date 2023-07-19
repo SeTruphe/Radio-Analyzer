@@ -63,8 +63,8 @@ def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.pat
     max_seq_length = sentiment_analyzer.tokenizer.model_max_length
 
     eng_single = ""
-    for sting in eng:
-        eng_single = eng_single + " " + str(sting)
+    for string in eng:
+        eng_single = eng_single + " " + str(string)
     segments = [eng_single[i:i + max_seq_length] for i in range(0, len(eng_single), max_seq_length)]
 
     # Analyse Chunks
@@ -90,64 +90,23 @@ def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.pat
     if not os.path.exists(save_path):
         os.makedirs(save_path)
 
-    data = {"sentiment": majority_label,
-            "ner": ner_results}
+
+
+    # Zero Shot Text classification
+
+    classifier = pipeline('zero-shot-classification', model='facebook/bart-large-mnli')
+    classes = ["Looting", "Acts of aggression", "Military strategy discussion", "Weapons usage", "Troop movement", "Plans for future operations", "Reconnaissance activities", "Violation of international law", "War crimes", "unclassified", "Rape"]
+
+    clasifier_result = classifier(eng_single, classes)
+
+    labels = clasifier_result["labels"]
+    scores = clasifier_result["scores"]
+
+    for i in range(len(labels)):
+        print(f"(Label: {labels[i]}, Score: {round(scores[i]*100, 1)}%)")
+
+    data = {"sentiment": str(majority_label),
+            "ner": str(ner_results)}
 
     with open(os.path.join(save_path, file_name + ".json"), 'w') as jfile:
         json.dump(data, jfile)
-
-def finetune_bert(path_data, save_path):
-
-    # Labels : labels = ["O", "B-NAME", "I-NAME", "B-ORT", "I-ORT", "B-DIENSTGRAD", "I-DIENSTGRAD", "B-FAHRZEUG",
-    # "I-FAHRZEUG", "B-WAFFE", "I-WAFFE", "B-TOTER", "I-TOTER", "B-CODENAME", "I-CODENAME"]
-
-    num_labels = 15
-    model = BertForTokenClassification.from_pretrained('bert-base-cased', num_labels=num_labels)
-    tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-    texts = []
-    labels = []
-
-    for root, dirs, files in os.walk(path_data):
-        for dir in dirs:
-            data = open(os.path.join(root, dir, "translation_german"), encoding="utf-8")
-            labels.append(open(os.path.join(root, dir, "labels")))
-            tmp = ""
-            for string in data:
-                tmp = tmp + " " + str(string)
-            texts.append(tmp)
-
-    tokenized_texts = [tokenizer.tokenize(text) for text in texts]
-    input_ids = [tokenizer.convert_tokens_to_ids(tokens) for tokens in tokenized_texts]
-    attention_masks = [[1] * len(input_id) for input_id in input_ids]
-
-    # convert to tensors
-    input_ids = torch.tensor(input_ids)
-    labels = torch.tensor(labels)
-    attention_masks = torch.tensor(attention_masks)
-
-    # create dataloader
-    batch_size = 4
-    dataset = TensorDataset(input_ids, attention_masks, labels)
-    dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
-
-    # optimizer
-    optimizer = AdamW(model.parameters(), lr=2e-5, eps=1e-8)
-
-    # training loop
-    epochs = 3
-    for epoch in range(epochs):
-        model.train()
-        for batch in dataloader:
-            batch = tuple(t.to(device) for t in batch)
-            inputs = {'input_ids': batch[0], 'attention_mask': batch[1], 'labels': batch[2]}
-            outputs = model(**inputs)
-            loss = outputs[0]
-            loss.backward()
-            optimizer.step()
-            optimizer.zero_grad()
-
-    # Save model
-    model.save_pretrained(save_path)
-    tokenizer.save_pretrained(save_path)
