@@ -1,17 +1,12 @@
 import datetime
 import os.path
 import shutil
-import datasets
-import numpy as np
-import tokenizers
-from transformers import BertTokenizer, DataCollatorForTokenClassification, AutoModelForTokenClassification
-from transformers import pipeline, AutoTokenizer, BertForTokenClassification
+from transformers import BertTokenizer, AutoModelForTokenClassification
+from transformers import pipeline
 from collections import Counter
 import utils
-import torch
-from torch.utils.data import TensorDataset, DataLoader
-from transformers import AdamW
 import json
+
 
 
 def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.path.join("~", ".radio_analyzer")):
@@ -51,8 +46,10 @@ def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.pat
     nlp = pipeline("ner", model=model, tokenizer=tokenizer)
 
     ner_results = []
+    eng_string = []
     for string in eng:
         ner_results.append(nlp(str(string)))
+        eng_string.append(str(string))
     print("NER: ", ner_results)
 
     # Sentiment Analysis
@@ -82,31 +79,49 @@ def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.pat
 
     print(majority_label)
 
-    if cleanup:
-        shutil.rmtree(path)
-
     # save to path
-    save_path = os.path.join(base_path, "analysis_data")
+
+    save_path = os.path.join(os.path.expanduser(base_path), "analysis_data")
     if not os.path.exists(save_path):
         os.makedirs(save_path)
-
-
 
     # Zero Shot Text classification
 
     classifier = pipeline('zero-shot-classification', model='facebook/bart-large-mnli')
-    classes = ["Looting", "Acts of aggression", "Military strategy discussion", "Weapons usage", "Troop movement", "Plans for future operations", "Reconnaissance activities", "Violation of international law", "War crimes", "unclassified", "Rape"]
+    classes = ["Looting", "Acts of aggression", "Military strategy discussion", "Weapons usage", "Troop movement",
+               "Plans for future operations", "Reconnaissance activities", "Violation of international law",
+               "War crimes", "Unclassified", "Rape"]
+    test_classes = ["Pillage", "Human Rights Violation", "Logistic and Supplies", "Casualty Report", "Unclassified"]
 
-    clasifier_result = classifier(eng_single, classes)
+    classifier_result = classifier(eng_single, classes)
+    class_results_test = classifier(eng_single, test_classes)
 
-    labels = clasifier_result["labels"]
-    scores = clasifier_result["scores"]
+    labels = classifier_result["labels"]
+    scores = classifier_result["scores"]
+
+    labels_test = class_results_test["labels"]
+    scores_test = class_results_test["scores"]
 
     for i in range(len(labels)):
         print(f"(Label: {labels[i]}, Score: {round(scores[i]*100, 1)}%)")
 
+    for i in range(len(labels_test)):
+        print(f"(Label: {labels_test[i]}, Score: {round(scores_test[i]*100, 1)}%)")
+
+    org_string = []
+    for string in org:
+        org_string.append(str(string))
+
+    pairs = list(zip(labels, scores))
     data = {"sentiment": str(majority_label),
-            "ner": str(ner_results)}
+            "ner": str(ner_results),
+            "labels": [pair for pair in pairs if pair[1] > 10],
+            "original": org_string,
+            "english": eng_string
+            }
 
     with open(os.path.join(save_path, file_name + ".json"), 'w') as jfile:
         json.dump(data, jfile)
+
+    if cleanup:
+        shutil.rmtree(path)

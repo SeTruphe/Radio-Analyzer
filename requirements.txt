@@ -5,3 +5,8 @@ transformers
 torch
 ffmpeg
 evaluate
+datasets
+numpy
+tokenizers
+scipy
+gradio
