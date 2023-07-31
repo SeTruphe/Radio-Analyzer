@@ -8,17 +8,17 @@ import utils
 import json
 
 
-def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.path.join("~", ".radio_analyzer")):
+def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.path.join("~", ".radio_analyzer")):
 
     """
     :param audio_path: path to the audiofile you want to analyse
     :param custom_name: The app creates a folder for the audio chunks as well as transcription and translation text files.
             The folder name is generated automatically. You can alter the folder name here.
-    :param cleanup: If set to true, generated folder for the project is deleted after the analysis.
+    :param clean_up: If set to true, generated folder for the project is deleted after the analysis.
             Set to true to safe space. Default is false.
     :param base_path: The folders for the analysis are generated in the base path of the user.
             You can define a different path here.
-    :return: None.
+    :return: returns the data dict to display the results in the Webapp.
     """
 
     # Generate folder for current file
@@ -122,5 +122,6 @@ def radio_analyzer(audio_path, custom_name=None, cleanup=False, base_path=os.pat
     with open(os.path.join(save_path, file_name + ".json"), 'w') as jfile:
         json.dump(data, jfile)
 
-    if cleanup:
+    if clean_up:
         shutil.rmtree(path)
+    return data
