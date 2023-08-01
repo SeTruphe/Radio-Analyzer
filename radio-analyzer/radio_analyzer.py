@@ -12,8 +12,8 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
 
     """
     :param audio_path: path to the audiofile you want to analyse
-    :param custom_name: The app creates a folder for the audio chunks as well as transcription and translation text files.
-            The folder name is generated automatically. You can alter the folder name here.
+    :param custom_name: The app creates a folder for the audio chunks as well as transcription and translation text
+            files. The folder name is generated automatically. You can alter the folder name here.
     :param clean_up: If set to true, generated folder for the project is deleted after the analysis.
             Set to true to safe space. Default is false.
     :param base_path: The folders for the analysis are generated in the base path of the user.
