@@ -177,10 +177,10 @@ def transcribe(file, whisper_model="large-v2", to_txt=False):
 
     # Transcription + English translation
 
-    text_original = model.transcribe(file, task="transcribe")["text"].encode('utf-8')
+    text_original = model.transcribe(file, task="transcribe")["text"].strip().encode('utf-8')
     text_english = model.transcribe(file, task="translate")["text"]
 
-    text_original = text_original.strip()
+    #text_original = text_original.strip()
     text_english = text_english.strip()
 
     # Encode to UTF-8 to avoid encoding errors caused by cyrillic characters
@@ -206,5 +206,5 @@ def transcribe(file, whisper_model="large-v2", to_txt=False):
             f.write(text_original)
         f.close()
 
-    return text_original, text_english
+    return text_original.decode('utf-8'), text_english.decode('utf-8')
 

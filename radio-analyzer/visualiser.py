@@ -2,6 +2,7 @@ import gradio as gr
 import radio_analyzer
 import json
 import os
+import ast
 
 
 def run_app(path_to_audio, custom_name=None, clean=False, base_path=None):
@@ -48,8 +49,12 @@ def run_app(path_to_audio, custom_name=None, clean=False, base_path=None):
         return None
 
     data_sentiment = data["sentiment"]
-    ner = data["ner"]
-    labels = data["labels"]
+    ner = ast.literal_eval(data["ner"])
+
+    for entity in ner:
+        entity['entity'] = entity.pop('entity_group')
+
+    labels = {lab: conf for lab, conf in data["labels"]}
     english = data["english"]
     original = data["original"]
 
@@ -78,8 +83,8 @@ with gr.Blocks() as analyzer_webapp:
 
     highlight = gr.Highlightedtext(label="NER")
     label = gr.Label(label="Label")
-    sentiment = gr.components.Textbox()
-    org = gr.components.Textbox()
+    sentiment = gr.components.Textbox(label="Overall Sentiment")
+    org = gr.components.Textbox(label="Original Text")
 
     # Creates Button which triggers the analysis process
 

@@ -1,14 +1,15 @@
 import datetime
 import os.path
 import shutil
-from transformers import BertTokenizer, AutoModelForTokenClassification
+from transformers import BertTokenizer, AutoModelForTokenClassification, BertForTokenClassification
 from transformers import pipeline
 from collections import Counter
 import utils
 import json
 
 
-def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.path.join("~", ".radio_analyzer")):
+def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.path.join("~", ".radio_analyzer"),
+                   model="large-v2", to_txt=False):
 
     """
     :param audio_path: path to the audiofile you want to analyse
@@ -18,10 +19,15 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
             Set to true to safe space. Default is false.
     :param base_path: The folders for the analysis are generated in the base path of the user.
             You can define a different path here.
+    :param to_txt: if true, the transcript and translations will be saved into txt files in the chunk folder
+    :param model: whisper_model: Size of the whisper model you want to use.
+            Available sizes are: tiny, base, small, medium, large and large-v2.
+            For references, visit: https://github.com/openai/whisper
     :return: returns the data dict to display the results in the Webapp.
     """
 
     # Generate folder for current file
+
     if custom_name:
         file_name = custom_name
     else:
@@ -34,22 +40,16 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
 
     # Process audio file and get transcription and translations
 
-    chunk_path = utils.split_audio(audio_path, path, custom_name)
-    org, eng, ger = utils.transcribe_parts(chunk_path, internal_mode=True, to_txt=True)
+    original, english = utils.transcribe(audio_path, whisper_model=model, to_txt=to_txt)
 
     # NER-Analysis
 
     ner_model = 'dslim/bert-base-NER'
     tokenizer = BertTokenizer.from_pretrained(ner_model)
-    model = AutoModelForTokenClassification.from_pretrained(ner_model)
-    nlp = pipeline("ner", model=model, tokenizer=tokenizer)
+    model = BertForTokenClassification.from_pretrained(ner_model)
+    nlp = pipeline("ner", model=model.to("cpu"), tokenizer=tokenizer, aggregation_strategy="simple")
 
-    ner_results = []
-    eng_string = []
-    for string in eng:
-        ner_results.append(nlp(str(string)))
-        eng_string.append(str(string))
-    print("NER: ", ner_results)
+    ner_results = nlp(english)
 
     # Sentiment Analysis
 
@@ -58,10 +58,7 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
     sentiment_analyzer = pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
     max_seq_length = sentiment_analyzer.tokenizer.model_max_length
 
-    eng_single = ""
-    for string in eng:
-        eng_single = eng_single + " " + str(string)
-    segments = [eng_single[i:i + max_seq_length] for i in range(0, len(eng_single), max_seq_length)]
+    segments = [english[i:i + max_seq_length] for i in range(0, len(english), max_seq_length)]
 
     # Analyse Chunks
 
@@ -92,8 +89,8 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
                "War crimes", "Unclassified", "Rape"]
     test_classes = ["Pillage", "Human Rights Violation", "Logistic and Supplies", "Casualty Report", "Unclassified"]
 
-    classifier_result = classifier(eng_single, classes)
-    class_results_test = classifier(eng_single, test_classes)
+    classifier_result = classifier(english, classes)
+    class_results_test = classifier(english, test_classes)
 
     labels = classifier_result["labels"]
     scores = classifier_result["scores"]
@@ -107,16 +104,25 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
     for i in range(len(labels_test)):
         print(f"(Label: {labels_test[i]}, Score: {round(scores_test[i]*100, 1)}%)")
 
-    org_string = []
-    for string in org:
-        org_string.append(str(string))
+    offset = 0
+    for entity_group in ner_results:
+        word = entity_group['word']
+        start_pos = english.find(word, offset)
+        end_pos = start_pos + len(word)
+
+        # Update the entity group with the start and end positions
+        entity_group['start'] = start_pos
+        entity_group['end'] = end_pos
+
+        # Update the offset to search from the end of the last found entity
+        offset = end_pos
 
     pairs = list(zip(labels, scores))
     data = {"sentiment": str(majority_label),
             "ner": str(ner_results),
-            "labels": [pair for pair in pairs if pair[1] > 10],
-            "original": org_string,
-            "english": eng_string
+            "labels": [pair for pair in pairs if pair[1] > 0.1],
+            "original": original,
+            "english": english
             }
 
     with open(os.path.join(save_path, file_name + ".json"), 'w') as jfile:
