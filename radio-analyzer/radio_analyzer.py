@@ -35,7 +35,7 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
     # Process audio file and get transcription and translations
 
     chunk_path = utils.split_audio(audio_path, path, custom_name)
-    org, eng, ger = utils.transcribe(chunk_path, internal_mode=True, to_txt=True)
+    org, eng, ger = utils.transcribe_parts(chunk_path, internal_mode=True, to_txt=True)
 
     # NER-Analysis
 

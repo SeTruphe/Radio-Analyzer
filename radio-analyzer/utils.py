@@ -63,11 +63,11 @@ def split_audio(audio_path, safe_path, opt_folder_name=None):
     return folder_path
 
 
-def transcribe(chunk_path, whisper_model="large", internal_mode=False, to_txt=False):
+def transcribe_parts(chunk_path, whisper_model="large-v2", internal_mode=False, to_txt=False):
     """
         :param chunk_path: path to the audio chunks. Chunks cannot be longer than 30 seconds
         :param whisper_model: Size of the whisper model you want to use.
-                Available sizes are: tiny, base, small, medium, and large.
+                Available sizes are: tiny, base, small, medium, large and large-v2.
                 For references, visit: https://github.com/openai/whisper
         :param internal_mode: if true, explanatory and delimiting strings are not addet to the transcript/translation
                 lists for further internal usage
@@ -157,4 +157,54 @@ def transcribe(chunk_path, whisper_model="large", internal_mode=False, to_txt=Fa
         f.close()
 
     return text_original, eng_out, deu_out
+
+
+def transcribe(file, whisper_model="large-v2", to_txt=False):
+    """
+        :param file: path to the file you want to transcribe and translate.
+        :param whisper_model: Size of the whisper model you want to use.
+                Available sizes are: tiny, base, small, medium, large and large-v2.
+                For references, visit: https://github.com/openai/whisper
+        :param to_txt: if true, the transcript and translations will be saved into txt files in the chunk folder
+        :return: returns the transcribed and translated lists
+    """
+
+    # Whisper
+
+    whisper_model = whisper_model
+
+    model = whisper.load_model(whisper_model)
+
+    # Transcription + English translation
+
+    text_original = model.transcribe(file, task="transcribe")["text"].encode('utf-8')
+    text_english = model.transcribe(file, task="translate")["text"]
+
+    text_original = text_original.strip()
+    text_english = text_english.strip()
+
+    # Encode to UTF-8 to avoid encoding errors caused by cyrillic characters
+
+    text_english = text_english.encode('utf-8')
+
+    # Get filename and folder path, create new folder for results
+
+    file_name = os.path.splitext(file)[0]
+    folder_path = os.path.dirname(file)
+
+    if os.path.exists(os.path.join(folder_path, file_name)):
+        shutil.rmtree(os.path.join(folder_path, file_name))
+    os.makedirs(os.path.join(folder_path, file_name))
+
+    # Create output txt-files
+
+    if to_txt:
+        with open(os.path.join(folder_path, file_name, "translation_english.txt"), 'wb') as f:
+            f.write(text_english)
+        f.close()
+        with open(os.path.join(folder_path, file_name, "transcript_original.txt"), 'wb') as f:
+            f.write(text_original)
+        f.close()
+
+    return text_original, text_english
 
