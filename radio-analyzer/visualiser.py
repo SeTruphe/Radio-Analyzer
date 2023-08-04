@@ -20,14 +20,14 @@ def run_app(path_to_audio, custom_name=None, clean=False, base_path=None):
 
     # Transfer Clean up string into boolean
 
-    if clean == "Yes":
+    if clean == 'Yes':
         clean_up = True
     else:
         clean_up = False
 
     # Get file format
 
-    path_to_audio = path_to_audio.replace("\"", "")
+    path_to_audio = path_to_audio.replace('\"', '')
 
     _, file_format = os.path.splitext(path_to_audio)
     file_format = file_format[1:]
@@ -45,50 +45,54 @@ def run_app(path_to_audio, custom_name=None, clean=False, base_path=None):
                                              base_path=base_path)
 
     else:
-        print("Wrong file format")
+        print('Wrong file format')
         return None
 
-    data_sentiment = data["sentiment"]
-    ner = ast.literal_eval(data["ner"])
+    data_sentiment = data['sentiment']
+    ner = ast.literal_eval(data['ner'])
 
     for entity in ner:
         entity['entity'] = entity.pop('entity_group')
 
     labels = {lab: conf for lab, conf in data["labels"]}
-    english = data["english"]
-    original = data["original"]
+    english = data['english']
+    original = data['original']
+    file_name = data['file_name']
+    file_path = data['path']
+    model = data['model']
+    time = data['time_of_analysis']
 
-    return {"text": english, "entities": ner}, data_sentiment, labels, original
+    return {'text': english, 'entities': ner}, data_sentiment, labels, original
 
 
 # Create Gradio App
 
 with gr.Blocks() as analyzer_webapp:
-    gr.Markdown("Input your Path and Parameters here")
+    gr.Markdown('Input your Path and Parameters here')
 
     # Creates tab for path input
 
-    with gr.Tab("Path"):
-        path_input = gr.Textbox(label="Absolute Path to Audiofile")
+    with gr.Tab('Path'):
+        path_input = gr.Textbox(label='Absolute Path to Audiofile')
 
     # Creates tab for advanced parameters
 
-    with gr.Tab("Advanced Settings"):
-        gr.Markdown("Cleanup: Audio chunks and Transkript/Translation files will be deleted after operation")
-        cleanup = gr.Radio(["Yes"], label="Cleanup the chunks after the process")
-        custom = gr.Textbox(label="Alter the name for the Savefile here. If none is given, a default name is chosen")
-        path = gr.Textbox(label="Adjust your base directory here. Default is: ~/.radio_analyzer")
+    with gr.Tab('Advanced Settings'):
+        gr.Markdown('Cleanup: Audio chunks and Transkript/Translation files will be deleted after operation')
+        cleanup = gr.Radio(['Yes'], label='Cleanup the chunks after the process')
+        custom = gr.Textbox(label='Alter the name for the Savefile here. If none is given, a default name is chosen')
+        path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer')
 
     # Creates graphic output for the results
 
-    highlight = gr.Highlightedtext(label="NER")
-    label = gr.Label(label="Label")
-    sentiment = gr.components.Textbox(label="Overall Sentiment")
-    org = gr.components.Textbox(label="Original Text")
+    highlight = gr.Highlightedtext(label='NER')
+    label = gr.Label(label='Label')
+    sentiment = gr.components.Textbox(label='Overall Sentiment')
+    org = gr.components.Textbox(label='Original Text')
 
     # Creates Button which triggers the analysis process
 
-    text_button = gr.Button("Analyze")
+    text_button = gr.Button('Analyze')
     text_button.click(run_app, inputs=[path_input, custom, cleanup, path], outputs=[highlight, sentiment, label, org])
 
 

@@ -12,12 +12,12 @@ import datetime
 def reduce_noise(path, file):
     rate, data = wavfile.read(os.path.join(path, file))
     reduced_noise = nr.reduce_noise(y=data, sr=rate)
-    wavfile.write(os.path.join(path, "reduced_noise_" + file), rate, reduced_noise)
+    wavfile.write(os.path.join(path, 'reduced_noise_' + file), rate, reduced_noise)
 
 
 def splitter(recording: AudioSegment, section_start, section_finish, section_counter, folder_path, file_format):
     working_part = recording[section_start:section_finish]
-    working_part.export(os.path.join(folder_path, "{:06d}".format(section_counter) + ".mp3"), format=file_format)
+    working_part.export(os.path.join(folder_path, '{:06d}'.format(section_counter) + '.mp3'), format=file_format)
 
 
 def split_audio(audio_path, safe_path, opt_folder_name=None):
@@ -38,9 +38,9 @@ def split_audio(audio_path, safe_path, opt_folder_name=None):
     if opt_folder_name:
         name_arg_1 = opt_folder_name
     else:
-        tmp = audio_path.split("\\")
-        name_arg_1 = tmp[len(tmp) - 3] + "-" + tmp[len(tmp) - 2]
-    folder_path = os.path.join(safe_path, name_arg_1 + "-" + name_arg_2)
+        tmp = audio_path.split('\\')
+        name_arg_1 = tmp[len(tmp) - 3] + '-' + tmp[len(tmp) - 2]
+    folder_path = os.path.join(safe_path, name_arg_1 + '-' + name_arg_2)
 
     # Remove preexisting old files
     if os.path.exists(folder_path):
@@ -50,8 +50,8 @@ def split_audio(audio_path, safe_path, opt_folder_name=None):
     full_length = len(recording)
     section_start, section_finish, section_counter = 0, 30000, 1
     if full_length < section_finish:
-        print("File is to short and needs no splitting")
-        recording.export(os.path.join(folder_path, "{:06d}".format(section_counter) + ".mp3"), format=file_format)
+        print('File is to short and needs no splitting')
+        recording.export(os.path.join(folder_path, '{:06d}'.format(section_counter) + '.mp3'), format=file_format)
     else:
         while section_finish <= full_length:
             splitter(recording, section_start, section_finish, section_counter, folder_path, file_format)
@@ -63,7 +63,7 @@ def split_audio(audio_path, safe_path, opt_folder_name=None):
     return folder_path
 
 
-def transcribe_parts(chunk_path, whisper_model="large-v2", internal_mode=False, to_txt=False):
+def transcribe_parts(chunk_path, whisper_model='large-v2', internal_mode=False, to_txt=False):
     """
         :param chunk_path: path to the audio chunks. Chunks cannot be longer than 30 seconds
         :param whisper_model: Size of the whisper model you want to use.
@@ -77,28 +77,28 @@ def transcribe_parts(chunk_path, whisper_model="large-v2", internal_mode=False, 
 
     # german-english-model
 
-    tokenizer_helsinki = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-de")
-    model_helsinki = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-en-de")
+    tokenizer_helsinki = AutoTokenizer.from_pretrained('Helsinki-NLP/opus-mt-en-de')
+    model_helsinki = AutoModelForSeq2SeqLM.from_pretrained('Helsinki-NLP/opus-mt-en-de')
 
 
     # Whisper
 
     whisper_model = whisper_model
 
-    filename = chunk_path.rsplit("\\", 1)[1]
-    print("File: " + filename)
+    filename = chunk_path.rsplit('\\', 1)[1]
+    print('File: ' + filename)
 
     text_original = []
     text_english = []
     text_german = []
 
     if not internal_mode:
-        text_original.append(("Model: whisper-" + whisper_model + " Task: transcribe\n").encode('utf-8'))
-        text_original.append(("###START OF ORIGINAL TRANSCRIPTION FROM FILE " + str(filename) + "###").encode('utf-8'))
-        text_english.append("Model: whisper-large-v2 Task: translate original-english\n")
-        text_english.append("###START OF ENGLISH TRANSLATION FROM FILE " + str(filename) + "###")
-        text_german.append("Model: Helsinki-nlp Task: translate english-german\n")
-        text_german.append("###START OF GERMAN TRANSLATION FROM FILE " + str(filename) + "###")
+        text_original.append(('Model: whisper-' + whisper_model + ' Task: transcribe\n').encode('utf-8'))
+        text_original.append(('###START OF ORIGINAL TRANSCRIPTION FROM FILE ' + str(filename) + '###').encode('utf-8'))
+        text_english.append('Model: whisper-large-v2 Task: translate original-english\n')
+        text_english.append('###START OF ENGLISH TRANSLATION FROM FILE ' + str(filename) + '###')
+        text_german.append('Model: Helsinki-nlp Task: translate english-german\n')
+        text_german.append('###START OF GERMAN TRANSLATION FROM FILE ' + str(filename) + '###')
 
     model = whisper.load_model(whisper_model)
 
@@ -106,29 +106,29 @@ def transcribe_parts(chunk_path, whisper_model="large-v2", internal_mode=False, 
     time_end = 30
 
     for file in os.listdir(chunk_path):
-        print("Working on part: " + file)
+        print('Working on part: ' + file)
 
         # Transcription + English translation
 
-        original_transcript = model.transcribe(os.path.join(chunk_path, file), task="transcribe")["text"].encode(
+        original_transcript = model.transcribe(os.path.join(chunk_path, file), task='transcribe')['text'].encode(
             'utf-8')
-        translation_english = model.transcribe(os.path.join(chunk_path, file), task="translate")["text"]
+        translation_english = model.transcribe(os.path.join(chunk_path, file), task='translate')['text']
 
         if not internal_mode:
-            text_original.append(("\n######## START OF " + str(os.path.basename(file)).upper()
-                                  + " (" + str(datetime.timedelta(seconds=time_start)) + " - "
-                                  + str(datetime.timedelta(seconds=time_end)) + "s) " + "########\n").encode('utf-8'))
-            text_english.append("\n######## START OF " + str(os.path.basename(file)).upper()
-                                + " (" + str(datetime.timedelta(seconds=time_start))
-                                + " - " + str(datetime.timedelta(seconds=time_end)) + "s) " + "########\n")
-            text_german.append("\n######## START OF " + str(os.path.basename(file)).upper()
-                               + " (" + str(datetime.timedelta(seconds=time_start)) + " - "
-                               + str(datetime.timedelta(seconds=time_end)) + "s) " + "########\n")
+            text_original.append(('\n######## START OF ' + str(os.path.basename(file)).upper()
+                                  + ' (' + str(datetime.timedelta(seconds=time_start)) + ' - '
+                                  + str(datetime.timedelta(seconds=time_end)) + 's) ' + '########\n').encode('utf-8'))
+            text_english.append('\n######## START OF ' + str(os.path.basename(file)).upper()
+                                + ' (' + str(datetime.timedelta(seconds=time_start))
+                                + ' - ' + str(datetime.timedelta(seconds=time_end)) + 's) ' + '########\n')
+            text_german.append('\n######## START OF ' + str(os.path.basename(file)).upper()
+                               + ' (' + str(datetime.timedelta(seconds=time_start)) + ' - '
+                               + str(datetime.timedelta(seconds=time_end)) + 's) ' + '########\n')
 
         text_original.append(original_transcript.strip())
         text_english.append(translation_english.strip())
 
-        input_ids_helsinki = tokenizer_helsinki.encode(translation_english, return_tensors="pt")
+        input_ids_helsinki = tokenizer_helsinki.encode(translation_english, return_tensors='pt')
         outputs_helsinki = model_helsinki.generate(input_ids_helsinki)
         decoded_helsinki = tokenizer_helsinki.decode(outputs_helsinki[0], skip_special_tokens=True)
         text_german.append(decoded_helsinki)
@@ -143,15 +143,15 @@ def transcribe_parts(chunk_path, whisper_model="large-v2", internal_mode=False, 
 
     # Create output txt-files
     if to_txt:
-        with open(os.path.join(chunk_path, "translation_english.txt"), 'wb') as f:
+        with open(os.path.join(chunk_path, 'translation_english.txt'), 'wb') as f:
             for entry in eng_out:
                 f.write(entry)
         f.close()
-        with open(os.path.join(chunk_path, "transcript_original.txt"), 'wb') as f:
+        with open(os.path.join(chunk_path, 'transcript_original.txt'), 'wb') as f:
             for entry in text_original:
                 f.write(entry)
         f.close()
-        with open(os.path.join(chunk_path, "translation_german.txt"), 'wb') as f:
+        with open(os.path.join(chunk_path, 'translation_german.txt'), 'wb') as f:
             for entry in deu_out:
                 f.write(entry)
         f.close()
@@ -159,7 +159,7 @@ def transcribe_parts(chunk_path, whisper_model="large-v2", internal_mode=False, 
     return text_original, eng_out, deu_out
 
 
-def transcribe(file, whisper_model="large-v2", to_txt=False):
+def transcribe(file, whisper_model='large-v2', to_txt=False):
     """
         :param file: path to the file you want to transcribe and translate.
         :param whisper_model: Size of the whisper model you want to use.
@@ -177,10 +177,8 @@ def transcribe(file, whisper_model="large-v2", to_txt=False):
 
     # Transcription + English translation
 
-    text_original = model.transcribe(file, task="transcribe")["text"].strip().encode('utf-8')
-    text_english = model.transcribe(file, task="translate")["text"]
-
-    #text_original = text_original.strip()
+    text_original = model.transcribe(file, task='transcribe')['text'].strip().encode('utf-8')
+    text_english = model.transcribe(file, task='translate')['text']
     text_english = text_english.strip()
 
     # Encode to UTF-8 to avoid encoding errors caused by cyrillic characters
@@ -199,10 +197,10 @@ def transcribe(file, whisper_model="large-v2", to_txt=False):
     # Create output txt-files
 
     if to_txt:
-        with open(os.path.join(folder_path, file_name, "translation_english.txt"), 'wb') as f:
+        with open(os.path.join(folder_path, file_name, 'translation_english.txt'), 'wb') as f:
             f.write(text_english)
         f.close()
-        with open(os.path.join(folder_path, file_name, "transcript_original.txt"), 'wb') as f:
+        with open(os.path.join(folder_path, file_name, 'transcript_original.txt'), 'wb') as f:
             f.write(text_original)
         f.close()
 
