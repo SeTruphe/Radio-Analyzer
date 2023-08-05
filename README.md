@@ -1,7 +1,7 @@
 # Radio-Analyzer
 
 **Radio-Analyzer** zielt darauf ab, abgefangene russische Funkkommunikation aus der Ukraine effektiv mithilfe von KI zu
-Transkribieren, übersetzen und auf relevante Informationen hin auszuwerten.
+transkribieren, übersetzen und auf relevante Informationen hin auszuwerten.
 
 Features:
 - Automatische Transkription und Übersetzung: Das Tool verwendet modernste KI-Technologien, um die abgefangene Funkkommunikation schnell und effizient zu transkribieren und in verschiedene Sprachen zu übersetzen.
