@@ -62,38 +62,51 @@ def run_app(path_to_audio, custom_name=None, clean=False, base_path=None):
     model = data['model']
     time = data['time_of_analysis']
 
-    return {'text': english, 'entities': ner}, data_sentiment, labels, original
+    return {'text': english, 'entities': ner}, data_sentiment, labels, original, file_name, file_path, model, time
 
 
 # Create Gradio App
 
 with gr.Blocks() as analyzer_webapp:
-    gr.Markdown('Input your Path and Parameters here')
+    gr.Markdown(' # Radio-Analyzer App')
 
     # Creates tab for path input
 
-    with gr.Tab('Path'):
-        path_input = gr.Textbox(label='Absolute Path to Audiofile')
+    with gr.Tab('Analyze'):
+        path_input = gr.Textbox(label='Please input the local path to the Audio file you want to Analyze')
+
+        # Creates graphic output for the results
+
+        with gr.Tab('Analysis Data'):
+            file_name = gr.components.Textbox(label='Name of the file')
+            with gr.Row():
+                file_path = gr.components.Textbox(label='Path to Audio file')
+                time = gr.components.Textbox(label='Start time of Analysis')
+            with gr.Row():
+                sentiment = gr.components.Textbox(label='Overall Sentiment')
+                model = gr.components.Textbox(label='Used Whisper-Model')
+            highlight = gr.Highlightedtext(label='NER')
+            label = gr.Label(label='Label')
+
+        with gr.Tab('Original Text'):
+            org = gr.components.Textbox(label='Original Text')
 
     # Creates tab for advanced parameters
 
     with gr.Tab('Advanced Settings'):
-        gr.Markdown('Cleanup: Audio chunks and Transkript/Translation files will be deleted after operation')
+        gr.Markdown("""
+        In this tab you can adjust and input the advanced settings of the app.
+        Please visit https://github.com/SeTruphe/Radio-Analyzer for further information's on the advanced settings
+        """)
         cleanup = gr.Radio(['Yes'], label='Cleanup the chunks after the process')
         custom = gr.Textbox(label='Alter the name for the Savefile here. If none is given, a default name is chosen')
         path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer')
 
-    # Creates graphic output for the results
-
-    highlight = gr.Highlightedtext(label='NER')
-    label = gr.Label(label='Label')
-    sentiment = gr.components.Textbox(label='Overall Sentiment')
-    org = gr.components.Textbox(label='Original Text')
-
     # Creates Button which triggers the analysis process
 
-    text_button = gr.Button('Analyze')
-    text_button.click(run_app, inputs=[path_input, custom, cleanup, path], outputs=[highlight, sentiment, label, org])
+    text_button = gr.Button('Analyze', size='lg')
+    text_button.click(run_app, inputs=[path_input, custom, cleanup, path],
+                      outputs=[highlight, sentiment, label, org, file_name, file_path, model, time])
 
 
 if __name__ == '__main__':
