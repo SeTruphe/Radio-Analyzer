@@ -25,6 +25,14 @@ def run_app(path_to_audio, custom_name=None, clean=False, base_path=None):
     else:
         clean_up = False
 
+    # Clean empty inputs
+
+    if base_path == "":
+        base_path = os.path.join('~', '.radio_analyzer')
+
+    if custom_name == "":
+        custom_name = None
+
     # Get file format
 
     path_to_audio = path_to_audio.replace('\"', '')
@@ -54,21 +62,25 @@ def run_app(path_to_audio, custom_name=None, clean=False, base_path=None):
     for entity in ner:
         entity['entity'] = entity.pop('entity_group')
 
-    labels = {lab: conf for lab, conf in data["labels"]}
+    labels_tactical = {lab: conf for lab, conf in data['labels_tactical']}
+    labels_legal = {lab: conf for lab, conf in data['labels_legal']}
+    major_tac = data['major_tactical']['label']
+    major_legal = data['major_legal']['label']
+    mood_data = data['label_mood']['label']
     english = data['english']
     original = data['original']
-    file_name = data['file_name']
-    file_path = data['path']
-    model = data['model']
-    time = data['time_of_analysis']
+    name = data['file_name']
+    audio_path = data['path']
+    whisper_model = data['model']
+    ctime = data['time_of_analysis']
 
-    return {'text': english, 'entities': ner}, data_sentiment, labels, original, file_name, file_path, model, time
+    return {'text': english, 'entities': ner}, data_sentiment, mood_data, major_tac, labels_tactical, major_legal, labels_legal, original, name, audio_path, whisper_model, ctime
 
 
 # Create Gradio App
 
 with gr.Blocks() as analyzer_webapp:
-    gr.Markdown(' # Radio-Analyzer App')
+    gr.Image(value='..\\data\\media\\wordmark-bright.svg', height=100, container=False)
 
     # Creates tab for path input
 
@@ -78,15 +90,23 @@ with gr.Blocks() as analyzer_webapp:
         # Creates graphic output for the results
 
         with gr.Tab('Analysis Data'):
-            file_name = gr.components.Textbox(label='Name of the file')
             with gr.Row():
+                file_name = gr.components.Textbox(label='Name of the file')
                 file_path = gr.components.Textbox(label='Path to Audio file')
+            with gr.Row():
+                model = gr.components.Textbox(label='Used Whisper-Model')
                 time = gr.components.Textbox(label='Start time of Analysis')
             with gr.Row():
                 sentiment = gr.components.Textbox(label='Overall Sentiment')
-                model = gr.components.Textbox(label='Used Whisper-Model')
-            highlight = gr.Highlightedtext(label='NER')
-            label = gr.Label(label='Label')
+                mood = gr.components.Textbox(label='Mood of the Text')
+            with gr.Row():
+                maj_tac = gr.components.Textbox(label='Majority tactical label')
+                maj_legal = gr.components.Textbox(label='Majority legal label')
+            with gr.Row():
+                label_tac = gr.Label(label='All tactical labels above 20%')
+                label_legal = gr.Label(label='All legal labels above 20%')
+
+            highlight = gr.HighlightedText(label='NER')
 
         with gr.Tab('Original Text'):
             org = gr.components.Textbox(label='Original Text')
@@ -100,13 +120,13 @@ with gr.Blocks() as analyzer_webapp:
         """)
         cleanup = gr.Radio(['Yes'], label='Cleanup the chunks after the process')
         custom = gr.Textbox(label='Alter the name for the Savefile here. If none is given, a default name is chosen')
-        path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer')
+        path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer', placeholder='')
 
     # Creates Button which triggers the analysis process
 
     text_button = gr.Button('Analyze', size='lg')
     text_button.click(run_app, inputs=[path_input, custom, cleanup, path],
-                      outputs=[highlight, sentiment, label, org, file_name, file_path, model, time])
+                      outputs=[highlight, sentiment, mood, maj_tac, label_tac,maj_legal, label_legal, org, file_name, file_path, model, time])
 
 
 if __name__ == '__main__':

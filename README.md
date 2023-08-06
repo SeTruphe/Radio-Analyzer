@@ -1,4 +1,4 @@
- <img src="data/media/wordmark-wide.png" alt="Alt Text" width="350"/>
+ <img src="data/media/wordmark-wide.svg" alt="Alt Text" width="400"/>
 
 **Radio-Analyzer** is a cutting-edge tool designed to efficiently transcribe, translate, and analyze intercepted Russian radio communication from Ukraine using advanced AI technologies.
 
@@ -13,3 +13,7 @@ Key Features:
 - **Text Classification**: Radio-Analyzer employs advanced text classification techniques to categorize the transcribed text into predefined categories. This feature aids in identifying the nature of the communication, whether it contains tactical information or content of legal significance.
 
 - **Data Aggregation and Visualization**: The results of the analysis are aggregated and presented in a clear, intuitive format, enabling easy interpretation and further investigation.
+
+<div align="center">
+<img src="data/media/overview.png" alt="Alt Text" width="8500"/>
+</div>

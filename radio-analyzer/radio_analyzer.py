@@ -1,15 +1,15 @@
 import datetime
 import os.path
 import shutil
-from transformers import BertTokenizer, AutoModelForTokenClassification, BertForTokenClassification
+from transformers import BertTokenizer, BertForTokenClassification
 from transformers import pipeline
 from collections import Counter
 import utils
 import json
-
+import re
 
 def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.path.join('~', '.radio_analyzer'),
-                   model='large-v2', to_txt=False):
+                   whisper_model='large-v2', to_txt=False):
 
     """
     :param audio_path: path to the audiofile you want to analyse
@@ -20,7 +20,7 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
     :param base_path: The folders for the analysis are generated in the base path of the user.
             You can define a different path here.
     :param to_txt: if true, the transcript and translations will be saved into txt files in the chunk folder
-    :param model: whisper_model: Size of the whisper model you want to use.
+    :param whisper_model: whisper_model: Size of the whisper model you want to use.
             Available sizes are: tiny, base, small, medium, large and large-v2.
             For references, visit: https://github.com/openai/whisper
     :return: returns the data dict to display the results in the Webapp.
@@ -42,7 +42,7 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
 
     # Process audio file and get transcription and translations
 
-    original, english = utils.transcribe(audio_path, whisper_model=model, to_txt=to_txt)
+    original, english = utils.transcribe(audio_path, whisper_model=whisper_model, to_txt=to_txt)
 
     # NER-Analysis
 
@@ -86,54 +86,88 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
     # Zero Shot Text classification
 
     classifier = pipeline('zero-shot-classification', model='facebook/bart-large-mnli')
+    classes_tactical = ['Unclassified', 'Logistic and Supplies', 'Casualty Report', 'Reconnaissance activities',
+                        'Troop movement', 'Military strategy discussion', 'Plans for future operations']
+    classes_legal = ['Unclassified', 'Looting', 'Crimes', 'Rape', 'Violation of international law', 'Pillage']
+
+    classes_mood = ['Aggressiv', 'Defensive', 'Concerned', 'Optimistic']
+
     classes = ['Looting', 'Acts of aggression', 'Military strategy discussion', 'Weapons usage', 'Troop movement',
                'Plans for future operations', 'Reconnaissance activities', 'Violation of international law',
                'War crimes', 'Unclassified', 'Rape']
     test_classes = ['Pillage', 'Human Rights Violation', 'Logistic and Supplies', 'Casualty Report', 'Unclassified']
 
-    classifier_result = classifier(english, classes)
-    class_results_test = classifier(english, test_classes)
+    classifier_result_tactical = classifier(english, classes_tactical)
+    class_results_legal = classifier(english, classes_legal)
+    class_results_mood = classifier(english, classes_mood)
 
-    labels = classifier_result['labels']
-    scores = classifier_result['scores']
+    labels_tactical = classifier_result_tactical['labels']
+    scores_tactical = classifier_result_tactical['scores']
 
-    labels_test = class_results_test['labels']
-    scores_test = class_results_test['scores']
+    labels_legal = class_results_legal['labels']
+    scores_legal = class_results_legal['scores']
 
-    for i in range(len(labels)):
-        print(f'(Label: {labels[i]}, Score: {round(scores[i]*100, 1)}%)')
+    labels_mood = class_results_mood['labels']
+    scores_mood = class_results_mood['scores']
 
-    for i in range(len(labels_test)):
-        print(f'(Label: {labels_test[i]}, Score: {round(scores_test[i]*100, 1)}%)')
+    for i in range(len(labels_tactical)):
+        print(f'(Label: {labels_tactical[i]}, Score: {round(scores_tactical[i]*100, 1)}%)')
 
-    pairs = list(zip(labels, scores))
+    for i in range(len(labels_legal)):
+        print(f'(Label: {labels_legal[i]}, Score: {round(scores_legal[i]*100, 1)}%)')
+
+    for i in range(len(labels_mood)):
+        print(f'(Label: {labels_mood[i]}, Score: {round(scores_mood[i]*100, 1)}%)')
+
+    pairs_tactical = list(zip(labels_tactical, scores_tactical))
+    pairs_legal = list(zip(labels_legal, scores_legal))
 
     # This is a workaround as the model does not provide start and end positions right now
 
     offset = 0
+    to_remove = []
 
     for entity_group in ner_results:
         word = entity_group['word']
         start_pos = english.find(word, offset)
-        end_pos = start_pos + len(word)
-
-        # Update the entity group with the start and end positions
-
-        entity_group['start'] = start_pos
-        entity_group['end'] = end_pos
+        if start_pos == -1:
+            match = re.search(r'\b{}\b'.format(word).replace("#", ""), english[offset:])
+            if match:
+                start_pos = match.start() + offset
+                end_pos = match.end() + offset
+                entity_group['start'] = start_pos
+                entity_group['end'] = end_pos
+            else:
+                to_remove.append(entity_group)
+        else:
+            # Update the entity group with the start and end positions
+            end_pos = start_pos + len(word)
+            entity_group['start'] = start_pos
+            entity_group['end'] = end_pos
 
         # Update the offset to search from the end of the last found entity
 
         offset = end_pos
 
+    # Remove remaining entities with None values as start or endposition to avoid Errors in visualiser
+
+    for entity in to_remove:
+        ner_results.remove(entity)
+
+    # Create json
+
     data = {'sentiment': str(majority_label),
             'ner': str(ner_results),
-            'labels': [pair for pair in pairs if pair[1] > 0.1],
+            'major_tactical': {'label': labels_tactical[0], 'score': scores_tactical[0]},
+            'major_legal': {'label': labels_legal[0], 'score': scores_legal[0]},
+            'label_mood': {'label': labels_mood[0], 'confidence': scores_mood[0]},
+            'labels_tactical': [pair for pair in pairs_tactical if pair[1] > 0.2],
+            'labels_legal': [pair for pair in pairs_legal if pair[1] > 0.2],
             'original': original,
             'english': english,
             'file_name': os.path.basename(audio_path),
             'path': audio_path,
-            'model': model,
+            'model': whisper_model,
             'time_of_analysis': str(ct)
             }
 

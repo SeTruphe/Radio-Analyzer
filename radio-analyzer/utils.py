@@ -34,6 +34,7 @@ def split_audio(audio_path, safe_path, opt_folder_name=None):
     recording = AudioSegment.from_file(audio_path, format=audio_path.split('.', 1)[1])
 
     # Create Folder for Output
+
     name_arg_2 = ntpath.basename(audio_path).split(".", 1)[0]
     if opt_folder_name:
         name_arg_1 = opt_folder_name
@@ -43,6 +44,7 @@ def split_audio(audio_path, safe_path, opt_folder_name=None):
     folder_path = os.path.join(safe_path, name_arg_1 + '-' + name_arg_2)
 
     # Remove preexisting old files
+
     if os.path.exists(folder_path):
         shutil.rmtree(folder_path)
     os.makedirs(folder_path)
@@ -79,7 +81,6 @@ def transcribe_parts(chunk_path, whisper_model='large-v2', internal_mode=False, 
 
     tokenizer_helsinki = AutoTokenizer.from_pretrained('Helsinki-NLP/opus-mt-en-de')
     model_helsinki = AutoModelForSeq2SeqLM.from_pretrained('Helsinki-NLP/opus-mt-en-de')
-
 
     # Whisper
 
