@@ -8,9 +8,9 @@ import utils
 import json
 import re
 
+
 def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.path.join('~', '.radio_analyzer'),
                    whisper_model='large-v2', to_txt=False):
-
     """
     :param audio_path: path to the audiofile you want to analyse
     :param custom_name: The app creates a folder for the audio chunks as well as transcription and translation text
@@ -19,7 +19,7 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
             Set to true to safe space. Default is false.
     :param base_path: The folders for the analysis are generated in the base path of the user.
             You can define a different path here.
-    :param to_txt: if true, the transcript and translations will be saved into txt files in the chunk folder
+    :param to_txt: if true, the transcript and translations will be saved into txt files in the file of the Audio file.
     :param whisper_model: whisper_model: Size of the whisper model you want to use.
             Available sizes are: tiny, base, small, medium, large and large-v2.
             For references, visit: https://github.com/openai/whisper
@@ -85,17 +85,12 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
 
     # Zero Shot Text classification
 
-    classifier = pipeline('zero-shot-classification', model='facebook/bart-large-mnli')
+    classifier = pipeline('zero-shot-classification', model='facebook/bart-large-mnli', multi_label=True)
     classes_tactical = ['Unclassified', 'Logistic and Supplies', 'Casualty Report', 'Reconnaissance activities',
                         'Troop movement', 'Military strategy discussion', 'Plans for future operations']
     classes_legal = ['Unclassified', 'Looting', 'Crimes', 'Rape', 'Violation of international law', 'Pillage']
 
     classes_mood = ['Aggressiv', 'Defensive', 'Concerned', 'Optimistic']
-
-    classes = ['Looting', 'Acts of aggression', 'Military strategy discussion', 'Weapons usage', 'Troop movement',
-               'Plans for future operations', 'Reconnaissance activities', 'Violation of international law',
-               'War crimes', 'Unclassified', 'Rape']
-    test_classes = ['Pillage', 'Human Rights Violation', 'Logistic and Supplies', 'Casualty Report', 'Unclassified']
 
     classifier_result_tactical = classifier(english, classes_tactical)
     class_results_legal = classifier(english, classes_legal)
@@ -111,13 +106,13 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
     scores_mood = class_results_mood['scores']
 
     for i in range(len(labels_tactical)):
-        print(f'(Label: {labels_tactical[i]}, Score: {round(scores_tactical[i]*100, 1)}%)')
+        print(f'(Label: {labels_tactical[i]}, Score: {round(scores_tactical[i] * 100, 1)}%)')
 
     for i in range(len(labels_legal)):
-        print(f'(Label: {labels_legal[i]}, Score: {round(scores_legal[i]*100, 1)}%)')
+        print(f'(Label: {labels_legal[i]}, Score: {round(scores_legal[i] * 100, 1)}%)')
 
     for i in range(len(labels_mood)):
-        print(f'(Label: {labels_mood[i]}, Score: {round(scores_mood[i]*100, 1)}%)')
+        print(f'(Label: {labels_mood[i]}, Score: {round(scores_mood[i] * 100, 1)}%)')
 
     pairs_tactical = list(zip(labels_tactical, scores_tactical))
     pairs_legal = list(zip(labels_legal, scores_legal))
@@ -161,8 +156,8 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
             'major_tactical': {'label': labels_tactical[0], 'score': scores_tactical[0]},
             'major_legal': {'label': labels_legal[0], 'score': scores_legal[0]},
             'label_mood': {'label': labels_mood[0], 'confidence': scores_mood[0]},
-            'labels_tactical': [pair for pair in pairs_tactical if pair[1] > 0.2],
-            'labels_legal': [pair for pair in pairs_legal if pair[1] > 0.2],
+            'labels_tactical': [pair for pair in pairs_tactical if pair[1] > 0.5],
+            'labels_legal': [pair for pair in pairs_legal if pair[1] > 0.5],
             'original': original,
             'english': english,
             'file_name': os.path.basename(audio_path),

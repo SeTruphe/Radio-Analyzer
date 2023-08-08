@@ -5,33 +5,36 @@ import os
 import ast
 
 
-def run_app(path_to_audio, custom_name=None, clean=False, base_path=None):
+def run_app(path_to_audio, w_model, custom, cleanup, path):
 
     """
     :param path_to_audio: path to the audiofile you want to analyse
-    :param custom_name: The app creates a folder for the audio chunks as well as transcription and translation text
+    :param custom: The app creates a folder for the audio chunks as well as transcription and translation text
             files. The folder name is generated automatically. You can alter the folder name here.
-    :param clean: If set to true, generated folder for the project is deleted after the analysis.
+    :param cleanup: If set to true, generated folder for the project is deleted after the analysis.
             Set to true to safe space. Default is false.
-    :param base_path: The folders for the analysis are generated in the base path of the user.
+    :param path: The folders for the analysis are generated in the base path of the user.
             You can define a different path here.
     :return: returns the data in a formate suitable for the Gradio app
     """
 
     # Transfer Clean up string into boolean
 
-    if clean == 'Yes':
+    if cleanup == 'Yes':
         clean_up = True
     else:
         clean_up = False
 
     # Clean empty inputs
 
-    if base_path == "":
-        base_path = os.path.join('~', '.radio_analyzer')
+    if path == "":
+        path = os.path.join('~', '.radio_analyzer')
 
-    if custom_name == "":
-        custom_name = None
+    if custom == "":
+        custom = None
+
+    if w_model == '':
+        w_model = 'large-v2'
 
     # Get file format
 
@@ -48,9 +51,10 @@ def run_app(path_to_audio, custom_name=None, clean=False, base_path=None):
 
     elif file_format == "mp3":
         data = radio_analyzer.radio_analyzer(path_to_audio,
+                                             whisper_model=w_model,
                                              clean_up=clean_up,
-                                             custom_name=custom_name,
-                                             base_path=base_path)
+                                             custom_name=custom,
+                                             base_path=path)
 
     else:
         print('Wrong file format')
@@ -103,8 +107,8 @@ with gr.Blocks() as analyzer_webapp:
                 maj_tac = gr.components.Textbox(label='Majority tactical label')
                 maj_legal = gr.components.Textbox(label='Majority legal label')
             with gr.Row():
-                label_tac = gr.Label(label='All tactical labels above 20%')
-                label_legal = gr.Label(label='All legal labels above 20%')
+                label_tac = gr.Label(label='All tactical labels above 50%')
+                label_legal = gr.Label(label='All legal labels above 50%')
 
             highlight = gr.HighlightedText(label='NER')
 
@@ -119,14 +123,19 @@ with gr.Blocks() as analyzer_webapp:
         Please visit https://github.com/SeTruphe/Radio-Analyzer for further information's on the advanced settings
         """)
         cleanup = gr.Radio(['Yes'], label='Cleanup the chunks after the process')
+        to_txt = gr.Radio(['Yes'], label='If set to \'Yes\', the Transkript and Translation will additionally'
+                                         ' saved into an .txt in the folder of the Audio file')
+        w_model = gr.Radio(['large', 'medium', 'small', 'base', 'tiny'], label='Change the Whisper model')
         custom = gr.Textbox(label='Alter the name for the Savefile here. If none is given, a default name is chosen')
         path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer', placeholder='')
+
 
     # Creates Button which triggers the analysis process
 
     text_button = gr.Button('Analyze', size='lg')
-    text_button.click(run_app, inputs=[path_input, custom, cleanup, path],
-                      outputs=[highlight, sentiment, mood, maj_tac, label_tac,maj_legal, label_legal, org, file_name, file_path, model, time])
+    text_button.click(run_app, inputs=[path_input, w_model, custom, cleanup, path],
+                      outputs=[highlight, sentiment, mood, maj_tac, label_tac,maj_legal, label_legal, org,
+                               file_name, file_path, model, time])
 
 
 if __name__ == '__main__':
