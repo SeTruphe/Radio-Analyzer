@@ -20,10 +20,10 @@ def run_app(path_to_audio, w_model, custom, cleanup, path):
 
     # Transfer Clean up string into boolean
 
-    if cleanup == 'Yes':
-        clean_up = True
-    else:
+    if cleanup == 'No':
         clean_up = False
+    else:
+        clean_up = True
 
     # Clean empty inputs
 
@@ -122,7 +122,7 @@ with gr.Blocks() as analyzer_webapp:
         In this tab you can adjust and input the advanced settings of the app.
         Please visit https://github.com/SeTruphe/Radio-Analyzer for further information's on the advanced settings
         """)
-        cleanup = gr.Radio(['Yes'], label='Cleanup the chunks after the process')
+        cleanup = gr.Radio(['No'], label='Cleanup the chunks after the process')
         to_txt = gr.Radio(['Yes'], label='If set to \'Yes\', the Transkript and Translation will additionally'
                                          ' saved into an .txt in the folder of the Audio file')
         w_model = gr.Radio(['large', 'medium', 'small', 'base', 'tiny'], label='Change the Whisper model')
