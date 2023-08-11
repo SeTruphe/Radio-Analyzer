@@ -9,13 +9,54 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import datetime
 
 
-def reduce_noise(path, file):
-    rate, data = wavfile.read(os.path.join(path, file))
+def noisereduce(file):
+
+    """
+    :param file: file path to audio file noisereduce should be performed on
+    :return: path to new file with reduced noise
+    """
+
+    folder_path = os.path.dirname(file)
+    file_name, _ = os.path.splitext(os.path.basename(file))
+    file_format = os.path.splitext(file)[1].lstrip('.')
+
+    # if file is mp3, convert to wav and create a tmp file
+
+    if file_format == "mp3":
+        audio = AudioSegment.from_mp3(file)
+        audio = audio.set_channels(1)
+        audio = audio.set_frame_rate(16000)
+        tmp = os.path.join(folder_path, "tmp.wav")
+        audio.export(tmp, format="wav")
+        file = tmp
+
+    # do noisereduce on wav
+
+    output = os.path.join(folder_path, file_name + "_reduced.wav")
+    rate, data = wavfile.read(file)
     reduced_noise = nr.reduce_noise(y=data, sr=rate)
-    wavfile.write(os.path.join(path, 'reduced_noise_' + file), rate, reduced_noise)
+    wavfile.write(output, rate, reduced_noise)
+
+    # if tmp file was created, remove
+
+    if file_format == "mp3":
+        os.remove(tmp)
+
+    return output
 
 
 def splitter(recording: AudioSegment, section_start, section_finish, section_counter, folder_path, file_format):
+    """
+    :param recording: file with datatype 'AudioSegment' to split
+    :param section_start: starting point for the segment in seconds
+    :param section_finish: endpoint of the segment in seconds
+    :param section_counter: ongoing number fo the segment
+    :param folder_path: save path
+    :param file_format: the file format of the segment
+    :return: None
+
+    This function is used to create 30 sec chunks from an audio file
+    """
     working_part = recording[section_start:section_finish]
     working_part.export(os.path.join(folder_path, '{:06d}'.format(section_counter) + '.mp3'), format=file_format)
 
@@ -169,6 +210,8 @@ def transcribe(file, whisper_model='large-v2', to_txt=False):
         :param to_txt: if true, the transcript and translations will be saved into txt files in the chunk folder
         :return: returns the transcribed and translated lists
     """
+    file_name = os.path.splitext(file)[0]
+    folder_path = os.path.dirname(file)
 
     # Whisper
 
@@ -187,9 +230,6 @@ def transcribe(file, whisper_model='large-v2', to_txt=False):
     text_english = text_english.encode('utf-8')
 
     # Get filename and folder path, create new folder for results
-
-    file_name = os.path.splitext(file)[0]
-    folder_path = os.path.dirname(file)
 
     if os.path.exists(os.path.join(folder_path, file_name)):
         shutil.rmtree(os.path.join(folder_path, file_name))

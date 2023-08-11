@@ -10,3 +10,4 @@ numpy
 tokenizers
 scipy
 gradio
+noisereduce

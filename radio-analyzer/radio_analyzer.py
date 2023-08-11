@@ -10,7 +10,7 @@ import re
 
 
 def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.path.join('~', '.radio_analyzer'),
-                   whisper_model='large-v2', to_txt=False):
+                   whisper_model='large-v2', to_txt=False, reduce_noise=False):
     """
     :param audio_path: path to the audiofile you want to analyse
     :param custom_name: The app creates a folder for the audio chunks as well as transcription and translation text
@@ -23,6 +23,8 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
     :param whisper_model: whisper_model: Size of the whisper model you want to use.
             Available sizes are: tiny, base, small, medium, large and large-v2.
             For references, visit: https://github.com/openai/whisper
+    :param reduce_noise: if set to true, noisereduce will try to reduce noise on the Audio file before analysis.
+            Default is false
     :return: returns the data dict to display the results in the Webapp.
     """
 
@@ -31,6 +33,12 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
     ct = datetime.datetime.now()
     file_name = os.path.splitext(os.path.basename(audio_path))[0]
 
+    # saving audio_path in new var which can be altered by noisereduce, so "_reduced" ending does not appear later
+
+    working_path = audio_path
+
+    if reduce_noise:
+        working_path = utils.noisereduce(audio_path)
     if custom_name:
         file_name = custom_name
     else:
@@ -42,7 +50,12 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
 
     # Process audio file and get transcription and translations
 
-    original, english = utils.transcribe(audio_path, whisper_model=whisper_model, to_txt=to_txt)
+    original, english = utils.transcribe(working_path, whisper_model=whisper_model, to_txt=to_txt)
+
+    # if noisereduce and clean_up, remove file after processing to reduce space
+
+    if reduce_noise and clean_up:
+        os.remove(working_path)
 
     # NER-Analysis
 
@@ -85,7 +98,7 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
 
     # Zero Shot Text classification
 
-    classifier = pipeline('zero-shot-classification', model='facebook/bart-large-mnli', multi_label=True)
+    classifier = pipeline('zero-shot-classification', model='facebook/bart-large-mnli')
     classes_tactical = ['Unclassified', 'Logistic and Supplies', 'Casualty Report', 'Reconnaissance activities',
                         'Troop movement', 'Military strategy discussion', 'Plans for future operations']
     classes_legal = ['Unclassified', 'Looting', 'Crimes', 'Rape', 'Violation of international law', 'Pillage']
@@ -156,8 +169,8 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
             'major_tactical': {'label': labels_tactical[0], 'score': scores_tactical[0]},
             'major_legal': {'label': labels_legal[0], 'score': scores_legal[0]},
             'label_mood': {'label': labels_mood[0], 'confidence': scores_mood[0]},
-            'labels_tactical': [pair for pair in pairs_tactical if pair[1] > 0.5],
-            'labels_legal': [pair for pair in pairs_legal if pair[1] > 0.5],
+            'labels_tactical': [pair for pair in pairs_tactical],
+            'labels_legal': [pair for pair in pairs_legal],
             'original': original,
             'english': english,
             'file_name': os.path.basename(audio_path),

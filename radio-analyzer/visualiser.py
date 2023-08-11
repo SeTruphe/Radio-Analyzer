@@ -5,7 +5,7 @@ import os
 import ast
 
 
-def run_app(path_to_audio, w_model, custom, cleanup, path):
+def run_app(path_to_audio, w_model, custom, cleanup, path, reduce_noise):
 
     """
     :param path_to_audio: path to the audiofile you want to analyse
@@ -27,14 +27,17 @@ def run_app(path_to_audio, w_model, custom, cleanup, path):
 
     # Clean empty inputs
 
-    if path == "":
+    if path == '':
         path = os.path.join('~', '.radio_analyzer')
 
-    if custom == "":
+    if custom == '':
         custom = None
 
     if w_model == '':
         w_model = 'large-v2'
+
+    if reduce_noise == '':
+        reduce_noise = None
 
     # Get file format
 
@@ -54,7 +57,9 @@ def run_app(path_to_audio, w_model, custom, cleanup, path):
                                              whisper_model=w_model,
                                              clean_up=clean_up,
                                              custom_name=custom,
-                                             base_path=path)
+                                             base_path=path,
+                                             reduce_noise=reduce_noise
+                                             )
 
     else:
         print('Wrong file format')
@@ -123,9 +128,11 @@ with gr.Blocks() as analyzer_webapp:
         Please visit https://github.com/SeTruphe/Radio-Analyzer for further information's on the advanced settings
         """)
         cleanup = gr.Radio(['No'], label='Cleanup the chunks after the process')
+        reduce_noise = gr.Radio(['Yes'], label='If set to \'Yes\', noisereduce will try to deduce noise'
+                                               ' on the Audio file')
         to_txt = gr.Radio(['Yes'], label='If set to \'Yes\', the Transkript and Translation will additionally'
                                          ' saved into an .txt in the folder of the Audio file')
-        w_model = gr.Radio(['large', 'medium', 'small', 'base', 'tiny'], label='Change the Whisper model')
+        w_model = gr.Radio(['large-v2', 'large', 'medium', 'small', 'base', 'tiny'], label='Change the Whisper model', value='large-v2')
         custom = gr.Textbox(label='Alter the name for the Savefile here. If none is given, a default name is chosen')
         path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer', placeholder='')
 
@@ -133,7 +140,7 @@ with gr.Blocks() as analyzer_webapp:
     # Creates Button which triggers the analysis process
 
     text_button = gr.Button('Analyze', size='lg')
-    text_button.click(run_app, inputs=[path_input, w_model, custom, cleanup, path],
+    text_button.click(run_app, inputs=[path_input, w_model, custom, cleanup, path, reduce_noise],
                       outputs=[highlight, sentiment, mood, maj_tac, label_tac,maj_legal, label_legal, org,
                                file_name, file_path, model, time])
 
