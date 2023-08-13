@@ -83,7 +83,7 @@ def run_app(path_to_audio, w_model, custom, cleanup, path, reduce_noise):
     whisper_model = data['model']
     ctime = data['time_of_analysis']
 
-    return {'text': english, 'entities': ner}, data_sentiment, mood_data, major_tac, labels_tactical, major_legal, labels_legal, original, name, audio_path, whisper_model, ctime
+    return {'text': english, 'entities': ner}, data_sentiment, mood_data, labels_tactical, labels_legal, original, name, audio_path, whisper_model, ctime, data
 
 
 # Create Gradio App
@@ -100,40 +100,42 @@ with gr.Blocks() as analyzer_webapp:
 
         with gr.Tab('Analysis Data'):
             with gr.Row():
-                file_name = gr.components.Textbox(label='Name of the file')
-                file_path = gr.components.Textbox(label='Path to Audio file')
+                file_name = gr.components.Textbox(label='Name of the File')
+                file_path = gr.components.Textbox(label='Path to Audio File')
             with gr.Row():
-                model = gr.components.Textbox(label='Used Whisper-Model')
-                time = gr.components.Textbox(label='Start time of Analysis')
+                model = gr.components.Textbox(label='Whisper Model Used')
+                time = gr.components.Textbox(label='Start Time of Analysis')
             with gr.Row():
                 sentiment = gr.components.Textbox(label='Overall Sentiment')
                 mood = gr.components.Textbox(label='Mood of the Text')
             with gr.Row():
-                maj_tac = gr.components.Textbox(label='Majority tactical label')
-                maj_legal = gr.components.Textbox(label='Majority legal label')
-            with gr.Row():
-                label_tac = gr.Label(label='All tactical labels above 50%')
-                label_legal = gr.Label(label='All legal labels above 50%')
+                label_tac = gr.Label(label='All Tactical Labels')
+                label_legal = gr.Label(label='All Legal Labels')
 
             highlight = gr.HighlightedText(label='NER')
 
         with gr.Tab('Original Text'):
             org = gr.components.Textbox(label='Original Text')
 
+        with gr.Tab('Raw Data'):
+            js = gr.JSON(label="Raw JSON data")
+
     # Creates tab for advanced parameters
 
     with gr.Tab('Advanced Settings'):
         gr.Markdown("""
-        In this tab you can adjust and input the advanced settings of the app.
-        Please visit https://github.com/SeTruphe/Radio-Analyzer for further information's on the advanced settings
+        In this tab, you can adjust and input the advanced settings of the app.
+        Please visit https://github.com/SeTruphe/Radio-Analyzer for further information on the advanced settings.
         """)
-        cleanup = gr.Radio(['No'], label='Cleanup the chunks after the process')
-        reduce_noise = gr.Radio(['Yes'], label='If set to \'Yes\', noisereduce will try to deduce noise'
-                                               ' on the Audio file')
-        to_txt = gr.Radio(['Yes'], label='If set to \'Yes\', the Transkript and Translation will additionally'
-                                         ' saved into an .txt in the folder of the Audio file')
-        w_model = gr.Radio(['large-v2', 'large', 'medium', 'small', 'base', 'tiny'], label='Change the Whisper model', value='large-v2')
-        custom = gr.Textbox(label='Alter the name for the Savefile here. If none is given, a default name is chosen')
+        cleanup = gr.Radio(['No'], label='Clean up the chunks after the process?')
+        reduce_noise = gr.Radio(['Yes'],
+                                label='Noise reduce: If set to \'Yes\', noisereduce will attempt to reduce noise on the audio file.')
+        to_txt = gr.Radio(['Yes'],
+                          label='Create .txt: If set to \'Yes\', the transcript and translation will be additionally saved as a .txt file in the folder of the audio file.')
+        w_model = gr.Radio(['large-v2', 'large', 'medium', 'small', 'base', 'tiny'], label='Select the Whisper model',
+                           value='large-v2')
+        custom = gr.Textbox(
+            label='Alter the name for the save file here. If none is given, a default name will be chosen.')
         path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer', placeholder='')
 
 
@@ -141,8 +143,8 @@ with gr.Blocks() as analyzer_webapp:
 
     text_button = gr.Button('Analyze', size='lg')
     text_button.click(run_app, inputs=[path_input, w_model, custom, cleanup, path, reduce_noise],
-                      outputs=[highlight, sentiment, mood, maj_tac, label_tac,maj_legal, label_legal, org,
-                               file_name, file_path, model, time])
+                      outputs=[highlight, sentiment, mood, label_tac, label_legal, org,
+                               file_name, file_path, model, time, js])
 
 
 if __name__ == '__main__':

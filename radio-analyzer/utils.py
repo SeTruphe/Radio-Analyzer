@@ -5,7 +5,7 @@ import ntpath
 import shutil
 import noisereduce as nr
 from scipy.io import wavfile
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, MarianTokenizer, MarianMTModel
 import datetime
 
 

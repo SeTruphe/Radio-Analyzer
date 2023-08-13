@@ -57,6 +57,10 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
     if reduce_noise and clean_up:
         os.remove(working_path)
 
+    if english == "":
+        english = ("Radio Analyzer was not able to create an english text from the Audiofile."
+                   "You can try to enable noise reduction in the advanced settings.")
+
     # NER-Analysis
 
     ner_model = 'dslim/bert-base-NER'
@@ -87,7 +91,6 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
     # Majority Voting for Sentiment
 
     majority_label = Counter(aggregate_result['label']).most_common(1)[0][0]
-
     print(majority_label)
 
     # save to path
@@ -105,12 +108,12 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
 
     classes_mood = ['Aggressiv', 'Defensive', 'Concerned', 'Optimistic']
 
-    classifier_result_tactical = classifier(english, classes_tactical)
+    class_result_tactical = classifier(english, classes_tactical)
     class_results_legal = classifier(english, classes_legal)
     class_results_mood = classifier(english, classes_mood)
 
-    labels_tactical = classifier_result_tactical['labels']
-    scores_tactical = classifier_result_tactical['scores']
+    labels_tactical = class_result_tactical['labels']
+    scores_tactical = class_result_tactical['scores']
 
     labels_legal = class_results_legal['labels']
     scores_legal = class_results_legal['scores']
@@ -133,6 +136,7 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
     # This is a workaround as the model does not provide start and end positions right now
 
     offset = 0
+    end_pos = 0
     to_remove = []
 
     for entity_group in ner_results:
