@@ -11,21 +11,19 @@ import re
 
 def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.path.join('~', '.radio_analyzer'),
                    whisper_model='large-v2', to_txt=False, reduce_noise=False):
+
     """
-    :param audio_path: path to the audiofile you want to analyse
-    :param custom_name: The app creates a folder for the audio chunks as well as transcription and translation text
-            files. The folder name is generated automatically. You can alter the folder name here.
-    :param clean_up: If set to true, generated folder for the project is deleted after the analysis.
-            Set to true to safe space. Default is false.
-    :param base_path: The folders for the analysis are generated in the base path of the user.
-            You can define a different path here.
-    :param to_txt: if true, the transcript and translations will be saved into txt files in the file of the Audio file.
-    :param whisper_model: whisper_model: Size of the whisper model you want to use.
-            Available sizes are: tiny, base, small, medium, large and large-v2.
-            For references, visit: https://github.com/openai/whisper
-    :param reduce_noise: if set to true, noisereduce will try to reduce noise on the Audio file before analysis.
-            Default is false
-    :return: returns the data dict to display the results in the Webapp.
+    :param audio_path: Path to the target audio file for analysis.
+    :param custom_name: Custom name for the folder where audio chunks, transcriptions, and translations are stored.
+        If not provided, a default name is generated.
+    :param clean_up: If True, the generated project folder is deleted post-analysis. Useful for conserving space.
+        Default is False.
+    :param base_path: Root directory where analysis folders are created. Can be overridden with a custom path.
+    :param to_txt: If True, saves the transcriptions and translations as .txt files in the audio file's directory.
+    :param whisper_model: Specifies the size of the Whisper model to use. Options include: tiny, base, small, medium,
+        large, and large-v2. Refer to: https://github.com/openai/whisper for details.
+    :param reduce_noise: If True, attempts to reduce noise in the audio file prior to analysis. Default is False.
+    :return: Returns a data dictionary containing the results for display in the Webapp.
     """
 
     # Generate folder for current file

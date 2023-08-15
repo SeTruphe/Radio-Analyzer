@@ -12,8 +12,8 @@ import datetime
 def noisereduce(file):
 
     """
-    :param file: file path to audio file noisereduce should be performed on
-    :return: path to new file with reduced noise
+    :param file: Path to the audio file for noise reduction.
+    :return: Path to the processed audio file with reduced noise.
     """
 
     folder_path = os.path.dirname(file)
@@ -47,28 +47,28 @@ def noisereduce(file):
 
 def splitter(recording: AudioSegment, section_start, section_finish, section_counter, folder_path, file_format):
     """
-    :param recording: file with datatype 'AudioSegment' to split
-    :param section_start: starting point for the segment in seconds
-    :param section_finish: endpoint of the segment in seconds
-    :param section_counter: ongoing number fo the segment
-    :param folder_path: save path
-    :param file_format: the file format of the segment
+    :param recording: Audio file of type 'AudioSegment' to be split.
+    :param section_start: Start time of the segment in seconds.
+    :param section_finish: End time of the segment in seconds.
+    :param section_counter: Continuous number for the segment.
+    :param folder_path: Path where the segment will be saved.
+    :param file_format: Desired file format for the segment.
     :return: None
 
-    This function is used to create 30 sec chunks from an audio file
+    This function splits an audio file into 30-second chunks.
     """
     working_part = recording[section_start:section_finish]
     working_part.export(os.path.join(folder_path, '{:06d}'.format(section_counter) + '.mp3'), format=file_format)
 
 
-def split_audio(audio_path, safe_path, opt_folder_name=None):
+def split_audio(audio_path, save_path, opt_folder_name=None):
     """
-    :param audio_path: path to the audiofile you want to split into chunks
-    :param safe_path: path to a folder you want the chunks saved into
-    :param opt_folder_name: optional to alter the first part of the name of the Save folder. If not specified,
-                the first part will be the folder name from the audiofile, the second part will allways
-                be the name of the file.
-    :return: returns the complete folder path to the audio chunks
+    :param audio_path: Path to the audio file intended for chunking.
+    :param save_path: Directory where the audio chunks will be stored.
+    :param opt_folder_name: Optional parameter to customize the initial part of the save folder's name.
+        If left unspecified, the folder name will be derived from the audio file's directory name.
+        The latter part of the folder name will always be the name of the audio file.
+    :return: Returns the full directory path containing the audio chunks.
     """
 
     file_format = audio_path.split('.', 1)[1]
@@ -82,7 +82,7 @@ def split_audio(audio_path, safe_path, opt_folder_name=None):
     else:
         tmp = audio_path.split('\\')
         name_arg_1 = tmp[len(tmp) - 3] + '-' + tmp[len(tmp) - 2]
-    folder_path = os.path.join(safe_path, name_arg_1 + '-' + name_arg_2)
+    folder_path = os.path.join(save_path, name_arg_1 + '-' + name_arg_2)
 
     # Remove preexisting old files
 
@@ -108,14 +108,14 @@ def split_audio(audio_path, safe_path, opt_folder_name=None):
 
 def transcribe_parts(chunk_path, whisper_model='large-v2', internal_mode=False, to_txt=False):
     """
-        :param chunk_path: path to the audio chunks. Chunks cannot be longer than 30 seconds
-        :param whisper_model: Size of the whisper model you want to use.
-                Available sizes are: tiny, base, small, medium, large and large-v2.
-                For references, visit: https://github.com/openai/whisper
-        :param internal_mode: if true, explanatory and delimiting strings are not addet to the transcript/translation
-                lists for further internal usage
-        :param to_txt: if true, the transcript and translations will be saved into txt files in the chunk folder
-        :return: returns the transcribed and translated lists
+    :param chunk_path: Path to the audio chunks. Each chunk must not exceed 30 seconds in duration.
+    :param whisper_model: Specifies the size of the Whisper model to be used.
+        Available options include: tiny, base, small, medium, large, and large-v2.
+        For more details, refer to: https://github.com/openai/whisper
+    :param internal_mode: If set to true, explanatory and delimiter strings are omitted from the transcript/translation
+        lists, facilitating further internal processing.
+    :param to_txt: If true, both the transcript and translations are saved as .txt files within the chunk directory.
+    :return: Returns lists containing the transcriptions and translations.
     """
 
     # german-english-model
@@ -203,12 +203,12 @@ def transcribe_parts(chunk_path, whisper_model='large-v2', internal_mode=False, 
 
 def transcribe(file, whisper_model='large-v2', to_txt=False):
     """
-        :param file: path to the file you want to transcribe and translate.
-        :param whisper_model: Size of the whisper model you want to use.
-                Available sizes are: tiny, base, small, medium, large and large-v2.
-                For references, visit: https://github.com/openai/whisper
-        :param to_txt: if true, the transcript and translations will be saved into txt files in the chunk folder
-        :return: returns the transcribed and translated lists
+    :param file: Path to the audio file intended for transcription and translation.
+    :param whisper_model: Specifies the size of the Whisper model to be used.
+        Options include: tiny, base, small, medium, large, and large-v2.
+        For more details, refer to: https://github.com/openai/whisper
+    :param to_txt: If set to true, both the transcript and translations are saved as .txt files in the file's directory.
+    :return: Returns lists of transcriptions and translations.
     """
     file_name = os.path.splitext(file)[0]
     folder_path = os.path.dirname(file)

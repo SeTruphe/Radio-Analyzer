@@ -8,14 +8,12 @@ import ast
 def run_app(path_to_audio, w_model, custom, cleanup, path, reduce_noise):
 
     """
-    :param path_to_audio: path to the audiofile you want to analyse
-    :param custom: The app creates a folder for the audio chunks as well as transcription and translation text
-            files. The folder name is generated automatically. You can alter the folder name here.
-    :param cleanup: If set to true, generated folder for the project is deleted after the analysis.
-            Set to true to safe space. Default is false.
-    :param path: The folders for the analysis are generated in the base path of the user.
-            You can define a different path here.
-    :return: returns the data in a formate suitable for the Gradio app
+    :param path_to_audio: Path to the target audio file for analysis.
+    :param custom: Custom name for the folder where audio chunks, transcriptions, and translations are stored.
+        If not provided, a default name is generated.
+    :param cleanup: If True, the generated project folder is deleted post-analysis to conserve space. Default is False.
+    :param path: Root directory where analysis folders are created. Can be overridden with a custom path.
+    :return: Returns data formatted for display in the Gradio app.
     """
 
     # Transfer Clean up string into boolean
