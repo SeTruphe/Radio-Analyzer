@@ -6,7 +6,6 @@ import ast
 
 
 def run_app(path_to_audio, w_model, custom, cleanup, path, reduce_noise):
-
     """
     :param path_to_audio: Path to the target audio file for analysis.
     :param custom: Custom name for the folder where audio chunks, transcriptions, and translations are stored.
@@ -71,8 +70,6 @@ def run_app(path_to_audio, w_model, custom, cleanup, path, reduce_noise):
 
     labels_tactical = {lab: conf for lab, conf in data['labels_tactical']}
     labels_legal = {lab: conf for lab, conf in data['labels_legal']}
-    major_tac = data['major_tactical']['label']
-    major_legal = data['major_legal']['label']
     mood_data = data['label_mood']['label']
     english = data['english']
     original = data['original']
@@ -81,7 +78,8 @@ def run_app(path_to_audio, w_model, custom, cleanup, path, reduce_noise):
     whisper_model = data['model']
     ctime = data['time_of_analysis']
 
-    return {'text': english, 'entities': ner}, data_sentiment, mood_data, labels_tactical, labels_legal, original, name, audio_path, whisper_model, ctime, data
+    return {'text': english,
+            'entities': ner}, data_sentiment, mood_data, labels_tactical, labels_legal, original, name, audio_path, whisper_model, ctime, data
 
 
 # Create Gradio App
@@ -118,6 +116,33 @@ with gr.Blocks() as analyzer_webapp:
         with gr.Tab('Raw Data'):
             js = gr.JSON(label="Raw JSON data")
 
+        with gr.Tab('Description'):
+            gr.Markdown(
+                """
+                    # App Description
+    
+                    This app is designed to transcribe, translate, and analyze audio files containing intercepted radio communications from the Russian Armed Forces during the Ukraine War.
+    
+                    ## Output Fields Description:
+    
+                    - **Name of the File**: Name of the analyzed audio file.
+                    - **Path to Audio File**: Location of the audio file.
+                    - **Whisper Model Used**: The Whisper model used for transcription and translation.
+                    - **Start Time of Analysis**: Start time of the analysis.
+                    - **Overall Sentiment**: Sentiment derived from the translated text.
+                    - **Mood of the Text**: Mood classification of the text. Categories include: 'Aggressive',
+                        'Defensive', 'Concerned', and 'Optimistic'.
+                    - **Tactical Labels**: Text classification for potential strategic content. Categories include: 
+                        'Unclassified', 'Logistic and Supplies', 'Casualty Report', 'Reconnaissance activities', 
+                        'Troop movement', 'Military strategy discussion', and 'Plans for future operations'.
+                    - **Legal Labels**: Text classification for potential legal implications. Categories include:
+                        'Unclassified', 'Looting', 'Crimes', 'Rape', 'Violation of international law', and 'Pillage'.
+                    - **NER**: Displays the translated text and highlights all detected names, locations, organizations,
+                     and miscellaneous entities.
+                    
+                    Under the 'Original Text' tab, you can find the original transcribed text of the audio file.
+                """)
+
     # Creates tab for advanced parameters
 
     with gr.Tab('Advanced Settings'):
@@ -136,14 +161,12 @@ with gr.Blocks() as analyzer_webapp:
             label='Alter the name for the save file here. If none is given, a default name will be chosen.')
         path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer', placeholder='')
 
-
     # Creates Button which triggers the analysis process
 
     text_button = gr.Button('Analyze', size='lg')
     text_button.click(run_app, inputs=[path_input, w_model, custom, cleanup, path, reduce_noise],
                       outputs=[highlight, sentiment, mood, label_tac, label_legal, org,
                                file_name, file_path, model, time, js])
-
 
 if __name__ == '__main__':
     analyzer_webapp.launch()
