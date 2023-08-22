@@ -1,3 +1,4 @@
+import torch
 import whisper
 import os
 from pydub import AudioSegment
@@ -215,13 +216,16 @@ def transcribe(file, whisper_model='large-v2', to_txt=False):
 
     # Whisper
 
+    torch.cuda.is_available()
+    device = "cuda" if torch.cuda.is_available() else "cpu"
     whisper_model = whisper_model
-
-    model = whisper.load_model(whisper_model)
+    model = whisper.load_model(whisper_model, device=device)
 
     # Transcription + English translation
 
-    text_original = model.transcribe(file, task='transcribe')['text'].strip().encode('utf-8')
+    org_dict = model.transcribe(file, task='transcribe')
+    text_original = org_dict['text'].strip().encode('utf-8')
+    language = org_dict['language']
     text_english = model.transcribe(file, task='translate')['text']
     text_english = text_english.strip()
 
@@ -245,5 +249,5 @@ def transcribe(file, whisper_model='large-v2', to_txt=False):
             f.write(text_original)
         f.close()
 
-    return text_original.decode('utf-8'), text_english.decode('utf-8')
+    return text_original.decode('utf-8'), text_english.decode('utf-8'), language
 
