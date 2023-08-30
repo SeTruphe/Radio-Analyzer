@@ -11,3 +11,4 @@ tokenizers
 scipy
 gradio
 noisereduce
+Python 3.10

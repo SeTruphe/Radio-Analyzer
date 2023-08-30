@@ -10,14 +10,17 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, MarianTokenizer, 
 import datetime
 
 
-def noisereduce(file):
+def noisereduce(file, path=None):
 
     """
     :param file: Path to the audio file for noise reduction.
+    :param path: Path to the save folder.
     :return: Path to the processed audio file with reduced noise.
     """
-
-    folder_path = os.path.dirname(file)
+    if path:
+        folder_path = path
+    else:
+        folder_path = os.path.dirname(file)
     file_name, _ = os.path.splitext(os.path.basename(file))
     file_format = os.path.splitext(file)[1].lstrip('.')
 
@@ -202,17 +205,16 @@ def transcribe_parts(chunk_path, whisper_model='large-v2', internal_mode=False, 
     return text_original, eng_out, deu_out
 
 
-def transcribe(file, whisper_model='large-v2', to_txt=False):
+def transcribe(file, whisper_model='large-v2', to_txt=False, save_path=None):
     """
     :param file: Path to the audio file intended for transcription and translation.
     :param whisper_model: Specifies the size of the Whisper model to be used.
         Options include: tiny, base, small, medium, large, and large-v2.
         For more details, refer to: https://github.com/openai/whisper
     :param to_txt: If set to true, both the transcript and translations are saved as .txt files in the file's directory.
+    :param save_path: Path to the save folder.
     :return: Returns lists of transcriptions and translations.
     """
-    file_name = os.path.splitext(file)[0]
-    folder_path = os.path.dirname(file)
 
     # Whisper
 
@@ -235,17 +237,21 @@ def transcribe(file, whisper_model='large-v2', to_txt=False):
 
     # Get filename and folder path, create new folder for results
 
-    if os.path.exists(os.path.join(folder_path, file_name)):
-        shutil.rmtree(os.path.join(folder_path, file_name))
-    os.makedirs(os.path.join(folder_path, file_name))
+    if not save_path:
+        file_name = os.path.splitext(file)[0]
+        folder = os.path.dirname(file)
+        save_path = os.path.join(folder, file_name)
+        if os.path.exists(save_path):
+            shutil.rmtree(save_path)
+        os.makedirs(save_path)
 
     # Create output txt-files
 
     if to_txt:
-        with open(os.path.join(folder_path, file_name, 'translation_english.txt'), 'wb') as f:
+        with open(os.path.join(save_path, 'translation_english.txt'), 'wb') as f:
             f.write(text_english)
         f.close()
-        with open(os.path.join(folder_path, file_name, 'transcript_original.txt'), 'wb') as f:
+        with open(os.path.join(save_path, 'transcript_original.txt'), 'wb') as f:
             f.write(text_original)
         f.close()
 

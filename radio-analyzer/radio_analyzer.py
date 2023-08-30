@@ -35,20 +35,20 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
 
     working_path = audio_path
 
-    if reduce_noise:
-        working_path = utils.noisereduce(audio_path)
     if custom_name:
         file_name = custom_name
     else:
         file_name = file_name + '_' + str(ct).replace(':', '-').replace(' ', '-').replace('.', '-')
-
     path = os.path.expanduser(os.path.join(base_path, file_name))
-
     os.makedirs(path)
+
+    if reduce_noise:
+        working_path = utils.noisereduce(audio_path, path)
 
     # Process audio file and get transcription and translations
 
-    original, english = utils.transcribe(working_path, whisper_model=whisper_model, to_txt=to_txt)
+    original, english, language = utils.transcribe(working_path, whisper_model=whisper_model,
+                                                   to_txt=to_txt, save_path=path)
 
     # if noisereduce and clean_up, remove file after processing to reduce space
 
@@ -89,7 +89,6 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
     # Majority Voting for Sentiment
 
     majority_label = Counter(aggregate_result['label']).most_common(1)[0][0]
-    print(majority_label)
 
     # save to path
 
@@ -118,15 +117,6 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
 
     labels_mood = class_results_mood['labels']
     scores_mood = class_results_mood['scores']
-
-    for i in range(len(labels_tactical)):
-        print(f'(Label: {labels_tactical[i]}, Score: {round(scores_tactical[i] * 100, 1)}%)')
-
-    for i in range(len(labels_legal)):
-        print(f'(Label: {labels_legal[i]}, Score: {round(scores_legal[i] * 100, 1)}%)')
-
-    for i in range(len(labels_mood)):
-        print(f'(Label: {labels_mood[i]}, Score: {round(scores_mood[i] * 100, 1)}%)')
 
     pairs_tactical = list(zip(labels_tactical, scores_tactical))
     pairs_legal = list(zip(labels_legal, scores_legal))
@@ -178,7 +168,8 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
             'file_name': os.path.basename(audio_path),
             'path': audio_path,
             'model': whisper_model,
-            'time_of_analysis': str(ct)
+            'time_of_analysis': str(ct),
+            'original_language': language
             }
 
     with open(os.path.join(save_path, file_name + '.json'), 'w') as jfile:

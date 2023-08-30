@@ -3,14 +3,14 @@ import radio_analyzer
 import json
 import os
 import ast
+import webbrowser
 
 
-def run_app(path_to_audio, w_model, custom, cleanup, path, reduce_noise):
+def run_app(path_to_audio, w_model, custom, path, reduce_noise, to_txt, clean_up):
     """
     :param path_to_audio: Path to the target audio file for analysis.
     :param custom: Custom name for the folder where audio chunks, transcriptions, and translations are stored.
         If not provided, a default name is generated.
-    :param cleanup: If True, the generated project folder is deleted post-analysis to conserve space. Default is False.
     :param path: Root directory where analysis folders are created. Can be overridden with a custom path.
     :return: Returns data formatted for display in the Gradio app.
     """
@@ -30,11 +30,17 @@ def run_app(path_to_audio, w_model, custom, cleanup, path, reduce_noise):
     if custom == '':
         custom = None
 
-    if w_model == '':
-        w_model = 'large-v2'
-
-    if reduce_noise == '':
+    if reduce_noise == 'No':
         reduce_noise = None
+    else:
+        reduce_noise = True
+
+    if to_txt == 'No':
+        to_txt = False
+        clean_up = True
+    else:
+        to_txt = True
+        clean_up = False
 
     # Get file format
 
@@ -55,7 +61,8 @@ def run_app(path_to_audio, w_model, custom, cleanup, path, reduce_noise):
                                              clean_up=clean_up,
                                              custom_name=custom,
                                              base_path=path,
-                                             reduce_noise=reduce_noise
+                                             reduce_noise=reduce_noise,
+                                             to_txt=to_txt
                                              )
 
     else:
@@ -148,12 +155,16 @@ with gr.Blocks() as analyzer_webapp:
     with gr.Tab('Advanced Settings'):
         gr.Markdown("""
         In this tab, you can adjust and input the advanced settings of the app.
-        Please visit https://github.com/SeTruphe/Radio-Analyzer for further information on the advanced settings.
+        Clean Up: Enable this option to automatically delete the newly created folder in the .radio_analyzer directory for the current audio file after the analysis process is complete.<br><br>
+        Create .txt Files: Enable this option to save the transcriptions and translations as text files within the .radio_analyzer folder designated for the audio file.<br>
+        Whisper Model: Use this setting to select the Whisper model you'd like to use for analysis. The default model is large-v2.<br>
+        Save File Name: Specify a custom name for your save file. This name will also serve as the folder name within the .radio_analyzer directory.<br>
+        Adjust Base Directory: If you wish to use a different base directory for .radio_analyzer, you can specify it here.<br>
         """)
-        cleanup = gr.Radio(['No'], label='Clean up the chunks after the process?')
-        reduce_noise = gr.Radio(['Yes'],
+        cleanup = gr.Radio(['Yes', 'No'], value='No', label='Clean up the created .radio_analyzer folder for the file?')
+        reduce_noise = gr.Radio(['Yes', 'No'], value='No',
                                 label='Noise reduce: If set to \'Yes\', noisereduce will attempt to reduce noise on the audio file.')
-        to_txt = gr.Radio(['Yes'],
+        to_txt = gr.Radio(['Yes', 'No'], value='No',
                           label='Create .txt: If set to \'Yes\', the transcript and translation will be additionally saved as a .txt file in the folder of the audio file.')
         w_model = gr.Radio(['large-v2', 'large', 'medium', 'small', 'base', 'tiny'], label='Select the Whisper model',
                            value='large-v2')
@@ -164,9 +175,11 @@ with gr.Blocks() as analyzer_webapp:
     # Creates Button which triggers the analysis process
 
     text_button = gr.Button('Analyze', size='lg')
-    text_button.click(run_app, inputs=[path_input, w_model, custom, cleanup, path, reduce_noise],
+    text_button.click(run_app, inputs=[path_input, w_model, custom, path, reduce_noise, to_txt, cleanup],
                       outputs=[highlight, sentiment, mood, label_tac, label_legal, org,
                                file_name, file_path, model, time, js])
 
 if __name__ == '__main__':
+    webbrowser.open(url='http://127.0.0.1:7860', new=2, autoraise=True)
     analyzer_webapp.launch()
+
