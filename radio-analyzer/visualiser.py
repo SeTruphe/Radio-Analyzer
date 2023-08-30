@@ -1,3 +1,5 @@
+import shutil
+
 import gradio as gr
 import radio_analyzer
 import json
@@ -6,18 +8,20 @@ import ast
 import webbrowser
 
 
-def run_app(path_to_audio, w_model, custom, path, reduce_noise, to_txt, clean_up):
+def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up):
     """
-    :param path_to_audio: Path to the target audio file for analysis.
+    :param obj: _TemporaryFileWrapper-Object which is created by Gradio and hast the path to the Audiofile
     :param custom: Custom name for the folder where audio chunks, transcriptions, and translations are stored.
         If not provided, a default name is generated.
     :param path: Root directory where analysis folders are created. Can be overridden with a custom path.
     :return: Returns data formatted for display in the Gradio app.
     """
 
+    path_to_audio = obj.name
+
     # Transfer Clean up string into boolean
 
-    if cleanup == 'No':
+    if clean_up == 'No':
         clean_up = False
     else:
         clean_up = True
@@ -37,7 +41,6 @@ def run_app(path_to_audio, w_model, custom, path, reduce_noise, to_txt, clean_up
 
     if to_txt == 'No':
         to_txt = False
-        clean_up = True
     else:
         to_txt = True
         clean_up = False
@@ -51,11 +54,11 @@ def run_app(path_to_audio, w_model, custom, path, reduce_noise, to_txt, clean_up
 
     # If json, load file. If mp3, analyse file. Else return error
 
-    if file_format == "json":
+    if file_format == 'json':
         with open(path_to_audio, 'r') as jfile:
             data = json.load(jfile)
 
-    elif file_format == "mp3":
+    elif file_format == 'mp3' or file_format == '.wav':
         data = radio_analyzer.radio_analyzer(path_to_audio,
                                              whisper_model=w_model,
                                              clean_up=clean_up,
@@ -67,7 +70,7 @@ def run_app(path_to_audio, w_model, custom, path, reduce_noise, to_txt, clean_up
 
     else:
         print('Wrong file format')
-        return None
+        raise gr.Error('Wrong File format')
 
     data_sentiment = data['sentiment']
     ner = ast.literal_eval(data['ner'])
@@ -85,6 +88,10 @@ def run_app(path_to_audio, w_model, custom, path, reduce_noise, to_txt, clean_up
     whisper_model = data['model']
     ctime = data['time_of_analysis']
 
+    # Remove from Gradio created tmp-files to clear storage
+    shutil.rmtree(os.path.dirname(path_to_audio))
+    shutil.rmtree(os.path.dirname(obj.orig_name))
+
     return {'text': english,
             'entities': ner}, data_sentiment, mood_data, labels_tactical, labels_legal, original, name, audio_path, whisper_model, ctime, data
 
@@ -97,7 +104,8 @@ with gr.Blocks() as analyzer_webapp:
     # Creates tab for path input
 
     with gr.Tab('Analyze'):
-        path_input = gr.Textbox(label='Please input the local path to the Audio file you want to Analyze')
+        obj = gr.File(label='Please input the Audio file you want to Analyze or an JSON'
+                            ' file from a previously analyzed Audio file')
 
         # Creates graphic output for the results
 
@@ -175,7 +183,7 @@ with gr.Blocks() as analyzer_webapp:
     # Creates Button which triggers the analysis process
 
     text_button = gr.Button('Analyze', size='lg')
-    text_button.click(run_app, inputs=[path_input, w_model, custom, path, reduce_noise, to_txt, cleanup],
+    text_button.click(run_app, inputs=[obj, w_model, custom, path, reduce_noise, to_txt, cleanup],
                       outputs=[highlight, sentiment, mood, label_tac, label_legal, org,
                                file_name, file_path, model, time, js])
 
