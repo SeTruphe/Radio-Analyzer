@@ -61,7 +61,8 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
 
     # NER-Analysis
 
-    ner_model = 'dslim/bert-base-NER'
+    # ner_model = 'dslim/bert-base-NER'
+    ner_model = 'dslim/bert-large-NER'
     tokenizer = BertTokenizer.from_pretrained(ner_model)
     model = BertForTokenClassification.from_pretrained(ner_model)
     nlp = pipeline('ner', model=model.to('cpu'), tokenizer=tokenizer, aggregation_strategy='simple')

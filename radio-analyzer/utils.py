@@ -226,10 +226,22 @@ def transcribe(file, whisper_model='large-v2', to_txt=False, save_path=None):
     # Transcription + English translation
 
     org_dict = model.transcribe(file, task='transcribe')
-    text_original = org_dict['text'].strip().encode('utf-8')
+    text_original = org_dict['text'] #.strip().encode('utf-8')
     language = org_dict['language']
-    text_english = model.transcribe(file, task='translate')['text']
+    if language != 'ru':
+        text_english = model.transcribe(file, task='translate')['text']
+
+    else:
+        hug_model = 'Helsinki-NLP/opus-mt-ru-en'
+        tokenizer = AutoTokenizer.from_pretrained(hug_model)
+        model_helsinki = AutoModelForSeq2SeqLM.from_pretrained(hug_model)
+
+        inputs = tokenizer(text_original, return_tensors="pt", padding=True)
+        outputs = model_helsinki.generate(**inputs)
+        text_english = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
     text_english = text_english.strip()
+    text_original = text_original.strip().encode('utf-8')
 
     # Encode to UTF-8 to avoid encoding errors caused by cyrillic characters
 
