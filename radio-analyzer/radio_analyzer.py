@@ -10,7 +10,7 @@ import re
 
 
 def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.path.join('~', '.radio_analyzer'),
-                   whisper_model='large-v2', to_txt=False, reduce_noise=False):
+                   whisper_model='large-v2', to_txt=False, reduce_noise=False, translation_model = 'Whisper'):
 
     """
     :param audio_path: Path to the target audio file for analysis.
@@ -23,6 +23,7 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
     :param whisper_model: Specifies the size of the Whisper model to use. Options include: tiny, base, small, medium,
         large, and large-v2. Refer to: https://github.com/openai/whisper for details.
     :param reduce_noise: If True, attempts to reduce noise in the audio file prior to analysis. Default is False.
+    :param translation_model: Which model will be used to translate the original transcription
     :return: Returns a data dictionary containing the results for display in the Webapp.
     """
 
@@ -48,7 +49,7 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
     # Process audio file and get transcription and translations
 
     original, english, language = utils.transcribe(working_path, whisper_model=whisper_model,
-                                                   to_txt=to_txt, save_path=path)
+                                                   to_txt=to_txt, save_path=path, translation_model=translation_model)
 
     # if noisereduce and clean_up, remove file after processing to reduce space
 

@@ -205,7 +205,7 @@ def transcribe_parts(chunk_path, whisper_model='large-v2', internal_mode=False, 
     return text_original, eng_out, deu_out
 
 
-def transcribe(file, whisper_model='large-v2', to_txt=False, save_path=None):
+def transcribe(file, whisper_model='large-v2', to_txt=False, save_path=None, translation_model='whisper'):
     """
     :param file: Path to the audio file intended for transcription and translation.
     :param whisper_model: Specifies the size of the Whisper model to be used.
@@ -213,6 +213,7 @@ def transcribe(file, whisper_model='large-v2', to_txt=False, save_path=None):
         For more details, refer to: https://github.com/openai/whisper
     :param to_txt: If set to true, both the transcript and translations are saved as .txt files in the file's directory.
     :param save_path: Path to the save folder.
+    :param translation_model: Which model will be used to translate the original transcription
     :return: Returns lists of transcriptions and translations.
     """
 
@@ -228,13 +229,14 @@ def transcribe(file, whisper_model='large-v2', to_txt=False, save_path=None):
     org_dict = model.transcribe(file, task='transcribe')
     text_original = org_dict['text'] #.strip().encode('utf-8')
     language = org_dict['language']
-    if language != 'ru':
+    if translation_model == 'Whisper':
         text_english = model.transcribe(file, task='translate')['text']
 
     else:
-        hug_model = 'Helsinki-NLP/opus-mt-ru-en'
-        tokenizer = AutoTokenizer.from_pretrained(hug_model)
-        model_helsinki = AutoModelForSeq2SeqLM.from_pretrained(hug_model)
+        # hug_model = 'Helsinki-NLP/opus-mt-ru-en'
+        # hug_model = 'facebook/wmt19-ru-en'
+        tokenizer = AutoTokenizer.from_pretrained(translation_model)
+        model_helsinki = AutoModelForSeq2SeqLM.from_pretrained(translation_model)
 
         inputs = tokenizer(text_original, return_tensors="pt", padding=True)
         outputs = model_helsinki.generate(**inputs)

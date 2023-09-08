@@ -8,7 +8,7 @@ import ast
 import webbrowser
 
 
-def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up):
+def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model):
     """
     :param obj: _TemporaryFileWrapper-Object which is created by Gradio and hast the path to the Audiofile
     :param custom: Custom name for the folder where audio chunks, transcriptions, and translations are stored.
@@ -45,6 +45,13 @@ def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up):
         to_txt = True
         clean_up = False
 
+    if t_model == 'Helsinki':
+        t_model = 'Helsinki-NLP/opus-mt-ru-en'
+    elif t_model == 'Facebook':
+        t_model = 'facebook/wmt19-ru-en'
+    else:
+        t_model = 'Whisper'
+
     # Get file format
 
     path_to_audio = path_to_audio.replace('\"', '')
@@ -65,7 +72,8 @@ def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up):
                                              custom_name=custom,
                                              base_path=path,
                                              reduce_noise=reduce_noise,
-                                             to_txt=to_txt
+                                             to_txt=to_txt,
+                                             translation_model=t_model
                                              )
 
     else:
@@ -166,6 +174,7 @@ with gr.Blocks() as analyzer_webapp:
         Clean Up: Enable this option to automatically delete the newly created folder in the .radio_analyzer directory for the current audio file after the analysis process is complete.<br><br>
         Create .txt Files: Enable this option to save the transcriptions and translations as text files within the .radio_analyzer folder designated for the audio file.<br>
         Whisper Model: Use this setting to select the Whisper model you'd like to use for analysis. The default model is large-v2.<br>
+        Translation Model: Use this setting to change the model which translates the original transcript.  The default is 'Whisper'.<br>
         Save File Name: Specify a custom name for your save file. This name will also serve as the folder name within the .radio_analyzer directory.<br>
         Adjust Base Directory: If you wish to use a different base directory for .radio_analyzer, you can specify it here.<br>
         """)
@@ -176,6 +185,8 @@ with gr.Blocks() as analyzer_webapp:
                           label='Create .txt: If set to \'Yes\', the transcript and translation will be additionally saved as a .txt file in the folder of the audio file.')
         w_model = gr.Radio(['large-v2', 'large', 'medium', 'small', 'base', 'tiny'], label='Select the Whisper model',
                            value='large-v2')
+        t_model = gr.Radio(['Whisper', 'Helsinki', 'Facebook'], label='Select the translationr model',
+                           value='Whisper')
         custom = gr.Textbox(
             label='Alter the name for the save file here. If none is given, a default name will be chosen.')
         path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer', placeholder='')
@@ -183,7 +194,7 @@ with gr.Blocks() as analyzer_webapp:
     # Creates Button which triggers the analysis process
 
     text_button = gr.Button('Analyze', size='lg')
-    text_button.click(run_app, inputs=[obj, w_model, custom, path, reduce_noise, to_txt, cleanup],
+    text_button.click(run_app, inputs=[obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
                       outputs=[highlight, sentiment, mood, label_tac, label_legal, org,
                                file_name, file_path, model, time, js])
 
