@@ -35,7 +35,7 @@ def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model)
         custom = None
 
     if reduce_noise == 'No':
-        reduce_noise = None
+        reduce_noise = False
     else:
         reduce_noise = True
 
@@ -103,6 +103,25 @@ def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model)
     return {'text': english,
             'entities': ner}, data_sentiment, mood_data, labels_tactical, labels_legal, original, name, audio_path, whisper_model, ctime, data
 
+def save_conf(cleanup, reduce_noise, to_txt, w_model, t_model, path):
+    # Transfer Clean up string into boolean
+
+    if path == '':
+        path = os.path.join('~', '.radio_analyzer')
+
+    config = {
+                "cleanup": cleanup,
+                "reduce_noise": reduce_noise,
+                "to_txt": to_txt,
+                "w_model": w_model,
+                "t_model": to_txt,
+                "base_directory": path
+            }
+
+    with open(os.path.join('config.json'), 'w') as jfile:
+        json.dump(config, jfile, indent=2)
+
+    gr.Info(message='Your configuration has been saved')
 
 # Create Gradio App
 
@@ -191,6 +210,9 @@ with gr.Blocks() as analyzer_webapp:
             label='Alter the name for the save file here. If none is given, a default name will be chosen.')
         path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer', placeholder='')
 
+        config_button = gr.Button('Safe config', size='lg')
+        config_button.click(save_conf, inputs=[cleanup, reduce_noise, to_txt, w_model, t_model, path], outputs=[])
+
     # Creates Button which triggers the analysis process
 
     text_button = gr.Button('Analyze', size='lg')
@@ -200,5 +222,6 @@ with gr.Blocks() as analyzer_webapp:
 
 if __name__ == '__main__':
     webbrowser.open(url='http://127.0.0.1:7860', new=2, autoraise=True)
+    analyzer_webapp.queue()
     analyzer_webapp.launch()
 

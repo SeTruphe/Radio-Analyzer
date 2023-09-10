@@ -175,7 +175,7 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
             }
 
     with open(os.path.join(save_path, file_name + '.json'), 'w') as jfile:
-        json.dump(data, jfile)
+        json.dump(data, jfile, indent=2)
 
     if clean_up:
         shutil.rmtree(path)

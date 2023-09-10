@@ -1,8 +1,8 @@
 {
-  "cleanup": false,
-  "noisereduce": false,
-  "txt": false,
-  "wmodel": "large-v2",
-  "tmodel": "whisper",
-  "base_directory": "~/.radio_analyzer"
+  "cleanup": "No",
+  "reduce_noise": "No",
+  "to_txt": "No",
+  "w_model": "large-v2",
+  "t_model": "No",
+  "base_directory": "~\\.radio_analyzer"
 }
