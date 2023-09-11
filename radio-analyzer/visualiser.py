@@ -114,7 +114,7 @@ def save_conf(cleanup, reduce_noise, to_txt, w_model, t_model, path):
                 "reduce_noise": reduce_noise,
                 "to_txt": to_txt,
                 "w_model": w_model,
-                "t_model": to_txt,
+                "t_model": t_model,
                 "base_directory": path
             }
 
@@ -188,6 +188,8 @@ with gr.Blocks() as analyzer_webapp:
     # Creates tab for advanced parameters
 
     with gr.Tab('Advanced Settings'):
+        with open('config.json', 'r') as jfile:
+            conf = json.load(jfile)
         gr.Markdown("""
         In this tab, you can adjust and input the advanced settings of the app.
         Clean Up: Enable this option to automatically delete the newly created folder in the .radio_analyzer directory for the current audio file after the analysis process is complete.<br><br>
@@ -197,18 +199,18 @@ with gr.Blocks() as analyzer_webapp:
         Save File Name: Specify a custom name for your save file. This name will also serve as the folder name within the .radio_analyzer directory.<br>
         Adjust Base Directory: If you wish to use a different base directory for .radio_analyzer, you can specify it here.<br>
         """)
-        cleanup = gr.Radio(['Yes', 'No'], value='No', label='Clean up the created .radio_analyzer folder for the file?')
-        reduce_noise = gr.Radio(['Yes', 'No'], value='No',
+        cleanup = gr.Radio(['Yes', 'No'], value=conf['cleanup'], label='Clean up the created .radio_analyzer folder for the file?')
+        reduce_noise = gr.Radio(['Yes', 'No'], value=conf['reduce_noise'],
                                 label='Noise reduce: If set to \'Yes\', noisereduce will attempt to reduce noise on the audio file.')
-        to_txt = gr.Radio(['Yes', 'No'], value='No',
+        to_txt = gr.Radio(['Yes', 'No'], value=conf['to_txt'],
                           label='Create .txt: If set to \'Yes\', the transcript and translation will be additionally saved as a .txt file in the folder of the audio file.')
         w_model = gr.Radio(['large-v2', 'large', 'medium', 'small', 'base', 'tiny'], label='Select the Whisper model',
-                           value='large-v2')
+                           value=conf['w_model'])
         t_model = gr.Radio(['Whisper', 'Helsinki', 'Facebook'], label='Select the translationr model',
-                           value='Whisper')
+                           value=conf['t_model'])
         custom = gr.Textbox(
             label='Alter the name for the save file here. If none is given, a default name will be chosen.')
-        path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer', placeholder='')
+        path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer', placeholder=conf['base_directory'])
 
         config_button = gr.Button('Safe config', size='lg')
         config_button.click(save_conf, inputs=[cleanup, reduce_noise, to_txt, w_model, t_model, path], outputs=[])
