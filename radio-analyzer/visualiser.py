@@ -210,7 +210,9 @@ with gr.Blocks() as analyzer_webapp:
                            value=conf['t_model'])
         custom = gr.Textbox(
             label='Alter the name for the save file here. If none is given, a default name will be chosen.')
-        path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer', placeholder=conf['base_directory'])
+        path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer', value=conf['base_directory'])
+
+        # Button to save config
 
         config_button = gr.Button('Safe config', size='lg')
         config_button.click(save_conf, inputs=[cleanup, reduce_noise, to_txt, w_model, t_model, path], outputs=[])
