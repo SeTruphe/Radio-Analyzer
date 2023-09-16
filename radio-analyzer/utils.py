@@ -229,18 +229,25 @@ def transcribe(file, whisper_model='large-v2', to_txt=False, save_path=None, tra
     org_dict = model.transcribe(file, task='transcribe')
     text_original = org_dict['text'] #.strip().encode('utf-8')
     language = org_dict['language']
+    text_english = ''
+
     if translation_model == 'Whisper':
         text_english = model.transcribe(file, task='translate')['text']
 
-    else:
-        # hug_model = 'Helsinki-NLP/opus-mt-ru-en'
-        # hug_model = 'facebook/wmt19-ru-en'
+    elif translation_model != 'Whisper' or (len(text_english) == 0 and len(text_original) != 0):
+
+        if len(text_english) == 0:
+            translation_model = 'facebook/wmt19-ru-en'
+
         tokenizer = AutoTokenizer.from_pretrained(translation_model)
         model_helsinki = AutoModelForSeq2SeqLM.from_pretrained(translation_model)
 
         inputs = tokenizer(text_original, return_tensors="pt", padding=True)
         outputs = model_helsinki.generate(**inputs)
         text_english = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+    else:
+        text_english = 'Radio Analyzer was not able to translate the original script'
 
     text_english = text_english.strip()
     text_original = text_original.strip().encode('utf-8')
