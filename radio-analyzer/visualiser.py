@@ -123,6 +123,10 @@ def save_conf(cleanup, reduce_noise, to_txt, w_model, t_model, path):
 
     gr.Info(message='Your configuration has been saved')
 
+def bulk_analysis(obj_list, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model, progress=gr.Progress()):
+    progress(0, desc='Starting...')
+    #Bulk here
+
 # Create Gradio App
 
 with gr.Blocks() as analyzer_webapp:
@@ -132,7 +136,8 @@ with gr.Blocks() as analyzer_webapp:
 
     with gr.Tab('Analyze'):
         obj = gr.File(label='Please input the Audio file you want to Analyze or an JSON'
-                            ' file from a previously analyzed Audio file')
+                            ' file from a previously analyzed Audio file', file_count='single',
+                            file_types=['.mp3', '.wav'])
 
         # Creates graphic output for the results
 
@@ -223,6 +228,14 @@ with gr.Blocks() as analyzer_webapp:
     text_button.click(run_app, inputs=[obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
                       outputs=[highlight, sentiment, mood, label_tac, label_legal, org,
                                file_name, file_path, model, time, js])
+
+    with gr.Tab('Bulk Analysis'):
+        gr.Markdown("""
+                In this tab, you can choose a folder containing multiple audio files for batch analysis. <br>
+                All the audio files within the selected folder will be automatically processed.
+                """)
+        obj = gr.File(label='Select a folder', file_count='directory', file_types=['.mp3', '.wav'])
+
 
 if __name__ == '__main__':
     webbrowser.open(url='http://127.0.0.1:7860', new=2, autoraise=True)
