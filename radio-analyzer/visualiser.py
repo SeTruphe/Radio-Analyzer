@@ -59,13 +59,13 @@ def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model)
     _, file_format = os.path.splitext(path_to_audio)
     file_format = file_format[1:]
 
-    # If json, load file. If mp3, analyse file. Else return error
+    # If json, load file. If mp3,wav, analyse file. Else return error
 
     if file_format == 'json':
         with open(path_to_audio, 'r') as jfile:
             data = json.load(jfile)
 
-    elif file_format == 'mp3' or file_format == '.wav':
+    elif file_format == 'mp3' or file_format == 'wav':
         data = radio_analyzer.radio_analyzer(path_to_audio,
                                              whisper_model=w_model,
                                              clean_up=clean_up,
@@ -100,11 +100,11 @@ def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model)
     shutil.rmtree(os.path.dirname(path_to_audio))
     shutil.rmtree(os.path.dirname(obj.orig_name))
 
-    return {'text': english,
-            'entities': ner}, data_sentiment, mood_data, labels_tactical, labels_legal, original, name, audio_path, whisper_model, ctime, data
+    return ({'text': english,
+            'entities': ner}, data_sentiment, mood_data, labels_tactical, labels_legal,
+            original, name, audio_path, whisper_model, ctime, data)
 
 def save_conf(cleanup, reduce_noise, to_txt, w_model, t_model, path):
-    # Transfer Clean up string into boolean
 
     if path == '':
         path = os.path.join('~', '.radio_analyzer')
@@ -123,9 +123,67 @@ def save_conf(cleanup, reduce_noise, to_txt, w_model, t_model, path):
 
     gr.Info(message='Your configuration has been saved')
 
-def bulk_analysis(obj_list, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model, progress=gr.Progress()):
-    progress(0, desc='Starting...')
-    #Bulk here
+
+def bulk_analysis(obj_list, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model,
+                  progress=gr.Progress(track_tqdm=True)):
+
+    warnings = ''
+
+    if clean_up == 'No':
+        clean_up = False
+    else:
+        clean_up = True
+
+    # Clean empty inputs
+
+    if path == '':
+        path = os.path.join('~', '.radio_analyzer')
+
+    if custom == '':
+        custom = None
+
+    if reduce_noise == 'No':
+        reduce_noise = False
+    else:
+        reduce_noise = True
+
+    if to_txt == 'No':
+        to_txt = False
+    else:
+        to_txt = True
+        clean_up = False
+
+    if t_model == 'Helsinki':
+        t_model = 'Helsinki-NLP/opus-mt-ru-en'
+    elif t_model == 'Facebook':
+        t_model = 'facebook/wmt19-ru-en'
+    else:
+        t_model = 'Whisper'
+
+    for obj in progress.tqdm(obj_list):
+        progress(0, desc='Starting...')
+        path_to_audio = obj.name
+
+        # Get file format
+
+        path_to_audio = path_to_audio.replace('\"', '')
+
+        _, file_format = os.path.splitext(path_to_audio)
+        file_format = file_format[1:]
+
+        if file_format == 'mp3' or file_format == 'wav':
+            try:
+                radio_analyzer.radio_analyzer(path_to_audio, whisper_model=w_model, clean_up=clean_up,
+                                              custom_name=custom, base_path=path, reduce_noise=reduce_noise,
+                                              to_txt=to_txt, translation_model=t_model)
+                shutil.rmtree(os.path.dirname(path_to_audio))
+                shutil.rmtree(os.path.dirname(obj.orig_name))
+            except:
+                error = f'An Error occurred with file {file_format}!'
+                warnings += error + '\n'
+                gr.Warning(error)
+
+    return 'Done! \n Warnings: ' + warnings
 
 # Create Gradio App
 
@@ -168,7 +226,8 @@ with gr.Blocks() as analyzer_webapp:
                 """
                     # App Description
     
-                    This app is designed to transcribe, translate, and analyze audio files containing intercepted radio communications from the Russian Armed Forces during the Ukraine War.
+                    This app is designed to transcribe, translate, and analyze audio files containing intercepted
+                     radio communications from the Russian Armed Forces during the Ukraine War.
     
                     ## Output Fields Description:
     
@@ -189,6 +248,21 @@ with gr.Blocks() as analyzer_webapp:
                     
                     Under the 'Original Text' tab, you can find the original transcribed text of the audio file.
                 """)
+        text_button = gr.Button('Analyze', size='lg')
+
+    # Create tab for Bulk Analysis
+
+    with gr.Tab('Bulk Analysis'):
+        gr.Markdown("""
+                    In this tab, you can choose a folder containing multiple audio files for batch analysis. <br>
+                    All the audio files within the selected folder will be automatically processed.
+                    Please note: The folder you select will be displayed as empty! After selecting the folder, all
+                    contents will be uploaded regardless.
+                    """)
+        folder_list = gr.File(label='Select a folder', file_count='directory')
+        progress = gr.Textbox(label='Progress')
+        #warnings = gr.Textbox(label='Warnings')
+        bulk_button = gr.Button('Bulk Analyze', size='lg')
 
     # Creates tab for advanced parameters
 
@@ -197,45 +271,49 @@ with gr.Blocks() as analyzer_webapp:
             conf = json.load(jfile)
         gr.Markdown("""
         In this tab, you can adjust and input the advanced settings of the app.
-        Clean Up: Enable this option to automatically delete the newly created folder in the .radio_analyzer directory for the current audio file after the analysis process is complete.<br><br>
-        Create .txt Files: Enable this option to save the transcriptions and translations as text files within the .radio_analyzer folder designated for the audio file.<br>
-        Whisper Model: Use this setting to select the Whisper model you'd like to use for analysis. The default model is large-v2.<br>
-        Translation Model: Use this setting to change the model which translates the original transcript.  The default is 'Whisper'.<br>
-        Save File Name: Specify a custom name for your save file. This name will also serve as the folder name within the .radio_analyzer directory.<br>
-        Adjust Base Directory: If you wish to use a different base directory for .radio_analyzer, you can specify it here.<br>
+        Clean Up: Enable this option to automatically delete the newly created folder in the .radio_analyzer directory
+         for the current audio file after the analysis process is complete.<br><br>
+        Create .txt Files: Enable this option to save the transcriptions and translations as text files within the
+         .radio_analyzer folder designated for the audio file.<br>
+        Whisper Model: Use this setting to select the Whisper model you'd like to use for analysis.
+         The default model is large-v2.<br>
+        Translation Model: Use this setting to change the model which translates the original transcript.
+          The default is 'Whisper'.<br>
+        Save File Name: Specify a custom name for your save file. This name will also serve as the folder
+         name within the .radio_analyzer directory.<br>
+        Adjust Base Directory: If you wish to use a different base directory for .radio_analyzer,
+         you can specify it here.<br>
         """)
-        cleanup = gr.Radio(['Yes', 'No'], value=conf['cleanup'], label='Clean up the created .radio_analyzer folder for the file?')
+        cleanup = gr.Radio(['Yes', 'No'], value=conf['cleanup'],
+                           label='Clean up the created .radio_analyzer folder for the file?')
         reduce_noise = gr.Radio(['Yes', 'No'], value=conf['reduce_noise'],
-                                label='Noise reduce: If set to \'Yes\', noisereduce will attempt to reduce noise on the audio file.')
+                                label='Noise reduce: If set to \'Yes\','
+                                      ' noisereduce will attempt to reduce noise on the audio file.')
         to_txt = gr.Radio(['Yes', 'No'], value=conf['to_txt'],
-                          label='Create .txt: If set to \'Yes\', the transcript and translation will be additionally saved as a .txt file in the folder of the audio file.')
-        w_model = gr.Radio(['large-v2', 'large', 'medium', 'small', 'base', 'tiny'], label='Select the Whisper model',
-                           value=conf['w_model'])
+                          label='Create .txt: If set to \'Yes\', the transcript and translation will be'
+                                ' additionally saved as a .txt file in the folder of the audio file.')
+        w_model = gr.Radio(['large-v2', 'large', 'medium', 'small', 'base', 'tiny'],
+                           label='Select the Whisper model', value=conf['w_model'])
         t_model = gr.Radio(['Whisper', 'Helsinki', 'Facebook'], label='Select the translationr model',
                            value=conf['t_model'])
         custom = gr.Textbox(
             label='Alter the name for the save file here. If none is given, a default name will be chosen.')
-        path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer', value=conf['base_directory'])
+        path = gr.Textbox(label='Adjust your base directory here. Default is: ~/.radio_analyzer',
+                          value=conf['base_directory'])
 
         # Button to save config
 
         config_button = gr.Button('Safe config', size='lg')
         config_button.click(save_conf, inputs=[cleanup, reduce_noise, to_txt, w_model, t_model, path], outputs=[])
 
-    # Creates Button which triggers the analysis process
+    # Give Analyse Buttons functionality
 
-    text_button = gr.Button('Analyze', size='lg')
     text_button.click(run_app, inputs=[obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
-                      outputs=[highlight, sentiment, mood, label_tac, label_legal, org,
-                               file_name, file_path, model, time, js])
+                      outputs=[highlight, sentiment, mood, label_tac, label_legal, org, file_name,
+                               file_path, model, time, js])
 
-    with gr.Tab('Bulk Analysis'):
-        gr.Markdown("""
-                In this tab, you can choose a folder containing multiple audio files for batch analysis. <br>
-                All the audio files within the selected folder will be automatically processed.
-                """)
-        obj = gr.File(label='Select a folder', file_count='directory', file_types=['.mp3', '.wav'])
-
+    bulk_button.click(bulk_analysis, inputs=[folder_list, w_model, custom, path, reduce_noise, to_txt, cleanup,
+                                             t_model], outputs=[progress])
 
 if __name__ == '__main__':
     webbrowser.open(url='http://127.0.0.1:7860', new=2, autoraise=True)
