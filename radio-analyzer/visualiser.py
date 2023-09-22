@@ -1,5 +1,4 @@
 import shutil
-
 import gradio as gr
 import radio_analyzer
 import json
@@ -8,16 +7,7 @@ import ast
 import webbrowser
 
 
-def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model):
-    """
-    :param obj: _TemporaryFileWrapper-Object which is created by Gradio and hast the path to the Audiofile
-    :param custom: Custom name for the folder where audio chunks, transcriptions, and translations are stored.
-        If not provided, a default name is generated.
-    :param path: Root directory where analysis folders are created. Can be overridden with a custom path.
-    :return: Returns data formatted for display in the Gradio app.
-    """
-
-    path_to_audio = obj.name
+def parse_inputs(clean_up, path, custom, reduce_noise, to_txt, t_model):
 
     # Transfer Clean up string into boolean
 
@@ -51,6 +41,25 @@ def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model)
         t_model = 'facebook/wmt19-ru-en'
     else:
         t_model = 'Whisper'
+
+    return clean_up, path, custom, reduce_noise, to_txt, t_model
+
+
+def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model):
+    """
+    :param obj: _TemporaryFileWrapper-Object which is created by Gradio and hast the path to the Audiofile
+    :param custom: Custom name for the folder where audio chunks, transcriptions, and translations are stored.
+        If not provided, a default name is generated.
+    :param path: Root directory where analysis folders are created. Can be overridden with a custom path.
+    :return: Returns data formatted for display in the Gradio app.
+    """
+    if not isinstance(obj, str):
+        path_to_audio = obj.name
+    else:
+        path_to_audio = os.path.expanduser(os.path.join(path, 'analysis_data', obj))
+
+    clean_up, path, custom, reduce_noise, to_txt, t_model = parse_inputs(clean_up, path, custom,
+                                                                         reduce_noise, to_txt, t_model)
 
     # Get file format
 
@@ -97,8 +106,9 @@ def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model)
     ctime = data['time_of_analysis']
 
     # Remove from Gradio created tmp-files to clear storage
-    shutil.rmtree(os.path.dirname(path_to_audio))
-    shutil.rmtree(os.path.dirname(obj.orig_name))
+    if not isinstance(obj, str):
+        shutil.rmtree(os.path.dirname(path_to_audio))
+        shutil.rmtree(os.path.dirname(obj.orig_name))
 
     return ({'text': english,
             'entities': ner}, data_sentiment, mood_data, labels_tactical, labels_legal,
@@ -118,7 +128,7 @@ def save_conf(cleanup, reduce_noise, to_txt, w_model, t_model, path):
                 "base_directory": path
             }
 
-    with open(os.path.join('config.json'), 'w') as jfile:
+    with open('config.json', 'w') as jfile:
         json.dump(config, jfile, indent=2)
 
     gr.Info(message='Your configuration has been saved')
@@ -129,36 +139,8 @@ def bulk_analysis(obj_list, w_model, custom, path, reduce_noise, to_txt, clean_u
 
     warnings = ''
 
-    if clean_up == 'No':
-        clean_up = False
-    else:
-        clean_up = True
-
-    # Clean empty inputs
-
-    if path == '':
-        path = os.path.join('~', '.radio_analyzer')
-
-    if custom == '':
-        custom = None
-
-    if reduce_noise == 'No':
-        reduce_noise = False
-    else:
-        reduce_noise = True
-
-    if to_txt == 'No':
-        to_txt = False
-    else:
-        to_txt = True
-        clean_up = False
-
-    if t_model == 'Helsinki':
-        t_model = 'Helsinki-NLP/opus-mt-ru-en'
-    elif t_model == 'Facebook':
-        t_model = 'facebook/wmt19-ru-en'
-    else:
-        t_model = 'Whisper'
+    clean_up, path, custom, reduce_noise, to_txt, t_model = parse_inputs(clean_up, path, custom,
+                                                                         reduce_noise, to_txt, t_model)
 
     for obj in progress.tqdm(obj_list):
         progress(0, desc='Starting...')
@@ -185,6 +167,15 @@ def bulk_analysis(obj_list, w_model, custom, path, reduce_noise, to_txt, clean_u
 
     return 'Done! \n Warnings: ' + warnings
 
+
+def get_json_list():
+    with open('config.json', 'r') as jfile:
+        config = json.load(jfile)
+    json_path = os.path.expanduser(os.path.join(config['base_directory'], 'analysis_data'))
+    file_list = [file for file in os.listdir(json_path) if os.path.isfile(os.path.join(json_path, file))]
+    return gr.Dropdown.update(choices=file_list)
+
+
 # Create Gradio App
 
 with gr.Blocks() as analyzer_webapp:
@@ -193,27 +184,51 @@ with gr.Blocks() as analyzer_webapp:
     # Creates tab for path input
 
     with gr.Tab('Analyze'):
-        obj = gr.File(label='Please input the Audio file you want to Analyze or an JSON'
-                            ' file from a previously analyzed Audio file', file_count='single',
-                            file_types=['.mp3', '.wav'])
 
         # Creates graphic output for the results
 
         with gr.Tab('Analysis Data'):
-            with gr.Row():
-                file_name = gr.components.Textbox(label='Name of the File')
-                file_path = gr.components.Textbox(label='Path to Audio File')
-            with gr.Row():
-                model = gr.components.Textbox(label='Whisper Model Used')
-                time = gr.components.Textbox(label='Start Time of Analysis')
-            with gr.Row():
-                sentiment = gr.components.Textbox(label='Overall Sentiment')
-                mood = gr.components.Textbox(label='Mood of the Text')
-            with gr.Row():
-                label_tac = gr.Label(label='All Tactical Labels')
-                label_legal = gr.Label(label='All Legal Labels')
+            with gr.Tab('File selector'):
+                obj = gr.File(label='Please input the Audio file you want to Analyze or an JSON'
+                                    ' file from a previously analyzed Audio file', file_count='single',
+                              file_types=['.mp3', '.wav'])
+                with gr.Row():
+                    file_name = gr.components.Textbox(label='Name of the File')
+                    file_path = gr.components.Textbox(label='Path to Audio File')
+                with gr.Row():
+                    model = gr.components.Textbox(label='Whisper Model Used')
+                    time = gr.components.Textbox(label='Start Time of Analysis')
+                with gr.Row():
+                    sentiment = gr.components.Textbox(label='Overall Sentiment')
+                    mood = gr.components.Textbox(label='Mood of the Text')
+                with gr.Row():
+                    label_tac = gr.Label(label='All Tactical Labels')
+                    label_legal = gr.Label(label='All Legal Labels')
 
-            highlight = gr.HighlightedText(label='NER')
+                highlight = gr.HighlightedText(label='NER')
+
+                file_selector_button = gr.Button('Analyze', size='lg')
+
+            with gr.Tab('Choose JSON'):
+                json_obj = gr.Dropdown(choices=['Refresh'], label='Select previous analyse result')
+                btnrefresh = gr.Button(value='Refresh dropdown')
+                btnrefresh.click(get_json_list, outputs=json_obj)
+                with gr.Row():
+                    file_name_j = gr.components.Textbox(label='Name of the File')
+                    file_path_j = gr.components.Textbox(label='Path to Audio File')
+                with gr.Row():
+                    model_j = gr.components.Textbox(label='Whisper Model Used')
+                    time_j = gr.components.Textbox(label='Start Time of Analysis')
+                with gr.Row():
+                    sentiment_j = gr.components.Textbox(label='Overall Sentiment')
+                    mood_j = gr.components.Textbox(label='Mood of the Text')
+                with gr.Row():
+                    label_tac_j = gr.Label(label='All Tactical Labels')
+                    label_legal_j = gr.Label(label='All Legal Labels')
+
+                highlight_j = gr.HighlightedText(label='NER')
+
+                json_button = gr.Button('Load JSON', size='lg')
 
         with gr.Tab('Original Text'):
             org = gr.components.Textbox(label='Original Text')
@@ -248,7 +263,6 @@ with gr.Blocks() as analyzer_webapp:
                     
                     Under the 'Original Text' tab, you can find the original transcribed text of the audio file.
                 """)
-        text_button = gr.Button('Analyze', size='lg')
 
     # Create tab for Bulk Analysis
 
@@ -261,7 +275,6 @@ with gr.Blocks() as analyzer_webapp:
                     """)
         folder_list = gr.File(label='Select a folder', file_count='directory')
         progress = gr.Textbox(label='Progress')
-        #warnings = gr.Textbox(label='Warnings')
         bulk_button = gr.Button('Bulk Analyze', size='lg')
 
     # Creates tab for advanced parameters
@@ -308,9 +321,13 @@ with gr.Blocks() as analyzer_webapp:
 
     # Give Analyse Buttons functionality
 
-    text_button.click(run_app, inputs=[obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
-                      outputs=[highlight, sentiment, mood, label_tac, label_legal, org, file_name,
+    file_selector_button.click(run_app, inputs=[obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
+                               outputs=[highlight, sentiment, mood, label_tac, label_legal, org, file_name,
                                file_path, model, time, js])
+
+    json_button.click(run_app, inputs=[json_obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
+                               outputs=[highlight_j, sentiment_j, mood_j, label_tac_j, label_legal_j, org, file_name_j,
+                                        file_path_j, model_j, time_j, js])
 
     bulk_button.click(bulk_analysis, inputs=[folder_list, w_model, custom, path, reduce_noise, to_txt, cleanup,
                                              t_model], outputs=[progress])
