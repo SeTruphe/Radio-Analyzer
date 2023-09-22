@@ -12,3 +12,5 @@ scipy
 gradio
 noisereduce
 Python 3.10
+geopy
+plotly

@@ -5,6 +5,8 @@ import json
 import os
 import ast
 import webbrowser
+from geopy.geocoders import Nominatim
+import plotly.graph_objects as go
 
 
 def parse_inputs(clean_up, path, custom, reduce_noise, to_txt, t_model):
@@ -45,7 +47,7 @@ def parse_inputs(clean_up, path, custom, reduce_noise, to_txt, t_model):
     return clean_up, path, custom, reduce_noise, to_txt, t_model
 
 
-def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model):
+def run_and_display(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model):
     """
     :param obj: _TemporaryFileWrapper-Object which is created by Gradio and hast the path to the Audiofile
     :param custom: Custom name for the folder where audio chunks, transcriptions, and translations are stored.
@@ -110,9 +112,12 @@ def run_app(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model)
         shutil.rmtree(os.path.dirname(path_to_audio))
         shutil.rmtree(os.path.dirname(obj.orig_name))
 
+    locs = [x for x in ner if x.get('entity') == 'LOC']
+
+
     return ({'text': english,
             'entities': ner}, data_sentiment, mood_data, labels_tactical, labels_legal,
-            original, name, audio_path, whisper_model, ctime, data)
+            original, name, audio_path, whisper_model, ctime, data, create_map(locs))
 
 def save_conf(cleanup, reduce_noise, to_txt, w_model, t_model, path):
 
@@ -176,6 +181,45 @@ def get_json_list():
     return gr.Dropdown.update(choices=file_list)
 
 
+def create_map(loc_entries):
+
+    if loc_entries:
+        geoloc = Nominatim(user_agent='geoapi')
+        locs = []
+        lat = []
+        long = []
+        for entry in loc_entries:
+            tmp = entry['word']
+            location = geoloc.geocode(tmp)
+            locs.append(tmp)
+            lat.append(location.latitude)
+            long.append(location.longitude)
+
+        fig = go.Figure(go.Scattermapbox(
+            customdata=locs,
+            lat=lat,
+            lon=long,
+            mode='markers',
+            marker=go.scattermapbox.Marker(size=10),
+            hoverinfo='text',
+            text=locs
+        ))
+
+        fig.update_layout(
+            mapbox_style='open-street-map',
+            hovermode='closest',
+            mapbox=dict(
+                bearing=0,
+                center=go.layout.mapbox.Center(lat=(sum(lat)/len(lat)),  lon=(sum(long)/len(long))),
+                pitch=0,
+                zoom=5
+            )
+        )
+        return fig
+    else:
+        return None
+
+
 # Create Gradio App
 
 with gr.Blocks() as analyzer_webapp:
@@ -192,6 +236,7 @@ with gr.Blocks() as analyzer_webapp:
                 obj = gr.File(label='Please input the Audio file you want to Analyze or an JSON'
                                     ' file from a previously analyzed Audio file', file_count='single',
                               file_types=['.mp3', '.wav'])
+                file_selector_button = gr.Button('Analyze', size='lg')
                 with gr.Row():
                     file_name = gr.components.Textbox(label='Name of the File')
                     file_path = gr.components.Textbox(label='Path to Audio File')
@@ -207,12 +252,16 @@ with gr.Blocks() as analyzer_webapp:
 
                 highlight = gr.HighlightedText(label='NER')
 
-                file_selector_button = gr.Button('Analyze', size='lg')
+                loc_map = gr.Plot()
 
             with gr.Tab('Choose JSON'):
-                json_obj = gr.Dropdown(choices=['Refresh'], label='Select previous analyse result')
-                btnrefresh = gr.Button(value='Refresh dropdown')
-                btnrefresh.click(get_json_list, outputs=json_obj)
+                with gr.Row():
+                    json_obj = gr.Dropdown(choices=['Refresh'], label='Select previous analyse result', scale=3)
+                    btnrefresh = gr.Button(value='Refresh dropdown', scale=0)
+                    btnrefresh.click(get_json_list, outputs=json_obj)
+
+                json_button = gr.Button('Load JSON', size='lg')
+
                 with gr.Row():
                     file_name_j = gr.components.Textbox(label='Name of the File')
                     file_path_j = gr.components.Textbox(label='Path to Audio File')
@@ -228,41 +277,14 @@ with gr.Blocks() as analyzer_webapp:
 
                 highlight_j = gr.HighlightedText(label='NER')
 
-                json_button = gr.Button('Load JSON', size='lg')
+                loc_map_j = gr.Plot()
 
         with gr.Tab('Original Text'):
-            org = gr.components.Textbox(label='Original Text')
+            org = gr.components.Textbox(label='Original Text', lines=10)
 
         with gr.Tab('Raw Data'):
             js = gr.JSON(label="Raw JSON data")
 
-        with gr.Tab('Description'):
-            gr.Markdown(
-                """
-                    # App Description
-    
-                    This app is designed to transcribe, translate, and analyze audio files containing intercepted
-                     radio communications from the Russian Armed Forces during the Ukraine War.
-    
-                    ## Output Fields Description:
-    
-                    - **Name of the File**: Name of the analyzed audio file.
-                    - **Path to Audio File**: Location of the audio file.
-                    - **Whisper Model Used**: The Whisper model used for transcription and translation.
-                    - **Start Time of Analysis**: Start time of the analysis.
-                    - **Overall Sentiment**: Sentiment derived from the translated text.
-                    - **Mood of the Text**: Mood classification of the text. Categories include: 'Aggressive',
-                        'Defensive', 'Concerned', and 'Optimistic'.
-                    - **Tactical Labels**: Text classification for potential strategic content. Categories include: 
-                        'Unclassified', 'Logistic and Supplies', 'Casualty Report', 'Reconnaissance activities', 
-                        'Troop movement', 'Military strategy discussion', and 'Plans for future operations'.
-                    - **Legal Labels**: Text classification for potential legal implications. Categories include:
-                        'Unclassified', 'Looting', 'Crimes', 'Rape', 'Violation of international law', and 'Pillage'.
-                    - **NER**: Displays the translated text and highlights all detected names, locations, organizations,
-                     and miscellaneous entities.
-                    
-                    Under the 'Original Text' tab, you can find the original transcribed text of the audio file.
-                """)
 
     # Create tab for Bulk Analysis
 
@@ -319,15 +341,43 @@ with gr.Blocks() as analyzer_webapp:
         config_button = gr.Button('Safe config', size='lg')
         config_button.click(save_conf, inputs=[cleanup, reduce_noise, to_txt, w_model, t_model, path], outputs=[])
 
+    with gr.Tab('Description'):
+        gr.Markdown(
+            """
+                # App Description
+
+                This app is designed to transcribe, translate, and analyze audio files containing intercepted
+                 radio communications from the Russian Armed Forces during the Ukraine War.
+
+                ## Output Fields Description:
+
+                - **Name of the File**: Name of the analyzed audio file.
+                - **Path to Audio File**: Location of the audio file.
+                - **Whisper Model Used**: The Whisper model used for transcription and translation.
+                - **Start Time of Analysis**: Start time of the analysis.
+                - **Overall Sentiment**: Sentiment derived from the translated text.
+                - **Mood of the Text**: Mood classification of the text. Categories include: 'Aggressive',
+                    'Defensive', 'Concerned', and 'Optimistic'.
+                - **Tactical Labels**: Text classification for potential strategic content. Categories include: 
+                    'Unclassified', 'Logistic and Supplies', 'Casualty Report', 'Reconnaissance activities', 
+                    'Troop movement', 'Military strategy discussion', and 'Plans for future operations'.
+                - **Legal Labels**: Text classification for potential legal implications. Categories include:
+                    'Unclassified', 'Looting', 'Crimes', 'Rape', 'Violation of international law', and 'Pillage'.
+                - **NER**: Displays the translated text and highlights all detected names, locations, organizations,
+                 and miscellaneous entities.
+
+                Under the 'Original Text' tab, you can find the original transcribed text of the audio file.
+            """)
+
     # Give Analyse Buttons functionality
 
-    file_selector_button.click(run_app, inputs=[obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
+    file_selector_button.click(run_and_display, inputs=[obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
                                outputs=[highlight, sentiment, mood, label_tac, label_legal, org, file_name,
-                               file_path, model, time, js])
+                               file_path, model, time, js, loc_map])
 
-    json_button.click(run_app, inputs=[json_obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
-                               outputs=[highlight_j, sentiment_j, mood_j, label_tac_j, label_legal_j, org, file_name_j,
-                                        file_path_j, model_j, time_j, js])
+    json_button.click(run_and_display, inputs=[json_obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
+                      outputs=[highlight_j, sentiment_j, mood_j, label_tac_j, label_legal_j, org, file_name_j,
+                               file_path_j, model_j, time_j, js, loc_map_j])
 
     bulk_button.click(bulk_analysis, inputs=[folder_list, w_model, custom, path, reduce_noise, to_txt, cleanup,
                                              t_model], outputs=[progress])
