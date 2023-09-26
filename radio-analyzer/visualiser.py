@@ -229,64 +229,49 @@ with gr.Blocks() as analyzer_webapp:
 
     with gr.Tab('Analyze'):
 
-        # Creates graphic output for the results
+        # Tabs for Input
 
-        with gr.Tab('Analysis Data'):
-            with gr.Tab('File selector'):
-                obj = gr.File(label='Please input the Audio file you want to Analyze or an JSON'
-                                    ' file from a previously analyzed Audio file', file_count='single',
+        with gr.Blocks():
+            with gr.Tab('File Selector'):
+                obj = gr.File(label='Please input the Audio file you want to Analyze', file_count='single',
                               file_types=['.mp3', '.wav'])
                 file_selector_button = gr.Button('Analyze', size='lg')
-                with gr.Row():
-                    file_name = gr.components.Textbox(label='Name of the File')
-                    file_path = gr.components.Textbox(label='Path to Audio File')
-                with gr.Row():
-                    model = gr.components.Textbox(label='Whisper Model Used')
-                    time = gr.components.Textbox(label='Start Time of Analysis')
-                with gr.Row():
-                    sentiment = gr.components.Textbox(label='Overall Sentiment')
-                    mood = gr.components.Textbox(label='Mood of the Text')
-                with gr.Row():
-                    label_tac = gr.Label(label='All Tactical Labels')
-                    label_legal = gr.Label(label='All Legal Labels')
 
-                highlight = gr.HighlightedText(label='NER')
-
-                loc_map = gr.Plot()
-
-            with gr.Tab('Choose JSON'):
+            with gr.Tab('JSON Selector'):
                 with gr.Row():
                     json_obj = gr.Dropdown(choices=['Refresh'], label='Select previous analyse result', scale=3)
-                    btnrefresh = gr.Button(value='Refresh dropdown', scale=0)
-                    btnrefresh.click(get_json_list, outputs=json_obj)
-
+                    refresh_button = gr.Button(value='Refresh Dropdown', scale=0)
+                    refresh_button.click(get_json_list, outputs=json_obj)
                 json_button = gr.Button('Load JSON', size='lg')
 
-                with gr.Row():
-                    file_name_j = gr.components.Textbox(label='Name of the File')
-                    file_path_j = gr.components.Textbox(label='Path to Audio File')
-                with gr.Row():
-                    model_j = gr.components.Textbox(label='Whisper Model Used')
-                    time_j = gr.components.Textbox(label='Start Time of Analysis')
-                with gr.Row():
-                    sentiment_j = gr.components.Textbox(label='Overall Sentiment')
-                    mood_j = gr.components.Textbox(label='Mood of the Text')
-                with gr.Row():
-                    label_tac_j = gr.Label(label='All Tactical Labels')
-                    label_legal_j = gr.Label(label='All Legal Labels')
+        # Tabs for Output
 
-                highlight_j = gr.HighlightedText(label='NER')
+        with gr.Blocks():
+            with gr.Tab('Analysis Data'):
+                    with gr.Row():
+                        file_name = gr.components.Textbox(label='Name of the File')
+                        file_path = gr.components.Textbox(label='Path to Audio File')
+                    with gr.Row():
+                        model = gr.components.Textbox(label='Whisper Model Used')
+                        time = gr.components.Textbox(label='Start Time of Analysis')
+                    with gr.Row():
+                        sentiment = gr.components.Textbox(label='Overall Sentiment')
+                        mood = gr.components.Textbox(label='Mood of the Text')
+                    with gr.Row():
+                        label_tac = gr.Label(label='All Tactical Labels')
+                        label_legal = gr.Label(label='All Legal Labels')
 
-                loc_map_j = gr.Plot()
+                    highlight = gr.HighlightedText(label='NER')
 
-        with gr.Tab('Original Text'):
-            org = gr.components.Textbox(label='Original Text', lines=10)
+                    loc_map = gr.Plot()
 
-        with gr.Tab('Raw Data'):
-            js = gr.JSON(label="Raw JSON data")
+            with gr.Tab('Original Text'):
+                org = gr.components.Textbox(label='Original Text', lines=10)
 
+            with gr.Tab('Raw Data'):
+                js = gr.JSON(label="Raw JSON data")
 
-    # Create tab for Bulk Analysis
+    # Tab for Bulk Analysis
 
     with gr.Tab('Bulk Analysis'):
         gr.Markdown("""
@@ -299,7 +284,7 @@ with gr.Blocks() as analyzer_webapp:
         progress = gr.Textbox(label='Progress')
         bulk_button = gr.Button('Bulk Analyze', size='lg')
 
-    # Creates tab for advanced parameters
+    # Tab for advanced parameters
 
     with gr.Tab('Advanced Settings'):
         with open('config.json', 'r') as jfile:
@@ -341,6 +326,8 @@ with gr.Blocks() as analyzer_webapp:
         config_button = gr.Button('Safe config', size='lg')
         config_button.click(save_conf, inputs=[cleanup, reduce_noise, to_txt, w_model, t_model, path], outputs=[])
 
+    # Tab for Description
+
     with gr.Tab('Description'):
         gr.Markdown(
             """
@@ -348,6 +335,15 @@ with gr.Blocks() as analyzer_webapp:
 
                 This app is designed to transcribe, translate, and analyze audio files containing intercepted
                  radio communications from the Russian Armed Forces during the Ukraine War.
+                
+                ## Input Description:
+                
+                You have the option to select an audio file using the File Selector or simply by dragging and dropping
+                the file into the Input field. If you wish to reload a previous analysis result, please load the
+                corresponding JSON file via the 'JSON Selector' tab. Should there be a new result, for instance,
+                from utilizing the 'Bulk Analysis' feature, it is necessary to refresh the dropdown using the
+                'Refresh Dropdown' button to view the most recent results.
+                
 
                 ## Output Fields Description:
 
@@ -369,15 +365,15 @@ with gr.Blocks() as analyzer_webapp:
                 Under the 'Original Text' tab, you can find the original transcribed text of the audio file.
             """)
 
-    # Give Analyse Buttons functionality
+    # Button functionality
 
     file_selector_button.click(run_and_display, inputs=[obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
                                outputs=[highlight, sentiment, mood, label_tac, label_legal, org, file_name,
                                file_path, model, time, js, loc_map])
 
     json_button.click(run_and_display, inputs=[json_obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
-                      outputs=[highlight_j, sentiment_j, mood_j, label_tac_j, label_legal_j, org, file_name_j,
-                               file_path_j, model_j, time_j, js, loc_map_j])
+                      outputs=[highlight, sentiment, mood, label_tac, label_legal, org, file_name,
+                               file_path, model, time, js, loc_map])
 
     bulk_button.click(bulk_analysis, inputs=[folder_list, w_model, custom, path, reduce_noise, to_txt, cleanup,
                                              t_model], outputs=[progress])
