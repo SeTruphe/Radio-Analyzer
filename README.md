@@ -17,3 +17,5 @@ Key Features:
 <div align="center">
 <img src="data/media/overview.png" alt="Alt Text" width="8500"/>
 </div>
+
+**Installation Guide**
