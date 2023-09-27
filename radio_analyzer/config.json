@@ -3,6 +3,6 @@
   "reduce_noise": "No",
   "to_txt": "No",
   "w_model": "large-v2",
-  "t_model": "No",
+  "t_model": "Whisper",
   "base_directory": "~\\.radio_analyzer"
 }
