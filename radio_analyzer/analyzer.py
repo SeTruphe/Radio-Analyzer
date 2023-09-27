@@ -9,7 +9,7 @@ import json
 import re
 
 
-def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.path.join('~', '.radio_analyzer'),
+def analyze_module(audio_path, custom_name=None, clean_up=False, base_path=os.path.join('~', '.radio_analyzer'),
                    whisper_model='large-v2', to_txt=False, reduce_noise=False, translation_model = 'Whisper'):
 
     """
@@ -48,8 +48,8 @@ def radio_analyzer(audio_path, custom_name=None, clean_up=False, base_path=os.pa
 
     # Process audio file and get transcription and translations
 
-    original, english, language = utils.transcribe(working_path, whisper_model=whisper_model,
-                                                   to_txt=to_txt, save_path=path, translation_model=translation_model)
+    original, english, language = utils.transcribe_module(working_path, whisper_model=whisper_model,
+                                                          to_txt=to_txt, save_path=path, translation_model=translation_model)
 
     # if noisereduce and clean_up, remove file after processing to reduce space
 

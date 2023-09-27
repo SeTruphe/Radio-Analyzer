@@ -1,7 +1,8 @@
 whisper
+openai-whisper
 pydub
-scipy.io
-transformers
+scipy
+transformers >= 4.33
 torch
 ffmpeg
 evaluate
@@ -11,6 +12,5 @@ tokenizers
 scipy
 gradio
 noisereduce
-Python 3.10
 geopy
 plotly

@@ -1,6 +1,6 @@
 import shutil
 import gradio as gr
-import radio_analyzer
+import analyzer
 import json
 import os
 import ast
@@ -77,15 +77,15 @@ def run_and_display(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, 
             data = json.load(jfile)
 
     elif file_format == 'mp3' or file_format == 'wav':
-        data = radio_analyzer.radio_analyzer(path_to_audio,
-                                             whisper_model=w_model,
-                                             clean_up=clean_up,
-                                             custom_name=custom,
-                                             base_path=path,
-                                             reduce_noise=reduce_noise,
-                                             to_txt=to_txt,
-                                             translation_model=t_model
-                                             )
+        data = analyzer.analyze_module(path_to_audio,
+                                       whisper_model=w_model,
+                                       clean_up=clean_up,
+                                       custom_name=custom,
+                                       base_path=path,
+                                       reduce_noise=reduce_noise,
+                                       to_txt=to_txt,
+                                       translation_model=t_model
+                                       )
 
     else:
         print('Wrong file format')
@@ -160,9 +160,9 @@ def bulk_analysis(obj_list, w_model, custom, path, reduce_noise, to_txt, clean_u
 
         if file_format == 'mp3' or file_format == 'wav':
             try:
-                radio_analyzer.radio_analyzer(path_to_audio, whisper_model=w_model, clean_up=clean_up,
-                                              custom_name=custom, base_path=path, reduce_noise=reduce_noise,
-                                              to_txt=to_txt, translation_model=t_model)
+                analyzer.analyze_module(path_to_audio, whisper_model=w_model, clean_up=clean_up,
+                                        custom_name=custom, base_path=path, reduce_noise=reduce_noise,
+                                        to_txt=to_txt, translation_model=t_model)
                 shutil.rmtree(os.path.dirname(path_to_audio))
                 shutil.rmtree(os.path.dirname(obj.orig_name))
             except:
@@ -378,8 +378,14 @@ with gr.Blocks() as analyzer_webapp:
     bulk_button.click(bulk_analysis, inputs=[folder_list, w_model, custom, path, reduce_noise, to_txt, cleanup,
                                              t_model], outputs=[progress])
 
-if __name__ == '__main__':
+
+def run_radio_analyzer():
     webbrowser.open(url='http://127.0.0.1:7860', new=2, autoraise=True)
     analyzer_webapp.queue()
     analyzer_webapp.launch()
+
+
+if __name__ == '__main__':
+    run_radio_analyzer()
+
 

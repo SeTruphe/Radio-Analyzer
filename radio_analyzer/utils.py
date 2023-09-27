@@ -110,7 +110,7 @@ def split_audio(audio_path, save_path, opt_folder_name=None):
     return folder_path
 
 
-def transcribe_parts(chunk_path, whisper_model='large-v2', internal_mode=False, to_txt=False):
+def transcribe_parts_module(chunk_path, whisper_model='large-v2', internal_mode=False, to_txt=False):
     """
     :param chunk_path: Path to the audio chunks. Each chunk must not exceed 30 seconds in duration.
     :param whisper_model: Specifies the size of the Whisper model to be used.
@@ -205,7 +205,7 @@ def transcribe_parts(chunk_path, whisper_model='large-v2', internal_mode=False, 
     return text_original, eng_out, deu_out
 
 
-def transcribe(file, whisper_model='large-v2', to_txt=False, save_path=None, translation_model='whisper'):
+def transcribe_module(file, whisper_model='large-v2', to_txt=False, save_path=None, translation_model='whisper'):
     """
     :param file: Path to the audio file intended for transcription and translation.
     :param whisper_model: Specifies the size of the Whisper model to be used.
