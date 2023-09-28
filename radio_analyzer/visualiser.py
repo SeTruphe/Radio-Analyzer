@@ -1,6 +1,7 @@
 import shutil
 import gradio as gr
-import analyzer
+#import analyzer
+from . import analyzer
 import json
 import os
 import ast
@@ -133,7 +134,7 @@ def save_conf(cleanup, reduce_noise, to_txt, w_model, t_model, path):
                 "base_directory": path
             }
 
-    with open('config.json', 'w') as jfile:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json'), 'w') as jfile:
         json.dump(config, jfile, indent=2)
 
     gr.Info(message='Your configuration has been saved')
@@ -191,39 +192,41 @@ def create_map(loc_entries):
         for entry in loc_entries:
             tmp = entry['word']
             location = geoloc.geocode(tmp)
-            locs.append(tmp)
-            lat.append(location.latitude)
-            long.append(location.longitude)
+            if location:
+                locs.append(tmp)
+                lat.append(location.latitude)
+                long.append(location.longitude)
+        if locs:
+            fig = go.Figure(go.Scattermapbox(
+                customdata=locs,
+                lat=lat,
+                lon=long,
+                mode='markers',
+                marker=go.scattermapbox.Marker(size=10),
+                hoverinfo='text',
+                text=locs
+            ))
 
-        fig = go.Figure(go.Scattermapbox(
-            customdata=locs,
-            lat=lat,
-            lon=long,
-            mode='markers',
-            marker=go.scattermapbox.Marker(size=10),
-            hoverinfo='text',
-            text=locs
-        ))
-
-        fig.update_layout(
-            mapbox_style='open-street-map',
-            hovermode='closest',
-            mapbox=dict(
-                bearing=0,
-                center=go.layout.mapbox.Center(lat=(sum(lat)/len(lat)),  lon=(sum(long)/len(long))),
-                pitch=0,
-                zoom=5
+            fig.update_layout(
+                mapbox_style='open-street-map',
+                hovermode='closest',
+                mapbox=dict(
+                    bearing=0,
+                    center=go.layout.mapbox.Center(lat=(sum(lat)/len(lat)),  lon=(sum(long)/len(long))),
+                    pitch=0,
+                    zoom=5
+                )
             )
-        )
-        return fig
-    else:
+            return fig
         return None
 
 
 # Create Gradio App
 
+working_dir = os.path.dirname(os.path.abspath(__file__))
+
 with gr.Blocks() as analyzer_webapp:
-    gr.Image(value='..\\data\\media\\wordmark-bright.svg', height=100, container=False)
+    gr.Image(value=os.path.join(working_dir, 'media', 'wordmark-bright.svg'), height=100, container=False)
 
     # Creates tab for path input
 
@@ -287,7 +290,7 @@ with gr.Blocks() as analyzer_webapp:
     # Tab for advanced parameters
 
     with gr.Tab('Advanced Settings'):
-        with open('config.json', 'r') as jfile:
+        with open(os.path.join(working_dir,'config.json'), 'r') as jfile:
             conf = json.load(jfile)
         gr.Markdown("""
         In this tab, you can adjust and input the advanced settings of the app.
@@ -384,8 +387,5 @@ def run_radio_analyzer():
     analyzer_webapp.queue()
     analyzer_webapp.launch()
 
-
-if __name__ == '__main__':
-    run_radio_analyzer()
 
 

@@ -13,6 +13,7 @@ setup(
     url='https://github.com/SeTruphe/Radio-Analyzer',
     license='MIT',
     packages=find_packages(),
+    include_package_data=True,
     python_requires='>=3.10',
     install_requires=[
         'whisper',
@@ -33,7 +34,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'radio-analyzer=radio_analyzer.visualizer:main',
+            'radio-analyzer=radio_analyzer.visualiser:run_radio_analyzer',
         ],
     },
 )

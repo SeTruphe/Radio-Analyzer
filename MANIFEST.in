@@ -1,0 +1,2 @@
+recursive-include radio_analyzer/media *
+include radio_analyzer/*.json

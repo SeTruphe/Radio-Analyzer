@@ -4,7 +4,8 @@ import shutil
 from transformers import BertTokenizer, BertForTokenClassification
 from transformers import pipeline
 from collections import Counter
-import utils
+#import utils
+from . import utils
 import json
 import re
 
