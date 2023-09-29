@@ -30,7 +30,10 @@ setup(
         'gradio',
         'noisereduce',
         'geopy',
-        'plotly'
+        'plotly',
+        'setuptools',
+        'moviepy',
+        'nltk'
     ],
     entry_points={
         'console_scripts': [

@@ -55,13 +55,18 @@ The main goal of this Software is to give everyone the Possibility to Analyze (n
 </div>
 <br><br>
 
+At present, Radio Analyzer is compatible with all audio file types that are supported by Whisper and, consequently,
+by ffmpeg, for regular usage without the application of noise reduction. Nonetheless, when utilizing functionalities
+that involve noise reduction, only .mp3 and .wav file formats are currently accommodated. Additionally, users have the
+option to input .mp4 files; the audio content from these will be automatically extracted.
+
 
 # System Requirements
 
 It is recommended to run Radio Analyzer on Linux or Mac. While it is possible to run the program on Windows, users might encounter issues with the proper installation of `ffmpeg`, which is critical for the correct usage of Radio Analyzer.  
 <br><br>**For error-free operation of Radio Analyzer, please ensure your system has at least 16GB of RAM! The analysis process will fail if the RAM is insufficient!**<br><br>
 
-For the requirements and details of the Whisper models, see below or please refer to [Whisper's GitHub] (https://github.com/openai/whisper#available-models-and-languages) page.
+For the requirements and details of the Whisper models, see below or please refer to [Whisper's GitHub](https://github.com/openai/whisper#available-models-and-languages) page.
 
 |  Size  | Parameters | English-only model | Multilingual model | Required VRAM | Relative speed |
 |:------:|:----------:|:------------------:|:------------------:|:-------------:|:--------------:|

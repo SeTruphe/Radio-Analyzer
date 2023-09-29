@@ -8,6 +8,7 @@ import noisereduce as nr
 from scipy.io import wavfile
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, MarianTokenizer, MarianMTModel
 import datetime
+from moviepy.editor import *
 
 
 def noisereduce(file, path=None):
@@ -47,6 +48,25 @@ def noisereduce(file, path=None):
         os.remove(tmp)
 
     return output
+
+
+def extract_audio(mp4_path):
+    """
+    :param mp4_path: path to the .mp4 file the audio needs to be extracted from
+    :return: path to the new .mp3 file
+    """
+    # Get folder path and file name, create path for new .mp3 file
+
+    folder_path = os.path.dirname(mp4_path)
+    file_name = os.path.splitext(os.path.basename(mp4_path))[0]
+    mp3_path = os.path.join(folder_path, file_name + '.mp3')
+
+    # Extract audio
+
+    video = VideoFileClip(mp4_path)
+    video.audio.write_audiofile(mp3_path)
+
+    return mp3_path
 
 
 def splitter(recording: AudioSegment, section_start, section_finish, section_counter, folder_path, file_format):
@@ -227,7 +247,7 @@ def transcribe_module(file, whisper_model='large-v2', to_txt=False, save_path=No
     # Transcription + English translation
 
     org_dict = model.transcribe(file, task='transcribe')
-    text_original = org_dict['text'] #.strip().encode('utf-8')
+    text_original = org_dict['text']
     language = org_dict['language']
     text_english = ''
 

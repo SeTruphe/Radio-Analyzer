@@ -1,6 +1,6 @@
 import shutil
 import gradio as gr
-#import analyzer
+from . import utils
 from . import analyzer
 import json
 import os
@@ -73,6 +73,12 @@ def run_and_display(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, 
 
     # If json, load file. If mp3,wav, analyse file. Else return error
 
+    if file_format == 'mp4':
+
+        to_remove = path_to_audio
+        path_to_audio = utils.extract_audio(path_to_audio)
+        file_format = 'mp3'
+
     if file_format == 'json':
         with open(path_to_audio, 'r') as jfile:
             data = json.load(jfile)
@@ -109,6 +115,7 @@ def run_and_display(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, 
     ctime = data['time_of_analysis']
 
     # Remove from Gradio created tmp-files to clear storage
+
     if not isinstance(obj, str):
         shutil.rmtree(os.path.dirname(path_to_audio))
         shutil.rmtree(os.path.dirname(obj.orig_name))
@@ -237,7 +244,7 @@ with gr.Blocks() as analyzer_webapp:
         with gr.Blocks():
             with gr.Tab('File Selector'):
                 obj = gr.File(label='Please input the Audio file you want to Analyze', file_count='single',
-                              file_types=['.mp3', '.wav'])
+                              file_types=['.mp3', '.wav', '.mp4'])
                 file_selector_button = gr.Button('Analyze', size='lg')
 
             with gr.Tab('JSON Selector'):
