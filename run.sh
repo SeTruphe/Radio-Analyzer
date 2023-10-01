@@ -7,5 +7,5 @@ if [ -z "$VIRTUAL_ENV" ]; then
 else
     echo "Virtual Environment already active"
 fi
-echp "Running Radio Analyzer"
+echo "Running Radio Analyzer"
 radio-analyzer

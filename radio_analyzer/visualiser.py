@@ -1,231 +1,8 @@
-import shutil
 import gradio as gr
-from . import utils
-from . import analyzer
 import json
 import os
-import ast
 import webbrowser
-from geopy.geocoders import Nominatim
-import plotly.graph_objects as go
-
-
-def parse_inputs(clean_up, path, custom, reduce_noise, to_txt, t_model):
-
-    # Transfer Clean up string into boolean
-
-    if clean_up == 'No':
-        clean_up = False
-    else:
-        clean_up = True
-
-    # Clean empty inputs
-
-    if path == '':
-        path = os.path.join('~', '.radio_analyzer')
-
-    if custom == '':
-        custom = None
-
-    if reduce_noise == 'No':
-        reduce_noise = False
-    else:
-        reduce_noise = True
-
-    if to_txt == 'No':
-        to_txt = False
-    else:
-        to_txt = True
-        clean_up = False
-
-    if t_model == 'Helsinki':
-        t_model = 'Helsinki-NLP/opus-mt-ru-en'
-    elif t_model == 'Facebook':
-        t_model = 'facebook/wmt19-ru-en'
-    else:
-        t_model = 'Whisper'
-
-    return clean_up, path, custom, reduce_noise, to_txt, t_model
-
-
-def run_and_display(obj, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model):
-    """
-    :param obj: _TemporaryFileWrapper-Object which is created by Gradio and hast the path to the Audiofile
-    :param custom: Custom name for the folder where audio chunks, transcriptions, and translations are stored.
-        If not provided, a default name is generated.
-    :param path: Root directory where analysis folders are created. Can be overridden with a custom path.
-    :return: Returns data formatted for display in the Gradio app.
-    """
-    if not isinstance(obj, str):
-        path_to_audio = obj.name
-    else:
-        path_to_audio = os.path.expanduser(os.path.join(path, 'analysis_data', obj))
-
-    clean_up, path, custom, reduce_noise, to_txt, t_model = parse_inputs(clean_up, path, custom,
-                                                                         reduce_noise, to_txt, t_model)
-
-    # Get file format
-
-    path_to_audio = path_to_audio.replace('\"', '')
-
-    _, file_format = os.path.splitext(path_to_audio)
-    file_format = file_format[1:]
-
-    # If json, load file. If mp3,wav, analyse file. Else return error
-
-    if file_format == 'mp4':
-
-        to_remove = path_to_audio
-        path_to_audio = utils.extract_audio(path_to_audio)
-        file_format = 'mp3'
-
-    if file_format == 'json':
-        with open(path_to_audio, 'r') as jfile:
-            data = json.load(jfile)
-
-    elif file_format == 'mp3' or file_format == 'wav':
-        data = analyzer.analyze_module(path_to_audio,
-                                       whisper_model=w_model,
-                                       clean_up=clean_up,
-                                       custom_name=custom,
-                                       base_path=path,
-                                       reduce_noise=reduce_noise,
-                                       to_txt=to_txt,
-                                       translation_model=t_model
-                                       )
-
-    else:
-        print('Wrong file format')
-        raise gr.Error('Wrong File format')
-
-    data_sentiment = data['sentiment']
-    ner = ast.literal_eval(data['ner'])
-
-    for entity in ner:
-        entity['entity'] = entity.pop('entity_group')
-
-    labels_tactical = {lab: conf for lab, conf in data['labels_tactical']}
-    labels_legal = {lab: conf for lab, conf in data['labels_legal']}
-    mood_data = data['label_mood']['label']
-    english = data['english']
-    original = data['original']
-    name = data['file_name']
-    audio_path = data['path']
-    whisper_model = data['model']
-    ctime = data['time_of_analysis']
-
-    # Remove from Gradio created tmp-files to clear storage
-
-    if not isinstance(obj, str):
-        shutil.rmtree(os.path.dirname(path_to_audio))
-        shutil.rmtree(os.path.dirname(obj.orig_name))
-
-    locs = [x for x in ner if x.get('entity') == 'LOC']
-
-
-    return ({'text': english,
-            'entities': ner}, data_sentiment, mood_data, labels_tactical, labels_legal,
-            original, name, audio_path, whisper_model, ctime, data, create_map(locs))
-
-def save_conf(cleanup, reduce_noise, to_txt, w_model, t_model, path):
-
-    if path == '':
-        path = os.path.join('~', '.radio_analyzer')
-
-    config = {
-                "cleanup": cleanup,
-                "reduce_noise": reduce_noise,
-                "to_txt": to_txt,
-                "w_model": w_model,
-                "t_model": t_model,
-                "base_directory": path
-            }
-
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json'), 'w') as jfile:
-        json.dump(config, jfile, indent=2)
-
-    gr.Info(message='Your configuration has been saved')
-
-
-def bulk_analysis(obj_list, w_model, custom, path, reduce_noise, to_txt, clean_up, t_model,
-                  progress=gr.Progress(track_tqdm=True)):
-
-    warnings = ''
-
-    clean_up, path, custom, reduce_noise, to_txt, t_model = parse_inputs(clean_up, path, custom,
-                                                                         reduce_noise, to_txt, t_model)
-
-    for obj in progress.tqdm(obj_list):
-        progress(0, desc='Starting...')
-        path_to_audio = obj.name
-
-        # Get file format
-
-        path_to_audio = path_to_audio.replace('\"', '')
-
-        _, file_format = os.path.splitext(path_to_audio)
-        file_format = file_format[1:]
-
-        if file_format == 'mp3' or file_format == 'wav':
-            try:
-                analyzer.analyze_module(path_to_audio, whisper_model=w_model, clean_up=clean_up,
-                                        custom_name=custom, base_path=path, reduce_noise=reduce_noise,
-                                        to_txt=to_txt, translation_model=t_model)
-                shutil.rmtree(os.path.dirname(path_to_audio))
-                shutil.rmtree(os.path.dirname(obj.orig_name))
-            except:
-                error = f'An Error occurred with file {file_format}!'
-                warnings += error + '\n'
-                gr.Warning(error)
-
-    return 'Done! \n Warnings: ' + warnings
-
-
-def get_json_list():
-    with open('config.json', 'r') as jfile:
-        config = json.load(jfile)
-    json_path = os.path.expanduser(os.path.join(config['base_directory'], 'analysis_data'))
-    file_list = [file for file in os.listdir(json_path) if os.path.isfile(os.path.join(json_path, file))]
-    return gr.Dropdown.update(choices=file_list)
-
-
-def create_map(loc_entries):
-
-    if loc_entries:
-        geoloc = Nominatim(user_agent='geoapi')
-        locs = []
-        lat = []
-        long = []
-        for entry in loc_entries:
-            tmp = entry['word']
-            location = geoloc.geocode(tmp)
-            if location:
-                locs.append(tmp)
-                lat.append(location.latitude)
-                long.append(location.longitude)
-        if locs:
-            fig = go.Figure(go.Scattermapbox(
-                customdata=locs,
-                lat=lat,
-                lon=long,
-                mode='markers',
-                marker=go.scattermapbox.Marker(size=10),
-                hoverinfo='text',
-                text=locs
-            ))
-
-            fig.update_layout(
-                mapbox_style='open-street-map',
-                hovermode='closest',
-                mapbox=dict(
-                    bearing=0,
-                    center=go.layout.mapbox.Center(lat=(sum(lat)/len(lat)),  lon=(sum(long)/len(long))),
-                    pitch=0,
-                    zoom=5
-                )
-            )
-            return fig
-        return None
+from . import webapp_functions as wf
 
 
 # Create Gradio App
@@ -251,7 +28,7 @@ with gr.Blocks() as analyzer_webapp:
                 with gr.Row():
                     json_obj = gr.Dropdown(choices=['Refresh'], label='Select previous analyse result', scale=3)
                     refresh_button = gr.Button(value='Refresh Dropdown', scale=0)
-                    refresh_button.click(get_json_list, outputs=json_obj)
+                    refresh_button.click(wf.get_json_list, outputs=json_obj)
                 json_button = gr.Button('Load JSON', size='lg')
 
         # Tabs for Output
@@ -324,7 +101,7 @@ with gr.Blocks() as analyzer_webapp:
                                 ' additionally saved as a .txt file in the folder of the audio file.')
         w_model = gr.Radio(['large-v2', 'large', 'medium', 'small', 'base', 'tiny'],
                            label='Select the Whisper model', value=conf['w_model'])
-        t_model = gr.Radio(['Whisper', 'Helsinki', 'Facebook'], label='Select the translationr model',
+        t_model = gr.Radio(['Whisper', 'Helsinki', 'Facebook'], label='Select the translation model',
                            value=conf['t_model'])
         custom = gr.Textbox(
             label='Alter the name for the save file here. If none is given, a default name will be chosen.')
@@ -334,7 +111,7 @@ with gr.Blocks() as analyzer_webapp:
         # Button to save config
 
         config_button = gr.Button('Safe config', size='lg')
-        config_button.click(save_conf, inputs=[cleanup, reduce_noise, to_txt, w_model, t_model, path], outputs=[])
+        config_button.click(wf.save_conf, inputs=[cleanup, reduce_noise, to_txt, w_model, t_model, path], outputs=[])
 
     # Tab for Description
 
@@ -377,15 +154,15 @@ with gr.Blocks() as analyzer_webapp:
 
     # Button functionality
 
-    file_selector_button.click(run_and_display, inputs=[obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
+    file_selector_button.click(wf.run_analyses, inputs=[obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
                                outputs=[highlight, sentiment, mood, label_tac, label_legal, org, file_name,
                                file_path, model, time, js, loc_map])
 
-    json_button.click(run_and_display, inputs=[json_obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
+    json_button.click(wf.run_analyses, inputs=[json_obj, w_model, custom, path, reduce_noise, to_txt, cleanup, t_model],
                       outputs=[highlight, sentiment, mood, label_tac, label_legal, org, file_name,
                                file_path, model, time, js, loc_map])
 
-    bulk_button.click(bulk_analysis, inputs=[folder_list, w_model, custom, path, reduce_noise, to_txt, cleanup,
+    bulk_button.click(wf.bulk_analysis, inputs=[folder_list, w_model, custom, path, reduce_noise, to_txt, cleanup,
                                              t_model], outputs=[progress])
 
 
